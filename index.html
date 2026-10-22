@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>EPI-PREDIC</title>
+<meta name="description" content="EPI-PREDIC (EPI-LAB): desarrollo y validación de modelos de predicción clínica en el navegador. Cálculo del tamaño de muestra (Riley et al.), regresión logística y de Cox con splines y penalización, validación interna por bootstrap, calibración, curva de decisión y lista TRIPOD.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Source+Sans+3:wght@400;600&display=swap">
+<link rel="stylesheet" href="css/style.css?v=2026.10.22-1">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js" defer></script>
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <svg viewBox="0 0 46 40" aria-hidden="true"><rect x="2" y="16" width="4" height="22" rx="1" fill="#4D4D4D"/><rect x="9" y="12" width="4" height="26" rx="1" fill="#4D4D4D"/><rect x="16" y="9" width="4" height="29" rx="1" fill="#5BA7B8"/><rect x="23" y="22" width="4" height="16" rx="1" fill="#5BA7B8"/><rect x="30" y="28" width="4" height="10" rx="1" fill="#4D4D4D"/><path d="M8 4 C20 4 22 18 28 22 S38 30 42 28" fill="none" stroke="#4D4D4D" stroke-width="1.6"/><circle cx="8" cy="5" r="4" fill="#8B2E3B"/><circle cx="28" cy="21" r="3" fill="#4D4D4D"/><circle cx="42" cy="28" r="3" fill="#5BA7B8"/></svg>
+    <div><h1><span class="epi">EPI</span><span class="data">-PREDIC</span></h1><p>Un módulo de <b>EPI-LAB</b> · Modelos de predicción clínica</p></div>
+  </div>
+  <nav class="tabs" role="tablist">
+    <button role="tab" data-tab="muestra" class="active"><span class="n">1</span>Tamaño de muestra</button>
+    <button role="tab" data-tab="datos"><span class="n">2</span>Datos</button>
+    <button role="tab" data-tab="modelo"><span class="n">3</span>Modelo</button>
+    <button role="tab" data-tab="desarrollo"><span class="n">4</span>Desarrollo</button>
+    <button role="tab" data-tab="validacion"><span class="n">5</span>Validación</button>
+    <button role="tab" data-tab="utilidad"><span class="n">6</span>Utilidad clínica</button>
+    <button role="tab" data-tab="reporte"><span class="n">7</span>Reporte</button>
+    <button role="tab" data-tab="ayuda"><span class="n">?</span>Ayuda</button>
+  </nav>
+</header>
+
+<main>
+<!-- 1 · TAMAÑO DE MUESTRA -->
+<section id="tab-muestra" class="tab active">
+  <div class="card">
+    <h2>¿Cuántos pacientes necesita el modelo?</h2>
+    <div class="howto"><div><b>Qué se hace</b>Se calcula el tamaño de muestra mínimo para <i>desarrollar</i> un modelo (criterios de Riley et al.: poco sobreajuste, pequeña diferencia entre R² aparente y ajustado, riesgo global preciso) o para <i>validarlo</i> en datos nuevos.</div><div><b>Para qué</b>La regla de «10 eventos por variable» es poco fiable: la muestra depende del número de parámetros, de la frecuencia del desenlace y del rendimiento esperado (R² de Cox-Snell o estadístico C).</div><div><b>Cómo interpretar</b>El tamaño final es el <b>mayor</b> de los criterios. Es un mínimo: la selección de variables, el desbalance o los splines exigen más.</div></div>
+    <div class="row gap wrap seg"><button class="ghost active" data-ss="dev">Desarrollo del modelo</button><button class="ghost" data-ss="val">Validación externa</button></div>
+    <div id="ss-dev">
+      <div class="form mt">
+        <label>Tipo de desenlace <select id="sd-type"><option value="binary">Binario (diagnóstico o riesgo a un tiempo fijo)</option><option value="survival">Tiempo hasta el evento (supervivencia)</option><option value="continuous">Continuo</option></select></label>
+        <label>N.º de parámetros candidatos (p) <input id="sd-p" type="number" min="1" value="15"></label>
+        <label id="sd-prev-w">Prevalencia / incidencia del desenlace <input id="sd-prev" type="number" step="0.01" min="0.001" max="0.999" value="0.2"></label>
+        <label class="sv">Tasa de eventos (por unidad de tiempo) <input id="sd-rate" type="number" step="0.001" value="0.065"></label>
+        <label class="sv">Tiempo de predicción de interés <input id="sd-tp" type="number" step="0.1" value="2"></label>
+        <label class="sv">Seguimiento medio <input id="sd-fu" type="number" step="0.1" value="2.07"></label>
+        <label class="ct">Intercepto (media del desenlace) <input id="sd-int" type="number" step="any" value="50"></label>
+        <label class="ct">Desviación estándar del desenlace <input id="sd-sd" type="number" step="any" value="5"></label>
+        <label class="nct">¿Qué rendimiento espera? <select id="sd-r2src"><option value="cs">R² de Cox-Snell</option><option value="nag">R² de Nagelkerke</option><option value="c">Estadístico C (solo binario)</option></select></label>
+        <label id="sd-r2-w">Valor esperado <input id="sd-r2" type="number" step="0.01" min="0.001" value="0.2"></label>
+        <label>Contracción global objetivo (S) <input id="sd-S" type="number" step="0.01" min="0.5" max="0.99" value="0.9"></label>
+        <label>Dif. máxima R² aparente−ajustado <input id="sd-delta" type="number" step="0.01" value="0.05"></label>
+        <label class="nct">Margen de error del riesgo global (±) <input id="sd-margin" type="number" step="0.01" value="0.05"></label>
+      </div>
+      <p class="sub" id="sd-hint"></p>
+      <div id="sd-out"></div>
+    </div>
+    <div id="ss-val" hidden>
+      <div class="form mt">
+        <label>Tipo de desenlace <select id="sv-type"><option value="binary">Binario</option><option value="continuous">Continuo</option></select></label>
+        <label class="vb">Prevalencia esperada <input id="sv-prev" type="number" step="0.01" value="0.2"></label>
+        <label class="vb">Estadístico C esperado <input id="sv-c" type="number" step="0.01" value="0.8"></label>
+        <label class="vb">Distribución del LP <select id="sv-lpmode"><option value="c">Normal con varianza común (a partir de C y prevalencia)</option><option value="n">LP ~ Normal(media, DE) (ej.: del artículo original)</option></select></label>
+        <label class="vb lpn">Media del LP <input id="sv-lpm" type="number" step="0.01" value="-1.75"></label>
+        <label class="vb lpn">DE del LP <input id="sv-lps" type="number" step="0.01" value="1.47"></label>
+        <label class="vb">Ancho de IC objetivo: O/E (escala log) <input id="sv-wOE" type="number" step="0.05" value="0.2"></label>
+        <label class="vb">Ancho de IC objetivo: pendiente <input id="sv-wS" type="number" step="0.05" value="0.2"></label>
+        <label class="vb">Ancho de IC objetivo: C <input id="sv-wC" type="number" step="0.01" value="0.1"></label>
+        <label class="vb">Umbrales para el beneficio neto (opc., ej.: 0.1, 0.2) <input id="sv-pt" value=""></label>
+        <label class="vc">R² esperado (ajustado del desarrollo) <input id="sv-r2" type="number" step="0.01" value="0.4"></label>
+        <label class="vc">Varianza del desenlace <input id="sv-var" type="number" step="any" value="497.29"></label>
+        <label class="vc">Ancho de IC objetivo: R² <input id="sv-wR2" type="number" step="0.01" value="0.1"></label>
+        <label class="vc">Ancho de IC objetivo: CITL (unidades del desenlace) <input id="sv-wCITL" type="number" step="any" value="5"></label>
+        <label class="vc">Ancho de IC objetivo: pendiente <input id="sv-wSc" type="number" step="0.05" value="0.3"></label>
+      </div>
+      <div id="sv-out"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 · DATOS -->
+<section id="tab-datos" class="tab">
+  <div class="card">
+    <h2>Cargar la base de desarrollo</h2>
+    <div class="howto"><div><b>Qué se hace</b>Se lee su CSV o Excel (una fila por paciente). Debe incluir el desenlace y los predictores candidatos, medidos <i>antes</i> del momento de predicción.</div><div><b>Para qué</b>Los datos se quedan en su navegador. La misma base se usa para desarrollar y, con bootstrap, para validar internamente.</div><div><b>Consejo</b>Defina bien el desenlace y el horizonte (p. ej., «falla renal a 2 años») y evite incluir variables que solo se conocen después del evento.</div></div>
+    <div class="drop" id="drop"><input type="file" id="file" accept=".csv,.txt,.tsv,.xlsx,.xls"><label for="file"><b>Elegir archivo</b> o arrastrarlo aquí</label></div>
+    <h3>O pruebe con una base de ejemplo <span class="sub">(datos simulados de nefrología)</span></h3>
+    <div class="examples" id="examples"></div>
+    <div id="load-msg"></div>
+  </div>
+  <div class="card has-data" hidden>
+    <div class="row between wrap gap"><h2>Variables</h2><label class="inline">Códigos de dato perdido <input id="na-codes" value="NA, ., -, 999, 9999" size="20"></label></div>
+    <div class="tablewrap tall"><table class="data" id="vartable"></table></div>
+    <div class="stepnav"><span></span><button class="primary" data-go="modelo">Siguiente: especificar el modelo →</button></div>
+  </div>
+</section>
+
+<!-- 3 · MODELO -->
+<section id="tab-modelo" class="tab">
+  <div class="card need-data"><p class="muted">Primero cargue una base de datos en el paso 2.</p></div>
+  <div class="card has-data" hidden>
+    <h2>Pregunta de predicción y especificación del modelo</h2>
+    <div class="howto"><div><b>Qué se hace</b>Se elige qué se predice (un evento Sí/No, el tiempo hasta un evento, o un valor continuo) y con qué variables.</div><div><b>Para qué</b>Los predictores deben decidirse por conocimiento clínico, no por significación estadística. Los splines permiten relaciones no lineales sin categorizar.</div><div><b>Cómo decidir</b>Con pocos eventos por parámetro, use penalización (ridge/lasso) o menos variables. Mantenga el número de parámetros coherente con el paso 1.</div></div>
+    <div class="form">
+      <label>Tipo de modelo <select id="m-type"><option value="binary">Logístico (evento Sí/No)</option><option value="survival">Cox (tiempo hasta el evento)</option><option value="continuous">Lineal (desenlace continuo)</option></select></label>
+      <label class="mb mc">Desenlace <select id="m-y"></select></label>
+      <label class="mb">Categoría que es el evento <select id="m-event"></select></label>
+      <label class="ms">Tiempo de seguimiento <select id="m-time"></select></label>
+      <label class="ms">Indicador de evento <select id="m-status"></select></label>
+      <label class="ms">Categoría que es el evento <select id="m-sevent"></select></label>
+      <label class="ms">Horizonte de predicción (en las unidades del tiempo) <input id="m-horizon" type="number" step="any" value="2"></label>
+    </div>
+    <h3>Predictores candidatos</h3>
+    <div id="m-vars" class="predvars"></div>
+    <div class="row gap wrap mt"><button class="ghost sm" id="m-all">Marcar todos</button><button class="ghost sm" id="m-none">Ninguno</button></div>
+    <h3>Estrategia de ajuste</h3>
+    <div class="form">
+      <label>Penalización <select id="m-pen"><option value="none">Ninguna (máxima verosimilitud)</option><option value="ridge">Ridge (contrae, no selecciona)</option><option value="lasso" id="m-lasso">Lasso (contrae y selecciona)</option></select></label>
+      <label>Elección de λ <select id="m-rule"><option value="min">Mínimo error de validación cruzada</option><option value="1se">Regla de 1 error estándar (más contraído)</option></select></label>
+      <label>Réplicas bootstrap (validación interna) <input id="m-B" type="number" min="0" max="1000" value="200"></label>
+      <label>Semilla <input id="m-seed" type="number" value="2024"></label>
+      <label class="inline wide"><input type="checkbox" id="m-retune" checked> Repetir la elección de λ en cada réplica bootstrap (más lento y más honesto)</label>
+    </div>
+    <div id="m-check" class="explain"></div>
+    <div class="row gap mt wrap"><button class="primary" id="m-run">Ajustar y validar</button><progress id="m-prog" max="1" value="0" hidden></progress><span id="m-status" class="muted"></span></div>
+  </div>
+</section>
+
+<!-- 4 · DESARROLLO -->
+<section id="tab-desarrollo" class="tab">
+  <div class="card need-model"><p class="muted">Ajuste primero un modelo en el paso 3.</p></div>
+  <div id="dev-out"></div>
+</section>
+
+<!-- 5 · VALIDACIÓN -->
+<section id="tab-validacion" class="tab">
+  <div class="card need-model"><p class="muted">Ajuste primero un modelo en el paso 3.</p></div>
+  <div class="card has-model" hidden>
+    <h2>Validación externa o temporal</h2>
+    <div class="howto"><div><b>Qué se hace</b>Se aplica el modelo ya ajustado (sin reajustarlo) a pacientes distintos: otro centro, otro periodo u otra población.</div><div><b>Para qué</b>La validación interna solo corrige el sobreajuste; la externa muestra si el modelo se transporta: discriminación, calibración y utilidad en el nuevo entorno.</div><div><b>Cómo interpretar</b>Pendiente de calibración &lt; 1 = predicciones demasiado extremas; CITL ≠ 0 u O/E ≠ 1 = riesgo medio mal estimado. Si no calibra, recalibre antes de usarlo.</div></div>
+    <div class="row gap wrap seg"><button class="ghost active" data-vm="data">Aplicar el modelo ajustado aquí</button><button class="ghost" data-vm="eq">Validar un modelo publicado (ecuación)</button></div>
+    <div id="val-data">
+      <div class="drop slim" id="vdrop"><input type="file" id="vfile" accept=".csv,.txt,.tsv,.xlsx,.xls"><label for="vfile"><b>Cargar la base de validación (CSV/Excel)</b> o <a href="#" id="vex">usar la validación simulada de ejemplo</a></label></div>
+      <p class="sub" id="v-info"></p>
+    </div>
+    <div id="val-eq" hidden>
+      <p class="sub">Escriba el intercepto (o riesgo basal) y los coeficientes del modelo publicado; cada coeficiente se aplica a una <b>columna numérica</b> de su base de validación (para variables categóricas use columnas 0/1).</p>
+      <div class="form"><label>Tipo <select id="eq-type"><option value="binary">Logístico</option><option value="survival">Cox / supervivencia</option></select></label><label class="eqb">Intercepto <input id="eq-int" type="number" step="any" value="0"></label><label class="eqs">Supervivencia basal S₀(t) en el horizonte <input id="eq-s0" type="number" step="0.001" value="0.9"></label><label class="eqs">PI de referencia de S₀ (media del PI en el desarrollo; 0 si S₀ es para todos los predictores = 0) <input id="eq-ref" type="number" step="any" value="0"></label><label class="eqs">Horizonte <input id="eq-h" type="number" step="any" value="2"></label></div>
+      <div class="tablewrap"><table class="data" id="eq-table"></table></div><div class="row gap mt"><button class="ghost sm" id="eq-add">+ Término</button></div>
+      <div class="drop slim"><input type="file" id="vfile2" accept=".csv,.txt,.tsv,.xlsx,.xls"><label for="vfile2"><b>Cargar la base de validación (CSV/Excel)</b></label></div>
+    </div>
+    <div class="row gap mt wrap"><button class="primary" id="v-run">Evaluar</button><span id="v-msg" class="muted"></span></div>
+  </div>
+  <div id="val-out"></div>
+</section>
+
+<!-- 6 · UTILIDAD -->
+<section id="tab-utilidad" class="tab">
+  <div class="card need-model"><p class="muted">Ajuste primero un modelo en el paso 3.</p></div>
+  <div class="card has-model" hidden>
+    <h2>Utilidad clínica: curva de decisión</h2>
+    <div class="howto"><div><b>Qué se hace</b>Se calcula el <i>beneficio neto</i> de usar el modelo para decidir (tratar, derivar, vigilar) en cada umbral de riesgo, frente a «tratar a todos» y «no tratar a nadie».</div><div><b>Para qué</b>La discriminación y la calibración no dicen si el modelo mejora decisiones. El umbral refleja cuánto daño de un falso positivo se acepta por evitar un falso negativo.</div><div><b>Cómo interpretar</b>El modelo es útil en los umbrales donde su curva queda por encima de las otras dos. «Intervenciones evitadas» = tratamientos innecesarios evitados por cada 100 pacientes frente a tratar a todos.</div></div>
+    <div class="form"><label>Datos <select id="u-src"></select></label><label>Umbral mínimo <input id="u-min" type="number" step="0.01" value="0.02"></label><label>Umbral máximo <input id="u-max" type="number" step="0.01" value="0.5"></label><label>Umbral de interés (tabla de clasificación) <input id="u-pt" type="number" step="0.01" value="0.15"></label></div>
+    <div class="row gap mt"><button class="primary" id="u-run">Calcular</button></div>
+    <div id="u-out"></div>
+  </div>
+</section>
+
+<!-- 7 · REPORTE -->
+<section id="tab-reporte" class="tab">
+  <div class="card need-model"><p class="muted">Ajuste primero un modelo en el paso 3.</p></div>
+  <div id="rep-out"></div>
+  <div class="card">
+    <h2>Formato de figuras</h2>
+    <p class="sub">Se aplica a las descargas SVG/PNG/TIFF de todas las figuras.</p>
+    <div class="form">
+      <label>Ancho <select id="fig-width"><option value="single">1 columna (85 mm)</option><option value="onehalf">1,5 columnas (120 mm)</option><option value="double" selected>2 columnas (174 mm)</option><option value="custom">Personalizado</option></select></label>
+      <label>Ancho personalizado (mm) <input id="fig-mm" type="number" value="174"></label>
+      <label>Resolución <select id="fig-dpi"><option>300</option><option selected>600</option><option>1200</option></select></label>
+      <label>Fuente <select id="fig-font"><option value="arial">Arial</option><option value="helvetica">Helvetica</option><option value="times">Times New Roman</option></select></label>
+    </div>
+  </div>
+</section>
+
+<section id="tab-ayuda" class="tab"><div class="card prose" id="help"></div></section>
+</main>
+<footer class="foot">EPI-PREDIC · un módulo de EPI-LAB · © Daniel Fernández-Guzmán · CC BY-NC-ND 4.0 · Los cálculos se realizan en su navegador; ningún dato se envía a servidores. · v2026.10.22-1</footer>
+<script type="module" src="js/app.js?v=2026.10.22-1"></script>
+</body>
+</html>

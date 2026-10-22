@@ -1,0 +1,751 @@
+ID,Mes,Tratamiento,Edad,Sexo,Diabetes,TFGe (mL/min/1.73 m²),Albuminuria A3
+1,0,Tratamiento estándar,84,Masculino,Sí,43.7,Sí
+1,6,Tratamiento estándar,84,Masculino,Sí,45.5,Sí
+1,12,Tratamiento estándar,84,Masculino,Sí,42.1,No
+1,18,Tratamiento estándar,84,Masculino,Sí,,
+1,24,Tratamiento estándar,84,Masculino,Sí,,
+2,0,iSGLT2,65,Masculino,Sí,44.8,Sí
+2,6,iSGLT2,65,Masculino,Sí,46.3,Sí
+2,12,iSGLT2,65,Masculino,Sí,50.4,No
+2,18,iSGLT2,65,Masculino,Sí,43.8,No
+2,24,iSGLT2,65,Masculino,Sí,40.4,Sí
+3,0,Tratamiento estándar,61,Masculino,Sí,42.1,Sí
+3,6,Tratamiento estándar,61,Masculino,Sí,45.6,No
+3,12,Tratamiento estándar,61,Masculino,Sí,38.8,No
+3,18,Tratamiento estándar,61,Masculino,Sí,35.2,No
+3,24,Tratamiento estándar,61,Masculino,Sí,36.8,No
+4,0,iSGLT2,70,Femenino,Sí,39.4,No
+4,6,iSGLT2,70,Femenino,Sí,34.6,Sí
+4,12,iSGLT2,70,Femenino,Sí,34.1,Sí
+4,18,iSGLT2,70,Femenino,Sí,36.9,No
+4,24,iSGLT2,70,Femenino,Sí,30.7,No
+5,0,Tratamiento estándar,62,Femenino,No,33.3,Sí
+5,6,Tratamiento estándar,62,Femenino,No,27.4,Sí
+5,12,Tratamiento estándar,62,Femenino,No,21.7,Sí
+5,18,Tratamiento estándar,62,Femenino,No,25.3,No
+5,24,Tratamiento estándar,62,Femenino,No,24.7,Sí
+6,0,iSGLT2,90,Femenino,No,43.9,Sí
+6,6,iSGLT2,90,Femenino,No,48.4,No
+6,12,iSGLT2,90,Femenino,No,47.0,No
+6,18,iSGLT2,90,Femenino,No,40.5,No
+6,24,iSGLT2,90,Femenino,No,42.5,Sí
+7,0,Tratamiento estándar,59,Masculino,No,48.4,Sí
+7,6,Tratamiento estándar,59,Masculino,No,45.3,No
+7,12,Tratamiento estándar,59,Masculino,No,40.5,Sí
+7,18,Tratamiento estándar,59,Masculino,No,42.0,Sí
+7,24,Tratamiento estándar,59,Masculino,No,37.6,Sí
+8,0,iSGLT2,65,Masculino,Sí,48.4,No
+8,6,iSGLT2,65,Masculino,Sí,48.2,No
+8,12,iSGLT2,65,Masculino,Sí,45.8,No
+8,18,iSGLT2,65,Masculino,Sí,43.3,Sí
+8,24,iSGLT2,65,Masculino,Sí,41.7,Sí
+9,0,Tratamiento estándar,52,Femenino,Sí,46.7,No
+9,6,Tratamiento estándar,52,Femenino,Sí,48.7,No
+9,12,Tratamiento estándar,52,Femenino,Sí,44.5,No
+9,18,Tratamiento estándar,52,Femenino,Sí,,
+9,24,Tratamiento estándar,52,Femenino,Sí,,
+10,0,iSGLT2,64,Masculino,No,54.3,No
+10,6,iSGLT2,64,Masculino,No,51.9,No
+10,12,iSGLT2,64,Masculino,No,53.8,No
+10,18,iSGLT2,64,Masculino,No,52.5,Sí
+10,24,iSGLT2,64,Masculino,No,53.8,No
+11,0,Tratamiento estándar,70,Masculino,Sí,45.7,Sí
+11,6,Tratamiento estándar,70,Masculino,Sí,48.5,No
+11,12,Tratamiento estándar,70,Masculino,Sí,44.6,Sí
+11,18,Tratamiento estándar,70,Masculino,Sí,39.0,No
+11,24,Tratamiento estándar,70,Masculino,Sí,38.0,Sí
+12,0,iSGLT2,65,Femenino,No,47.2,Sí
+12,6,iSGLT2,65,Femenino,No,46.1,No
+12,12,iSGLT2,65,Femenino,No,49.1,Sí
+12,18,iSGLT2,65,Femenino,No,46.6,Sí
+12,24,iSGLT2,65,Femenino,No,45.7,No
+13,0,Tratamiento estándar,63,Femenino,No,79.4,No
+13,6,Tratamiento estándar,63,Femenino,No,72.3,No
+13,12,Tratamiento estándar,63,Femenino,No,67.5,No
+13,18,Tratamiento estándar,63,Femenino,No,69.0,No
+13,24,Tratamiento estándar,63,Femenino,No,,
+14,0,iSGLT2,69,Masculino,No,60.3,Sí
+14,6,iSGLT2,69,Masculino,No,55.0,No
+14,12,iSGLT2,69,Masculino,No,49.1,Sí
+14,18,iSGLT2,69,Masculino,No,52.9,No
+14,24,iSGLT2,69,Masculino,No,55.1,No
+15,0,Tratamiento estándar,74,Femenino,No,47.2,No
+15,6,Tratamiento estándar,74,Femenino,No,46.7,Sí
+15,12,Tratamiento estándar,74,Femenino,No,43.4,Sí
+15,18,Tratamiento estándar,74,Femenino,No,43.4,No
+15,24,Tratamiento estándar,74,Femenino,No,45.3,No
+16,0,iSGLT2,57,Femenino,Sí,53.2,Sí
+16,6,iSGLT2,57,Femenino,Sí,45.4,Sí
+16,12,iSGLT2,57,Femenino,Sí,53.6,No
+16,18,iSGLT2,57,Femenino,Sí,,
+16,24,iSGLT2,57,Femenino,Sí,,
+17,0,Tratamiento estándar,66,Masculino,Sí,33.2,No
+17,6,Tratamiento estándar,66,Masculino,Sí,32.2,Sí
+17,12,Tratamiento estándar,66,Masculino,Sí,42.8,Sí
+17,18,Tratamiento estándar,66,Masculino,Sí,27.1,Sí
+17,24,Tratamiento estándar,66,Masculino,Sí,29.4,Sí
+18,0,iSGLT2,76,Masculino,Sí,44.8,Sí
+18,6,iSGLT2,76,Masculino,Sí,43.6,No
+18,12,iSGLT2,76,Masculino,Sí,42.3,Sí
+18,18,iSGLT2,76,Masculino,Sí,40.1,No
+18,24,iSGLT2,76,Masculino,Sí,38.9,Sí
+19,0,Tratamiento estándar,59,Femenino,Sí,46.9,Sí
+19,6,Tratamiento estándar,59,Femenino,Sí,43.6,No
+19,12,Tratamiento estándar,59,Femenino,Sí,34.7,No
+19,18,Tratamiento estándar,59,Femenino,Sí,39.5,Sí
+19,24,Tratamiento estándar,59,Femenino,Sí,35.8,Sí
+20,0,iSGLT2,50,Masculino,No,50.2,No
+20,6,iSGLT2,50,Masculino,No,43.3,No
+20,12,iSGLT2,50,Masculino,No,47.5,No
+20,18,iSGLT2,50,Masculino,No,46.9,No
+20,24,iSGLT2,50,Masculino,No,48.6,No
+21,0,Tratamiento estándar,60,Masculino,Sí,54.4,Sí
+21,6,Tratamiento estándar,60,Masculino,Sí,62.8,No
+21,12,Tratamiento estándar,60,Masculino,Sí,57.1,Sí
+21,18,Tratamiento estándar,60,Masculino,Sí,51.1,No
+21,24,Tratamiento estándar,60,Masculino,Sí,54.0,No
+22,0,iSGLT2,83,Masculino,Sí,45.8,No
+22,6,iSGLT2,83,Masculino,Sí,49.9,Sí
+22,12,iSGLT2,83,Masculino,Sí,41.8,No
+22,18,iSGLT2,83,Masculino,Sí,41.1,Sí
+22,24,iSGLT2,83,Masculino,Sí,39.2,Sí
+23,0,Tratamiento estándar,55,Femenino,No,46.4,No
+23,6,Tratamiento estándar,55,Femenino,No,45.2,No
+23,12,Tratamiento estándar,55,Femenino,No,40.9,No
+23,18,Tratamiento estándar,55,Femenino,No,38.6,No
+23,24,Tratamiento estándar,55,Femenino,No,42.3,Sí
+24,0,iSGLT2,68,Femenino,Sí,46.4,Sí
+24,6,iSGLT2,68,Femenino,Sí,43.4,No
+24,12,iSGLT2,68,Femenino,Sí,43.9,No
+24,18,iSGLT2,68,Femenino,Sí,38.4,Sí
+24,24,iSGLT2,68,Femenino,Sí,38.9,Sí
+25,0,Tratamiento estándar,44,Masculino,Sí,51.4,Sí
+25,6,Tratamiento estándar,44,Masculino,Sí,54.6,No
+25,12,Tratamiento estándar,44,Masculino,Sí,51.3,No
+25,18,Tratamiento estándar,44,Masculino,Sí,52.6,No
+25,24,Tratamiento estándar,44,Masculino,Sí,47.1,Sí
+26,0,iSGLT2,44,Femenino,No,60.6,No
+26,6,iSGLT2,44,Femenino,No,59.8,No
+26,12,iSGLT2,44,Femenino,No,62.1,Sí
+26,18,iSGLT2,44,Femenino,No,,
+26,24,iSGLT2,44,Femenino,No,,
+27,0,Tratamiento estándar,48,Femenino,Sí,57.3,Sí
+27,6,Tratamiento estándar,48,Femenino,Sí,52.5,Sí
+27,12,Tratamiento estándar,48,Femenino,Sí,46.3,No
+27,18,Tratamiento estándar,48,Femenino,Sí,45.6,No
+27,24,Tratamiento estándar,48,Femenino,Sí,46.8,Sí
+28,0,iSGLT2,68,Masculino,Sí,45.7,No
+28,6,iSGLT2,68,Masculino,Sí,42.1,Sí
+28,12,iSGLT2,68,Masculino,Sí,37.7,No
+28,18,iSGLT2,68,Masculino,Sí,34.3,Sí
+28,24,iSGLT2,68,Masculino,Sí,35.5,No
+29,0,Tratamiento estándar,54,Masculino,No,62.8,Sí
+29,6,Tratamiento estándar,54,Masculino,No,54.3,No
+29,12,Tratamiento estándar,54,Masculino,No,48.4,No
+29,18,Tratamiento estándar,54,Masculino,No,54.1,No
+29,24,Tratamiento estándar,54,Masculino,No,55.8,No
+30,0,iSGLT2,50,Femenino,Sí,49.4,No
+30,6,iSGLT2,50,Femenino,Sí,45.0,No
+30,12,iSGLT2,50,Femenino,Sí,47.0,No
+30,18,iSGLT2,50,Femenino,Sí,42.8,No
+30,24,iSGLT2,50,Femenino,Sí,41.5,No
+31,0,Tratamiento estándar,64,Masculino,No,38.2,No
+31,6,Tratamiento estándar,64,Masculino,No,37.5,Sí
+31,12,Tratamiento estándar,64,Masculino,No,35.9,No
+31,18,Tratamiento estándar,64,Masculino,No,39.1,No
+31,24,Tratamiento estándar,64,Masculino,No,37.5,Sí
+32,0,iSGLT2,63,Femenino,Sí,38.1,Sí
+32,6,iSGLT2,63,Femenino,Sí,37.8,No
+32,12,iSGLT2,63,Femenino,Sí,33.8,Sí
+32,18,iSGLT2,63,Femenino,Sí,33.9,Sí
+32,24,iSGLT2,63,Femenino,Sí,30.7,Sí
+33,0,Tratamiento estándar,49,Femenino,Sí,55.6,Sí
+33,6,Tratamiento estándar,49,Femenino,Sí,57.5,Sí
+33,12,Tratamiento estándar,49,Femenino,Sí,48.8,No
+33,18,Tratamiento estándar,49,Femenino,Sí,45.0,Sí
+33,24,Tratamiento estándar,49,Femenino,Sí,44.8,No
+34,0,iSGLT2,43,Masculino,No,50.6,Sí
+34,6,iSGLT2,43,Masculino,No,47.9,No
+34,12,iSGLT2,43,Masculino,No,54.1,No
+34,18,iSGLT2,43,Masculino,No,53.2,Sí
+34,24,iSGLT2,43,Masculino,No,55.1,No
+35,0,Tratamiento estándar,58,Masculino,Sí,62.0,No
+35,6,Tratamiento estándar,58,Masculino,Sí,55.5,No
+35,12,Tratamiento estándar,58,Masculino,Sí,51.4,Sí
+35,18,Tratamiento estándar,58,Masculino,Sí,48.7,Sí
+35,24,Tratamiento estándar,58,Masculino,Sí,50.5,No
+36,0,iSGLT2,43,Femenino,Sí,50.0,Sí
+36,6,iSGLT2,43,Femenino,Sí,53.2,No
+36,12,iSGLT2,43,Femenino,Sí,48.7,No
+36,18,iSGLT2,43,Femenino,Sí,,
+36,24,iSGLT2,43,Femenino,Sí,,
+37,0,Tratamiento estándar,47,Femenino,No,51.8,No
+37,6,Tratamiento estándar,47,Femenino,No,45.8,No
+37,12,Tratamiento estándar,47,Femenino,No,42.4,No
+37,18,Tratamiento estándar,47,Femenino,No,36.7,Sí
+37,24,Tratamiento estándar,47,Femenino,No,38.7,No
+38,0,iSGLT2,76,Femenino,No,43.0,No
+38,6,iSGLT2,76,Femenino,No,46.9,No
+38,12,iSGLT2,76,Femenino,No,41.3,No
+38,18,iSGLT2,76,Femenino,No,38.6,No
+38,24,iSGLT2,76,Femenino,No,38.8,No
+39,0,Tratamiento estándar,64,Femenino,No,41.8,Sí
+39,6,Tratamiento estándar,64,Femenino,No,40.5,No
+39,12,Tratamiento estándar,64,Femenino,No,38.2,No
+39,18,Tratamiento estándar,64,Femenino,No,31.7,Sí
+39,24,Tratamiento estándar,64,Femenino,No,,
+40,0,iSGLT2,49,Femenino,No,49.0,Sí
+40,6,iSGLT2,49,Femenino,No,47.1,No
+40,12,iSGLT2,49,Femenino,No,45.7,No
+40,18,iSGLT2,49,Femenino,No,45.6,No
+40,24,iSGLT2,49,Femenino,No,47.3,Sí
+41,0,Tratamiento estándar,67,Femenino,Sí,56.7,Sí
+41,6,Tratamiento estándar,67,Femenino,Sí,51.1,Sí
+41,12,Tratamiento estándar,67,Femenino,Sí,42.7,Sí
+41,18,Tratamiento estándar,67,Femenino,Sí,46.0,No
+41,24,Tratamiento estándar,67,Femenino,Sí,42.3,Sí
+42,0,iSGLT2,54,Masculino,Sí,48.3,No
+42,6,iSGLT2,54,Masculino,Sí,42.5,No
+42,12,iSGLT2,54,Masculino,Sí,49.3,No
+42,18,iSGLT2,54,Masculino,Sí,40.2,Sí
+42,24,iSGLT2,54,Masculino,Sí,44.0,No
+43,0,Tratamiento estándar,42,Femenino,Sí,59.9,No
+43,6,Tratamiento estándar,42,Femenino,Sí,50.2,Sí
+43,12,Tratamiento estándar,42,Femenino,Sí,50.3,Sí
+43,18,Tratamiento estándar,42,Femenino,Sí,,
+43,24,Tratamiento estándar,42,Femenino,Sí,,
+44,0,iSGLT2,46,Femenino,No,53.5,No
+44,6,iSGLT2,46,Femenino,No,57.1,No
+44,12,iSGLT2,46,Femenino,No,57.3,No
+44,18,iSGLT2,46,Femenino,No,50.7,Sí
+44,24,iSGLT2,46,Femenino,No,52.4,No
+45,0,Tratamiento estándar,48,Masculino,No,48.9,Sí
+45,6,Tratamiento estándar,48,Masculino,No,47.0,No
+45,12,Tratamiento estándar,48,Masculino,No,47.1,Sí
+45,18,Tratamiento estándar,48,Masculino,No,43.2,No
+45,24,Tratamiento estándar,48,Masculino,No,44.3,No
+46,0,iSGLT2,54,Femenino,No,37.7,No
+46,6,iSGLT2,54,Femenino,No,41.3,No
+46,12,iSGLT2,54,Femenino,No,38.4,Sí
+46,18,iSGLT2,54,Femenino,No,32.0,No
+46,24,iSGLT2,54,Femenino,No,37.7,Sí
+47,0,Tratamiento estándar,60,Masculino,No,53.4,No
+47,6,Tratamiento estándar,60,Masculino,No,47.9,No
+47,12,Tratamiento estándar,60,Masculino,No,49.0,No
+47,18,Tratamiento estándar,60,Masculino,No,47.4,No
+47,24,Tratamiento estándar,60,Masculino,No,41.4,No
+48,0,iSGLT2,66,Femenino,Sí,35.3,No
+48,6,iSGLT2,66,Femenino,Sí,24.7,Sí
+48,12,iSGLT2,66,Femenino,Sí,33.5,No
+48,18,iSGLT2,66,Femenino,Sí,32.1,Sí
+48,24,iSGLT2,66,Femenino,Sí,30.9,No
+49,0,Tratamiento estándar,62,Femenino,Sí,45.1,Sí
+49,6,Tratamiento estándar,62,Femenino,Sí,38.2,Sí
+49,12,Tratamiento estándar,62,Femenino,Sí,38.3,Sí
+49,18,Tratamiento estándar,62,Femenino,Sí,,
+49,24,Tratamiento estándar,62,Femenino,Sí,,
+50,0,iSGLT2,76,Femenino,Sí,42.0,Sí
+50,6,iSGLT2,76,Femenino,Sí,40.6,Sí
+50,12,iSGLT2,76,Femenino,Sí,45.1,Sí
+50,18,iSGLT2,76,Femenino,Sí,,
+50,24,iSGLT2,76,Femenino,Sí,,
+51,0,Tratamiento estándar,67,Femenino,Sí,45.2,No
+51,6,Tratamiento estándar,67,Femenino,Sí,45.1,Sí
+51,12,Tratamiento estándar,67,Femenino,Sí,38.3,Sí
+51,18,Tratamiento estándar,67,Femenino,Sí,35.3,No
+51,24,Tratamiento estándar,67,Femenino,Sí,28.5,Sí
+52,0,iSGLT2,59,Masculino,Sí,53.9,No
+52,6,iSGLT2,59,Masculino,Sí,49.7,No
+52,12,iSGLT2,59,Masculino,Sí,50.9,No
+52,18,iSGLT2,59,Masculino,Sí,44.1,No
+52,24,iSGLT2,59,Masculino,Sí,47.4,No
+53,0,Tratamiento estándar,57,Femenino,Sí,57.1,Sí
+53,6,Tratamiento estándar,57,Femenino,Sí,53.1,No
+53,12,Tratamiento estándar,57,Femenino,Sí,47.6,Sí
+53,18,Tratamiento estándar,57,Femenino,Sí,48.0,Sí
+53,24,Tratamiento estándar,57,Femenino,Sí,52.1,No
+54,0,iSGLT2,65,Femenino,No,54.5,No
+54,6,iSGLT2,65,Femenino,No,49.6,No
+54,12,iSGLT2,65,Femenino,No,50.2,Sí
+54,18,iSGLT2,65,Femenino,No,48.8,No
+54,24,iSGLT2,65,Femenino,No,50.1,No
+55,0,Tratamiento estándar,61,Masculino,Sí,56.3,Sí
+55,6,Tratamiento estándar,61,Masculino,Sí,47.7,No
+55,12,Tratamiento estándar,61,Masculino,Sí,43.1,Sí
+55,18,Tratamiento estándar,61,Masculino,Sí,45.1,Sí
+55,24,Tratamiento estándar,61,Masculino,Sí,41.3,Sí
+56,0,iSGLT2,45,Masculino,Sí,57.9,Sí
+56,6,iSGLT2,45,Masculino,Sí,55.3,No
+56,12,iSGLT2,45,Masculino,Sí,50.7,Sí
+56,18,iSGLT2,45,Masculino,Sí,54.7,Sí
+56,24,iSGLT2,45,Masculino,Sí,44.9,No
+57,0,Tratamiento estándar,51,Femenino,No,54.7,No
+57,6,Tratamiento estándar,51,Femenino,No,55.8,No
+57,12,Tratamiento estándar,51,Femenino,No,48.4,No
+57,18,Tratamiento estándar,51,Femenino,No,53.3,Sí
+57,24,Tratamiento estándar,51,Femenino,No,48.3,No
+58,0,iSGLT2,57,Masculino,Sí,44.4,Sí
+58,6,iSGLT2,57,Masculino,Sí,41.9,No
+58,12,iSGLT2,57,Masculino,Sí,36.5,Sí
+58,18,iSGLT2,57,Masculino,Sí,40.7,No
+58,24,iSGLT2,57,Masculino,Sí,31.4,No
+59,0,Tratamiento estándar,52,Femenino,Sí,36.8,Sí
+59,6,Tratamiento estándar,52,Femenino,Sí,39.1,Sí
+59,12,Tratamiento estándar,52,Femenino,Sí,23.6,Sí
+59,18,Tratamiento estándar,52,Femenino,Sí,26.3,Sí
+59,24,Tratamiento estándar,52,Femenino,Sí,26.6,Sí
+60,0,iSGLT2,55,Masculino,No,50.4,No
+60,6,iSGLT2,55,Masculino,No,51.5,Sí
+60,12,iSGLT2,55,Masculino,No,48.6,No
+60,18,iSGLT2,55,Masculino,No,51.9,Sí
+60,24,iSGLT2,55,Masculino,No,47.2,No
+61,0,Tratamiento estándar,53,Femenino,Sí,48.3,No
+61,6,Tratamiento estándar,53,Femenino,Sí,38.5,No
+61,12,Tratamiento estándar,53,Femenino,Sí,42.3,Sí
+61,18,Tratamiento estándar,53,Femenino,Sí,,
+61,24,Tratamiento estándar,53,Femenino,Sí,,
+62,0,iSGLT2,81,Masculino,No,46.8,No
+62,6,iSGLT2,81,Masculino,No,48.5,No
+62,12,iSGLT2,81,Masculino,No,47.0,Sí
+62,18,iSGLT2,81,Masculino,No,,
+62,24,iSGLT2,81,Masculino,No,,
+63,0,Tratamiento estándar,73,Masculino,Sí,54.6,No
+63,6,Tratamiento estándar,73,Masculino,Sí,46.8,No
+63,12,Tratamiento estándar,73,Masculino,Sí,48.3,No
+63,18,Tratamiento estándar,73,Masculino,Sí,51.9,Sí
+63,24,Tratamiento estándar,73,Masculino,Sí,41.6,Sí
+64,0,iSGLT2,80,Femenino,Sí,49.4,Sí
+64,6,iSGLT2,80,Femenino,Sí,45.3,Sí
+64,12,iSGLT2,80,Femenino,Sí,43.0,Sí
+64,18,iSGLT2,80,Femenino,Sí,41.3,No
+64,24,iSGLT2,80,Femenino,Sí,42.4,Sí
+65,0,Tratamiento estándar,69,Masculino,No,49.1,No
+65,6,Tratamiento estándar,69,Masculino,No,50.1,No
+65,12,Tratamiento estándar,69,Masculino,No,42.1,Sí
+65,18,Tratamiento estándar,69,Masculino,No,38.8,Sí
+65,24,Tratamiento estándar,69,Masculino,No,40.4,No
+66,0,iSGLT2,58,Masculino,No,43.7,No
+66,6,iSGLT2,58,Masculino,No,50.5,Sí
+66,12,iSGLT2,58,Masculino,No,43.3,No
+66,18,iSGLT2,58,Masculino,No,48.5,No
+66,24,iSGLT2,58,Masculino,No,,
+67,0,Tratamiento estándar,64,Masculino,No,50.9,No
+67,6,Tratamiento estándar,64,Masculino,No,51.2,No
+67,12,Tratamiento estándar,64,Masculino,No,52.2,Sí
+67,18,Tratamiento estándar,64,Masculino,No,49.7,No
+67,24,Tratamiento estándar,64,Masculino,No,47.5,Sí
+68,0,iSGLT2,63,Masculino,Sí,59.5,Sí
+68,6,iSGLT2,63,Masculino,Sí,58.9,No
+68,12,iSGLT2,63,Masculino,Sí,59.6,No
+68,18,iSGLT2,63,Masculino,Sí,55.0,No
+68,24,iSGLT2,63,Masculino,Sí,51.8,No
+69,0,Tratamiento estándar,65,Femenino,Sí,33.7,Sí
+69,6,Tratamiento estándar,65,Femenino,Sí,29.8,No
+69,12,Tratamiento estándar,65,Femenino,Sí,29.8,Sí
+69,18,Tratamiento estándar,65,Femenino,Sí,29.0,No
+69,24,Tratamiento estándar,65,Femenino,Sí,28.3,No
+70,0,iSGLT2,58,Masculino,No,61.2,No
+70,6,iSGLT2,58,Masculino,No,55.5,No
+70,12,iSGLT2,58,Masculino,No,59.3,No
+70,18,iSGLT2,58,Masculino,No,53.8,No
+70,24,iSGLT2,58,Masculino,No,55.9,No
+71,0,Tratamiento estándar,76,Femenino,Sí,30.6,Sí
+71,6,Tratamiento estándar,76,Femenino,Sí,27.9,No
+71,12,Tratamiento estándar,76,Femenino,Sí,26.2,No
+71,18,Tratamiento estándar,76,Femenino,Sí,22.3,Sí
+71,24,Tratamiento estándar,76,Femenino,Sí,18.7,No
+72,0,iSGLT2,42,Femenino,Sí,45.5,Sí
+72,6,iSGLT2,42,Femenino,Sí,42.6,Sí
+72,12,iSGLT2,42,Femenino,Sí,36.5,Sí
+72,18,iSGLT2,42,Femenino,Sí,,
+72,24,iSGLT2,42,Femenino,Sí,,
+73,0,Tratamiento estándar,61,Femenino,No,51.8,Sí
+73,6,Tratamiento estándar,61,Femenino,No,54.1,No
+73,12,Tratamiento estándar,61,Femenino,No,47.9,Sí
+73,18,Tratamiento estándar,61,Femenino,No,46.2,No
+73,24,Tratamiento estándar,61,Femenino,No,46.8,Sí
+74,0,iSGLT2,42,Masculino,No,45.9,No
+74,6,iSGLT2,42,Masculino,No,46.7,No
+74,12,iSGLT2,42,Masculino,No,49.0,No
+74,18,iSGLT2,42,Masculino,No,48.7,No
+74,24,iSGLT2,42,Masculino,No,47.9,No
+75,0,Tratamiento estándar,66,Femenino,No,59.2,No
+75,6,Tratamiento estándar,66,Femenino,No,56.7,Sí
+75,12,Tratamiento estándar,66,Femenino,No,55.1,No
+75,18,Tratamiento estándar,66,Femenino,No,46.2,No
+75,24,Tratamiento estándar,66,Femenino,No,,
+76,0,iSGLT2,50,Femenino,Sí,55.3,Sí
+76,6,iSGLT2,50,Femenino,Sí,49.5,Sí
+76,12,iSGLT2,50,Femenino,Sí,49.1,Sí
+76,18,iSGLT2,50,Femenino,Sí,47.9,Sí
+76,24,iSGLT2,50,Femenino,Sí,43.9,No
+77,0,Tratamiento estándar,60,Femenino,No,41.9,No
+77,6,Tratamiento estándar,60,Femenino,No,43.0,Sí
+77,12,Tratamiento estándar,60,Femenino,No,45.2,No
+77,18,Tratamiento estándar,60,Femenino,No,37.1,Sí
+77,24,Tratamiento estándar,60,Femenino,No,38.1,No
+78,0,iSGLT2,68,Masculino,No,60.0,No
+78,6,iSGLT2,68,Masculino,No,53.9,Sí
+78,12,iSGLT2,68,Masculino,No,54.4,No
+78,18,iSGLT2,68,Masculino,No,62.7,No
+78,24,iSGLT2,68,Masculino,No,53.8,Sí
+79,0,Tratamiento estándar,73,Femenino,Sí,39.1,No
+79,6,Tratamiento estándar,73,Femenino,Sí,38.8,No
+79,12,Tratamiento estándar,73,Femenino,Sí,33.3,No
+79,18,Tratamiento estándar,73,Femenino,Sí,29.2,Sí
+79,24,Tratamiento estándar,73,Femenino,Sí,33.7,Sí
+80,0,iSGLT2,52,Femenino,Sí,47.6,No
+80,6,iSGLT2,52,Femenino,Sí,44.5,Sí
+80,12,iSGLT2,52,Femenino,Sí,44.7,Sí
+80,18,iSGLT2,52,Femenino,Sí,40.3,Sí
+80,24,iSGLT2,52,Femenino,Sí,41.0,No
+81,0,Tratamiento estándar,54,Masculino,Sí,65.9,Sí
+81,6,Tratamiento estándar,54,Masculino,Sí,65.3,Sí
+81,12,Tratamiento estándar,54,Masculino,Sí,57.5,No
+81,18,Tratamiento estándar,54,Masculino,Sí,59.0,Sí
+81,24,Tratamiento estándar,54,Masculino,Sí,51.4,Sí
+82,0,iSGLT2,68,Femenino,Sí,36.7,Sí
+82,6,iSGLT2,68,Femenino,Sí,32.0,Sí
+82,12,iSGLT2,68,Femenino,Sí,33.3,Sí
+82,18,iSGLT2,68,Femenino,Sí,,
+82,24,iSGLT2,68,Femenino,Sí,,
+83,0,Tratamiento estándar,64,Femenino,No,44.9,Sí
+83,6,Tratamiento estándar,64,Femenino,No,42.8,No
+83,12,Tratamiento estándar,64,Femenino,No,41.7,Sí
+83,18,Tratamiento estándar,64,Femenino,No,37.1,No
+83,24,Tratamiento estándar,64,Femenino,No,38.2,Sí
+84,0,iSGLT2,75,Femenino,Sí,53.6,Sí
+84,6,iSGLT2,75,Femenino,Sí,45.2,Sí
+84,12,iSGLT2,75,Femenino,Sí,42.4,Sí
+84,18,iSGLT2,75,Femenino,Sí,44.4,No
+84,24,iSGLT2,75,Femenino,Sí,,
+85,0,Tratamiento estándar,53,Femenino,No,49.0,No
+85,6,Tratamiento estándar,53,Femenino,No,45.2,No
+85,12,Tratamiento estándar,53,Femenino,No,43.5,Sí
+85,18,Tratamiento estándar,53,Femenino,No,36.8,No
+85,24,Tratamiento estándar,53,Femenino,No,34.9,No
+86,0,iSGLT2,54,Masculino,No,48.5,No
+86,6,iSGLT2,54,Masculino,No,43.9,No
+86,12,iSGLT2,54,Masculino,No,48.8,No
+86,18,iSGLT2,54,Masculino,No,44.7,No
+86,24,iSGLT2,54,Masculino,No,44.9,No
+87,0,Tratamiento estándar,71,Femenino,No,35.1,No
+87,6,Tratamiento estándar,71,Femenino,No,41.2,No
+87,12,Tratamiento estándar,71,Femenino,No,35.7,No
+87,18,Tratamiento estándar,71,Femenino,No,29.1,No
+87,24,Tratamiento estándar,71,Femenino,No,34.0,No
+88,0,iSGLT2,68,Femenino,No,45.8,No
+88,6,iSGLT2,68,Femenino,No,44.7,No
+88,12,iSGLT2,68,Femenino,No,52.0,Sí
+88,18,iSGLT2,68,Femenino,No,51.1,No
+88,24,iSGLT2,68,Femenino,No,45.4,No
+89,0,Tratamiento estándar,77,Femenino,Sí,49.2,Sí
+89,6,Tratamiento estándar,77,Femenino,Sí,46.5,Sí
+89,12,Tratamiento estándar,77,Femenino,Sí,50.9,Sí
+89,18,Tratamiento estándar,77,Femenino,Sí,48.1,Sí
+89,24,Tratamiento estándar,77,Femenino,Sí,44.0,Sí
+90,0,iSGLT2,66,Femenino,No,53.3,No
+90,6,iSGLT2,66,Femenino,No,47.1,No
+90,12,iSGLT2,66,Femenino,No,51.7,No
+90,18,iSGLT2,66,Femenino,No,45.8,No
+90,24,iSGLT2,66,Femenino,No,46.1,No
+91,0,Tratamiento estándar,75,Masculino,No,44.9,Sí
+91,6,Tratamiento estándar,75,Masculino,No,47.0,Sí
+91,12,Tratamiento estándar,75,Masculino,No,43.8,Sí
+91,18,Tratamiento estándar,75,Masculino,No,44.5,No
+91,24,Tratamiento estándar,75,Masculino,No,39.7,No
+92,0,iSGLT2,75,Femenino,Sí,44.0,Sí
+92,6,iSGLT2,75,Femenino,Sí,46.4,Sí
+92,12,iSGLT2,75,Femenino,Sí,35.9,Sí
+92,18,iSGLT2,75,Femenino,Sí,41.5,Sí
+92,24,iSGLT2,75,Femenino,Sí,41.9,Sí
+93,0,Tratamiento estándar,58,Femenino,Sí,42.2,No
+93,6,Tratamiento estándar,58,Femenino,Sí,40.8,Sí
+93,12,Tratamiento estándar,58,Femenino,Sí,40.2,No
+93,18,Tratamiento estándar,58,Femenino,Sí,37.6,Sí
+93,24,Tratamiento estándar,58,Femenino,Sí,38.0,Sí
+94,0,iSGLT2,86,Femenino,No,40.0,Sí
+94,6,iSGLT2,86,Femenino,No,44.9,No
+94,12,iSGLT2,86,Femenino,No,38.4,No
+94,18,iSGLT2,86,Femenino,No,37.8,No
+94,24,iSGLT2,86,Femenino,No,44.1,No
+95,0,Tratamiento estándar,62,Femenino,No,50.2,No
+95,6,Tratamiento estándar,62,Femenino,No,53.5,No
+95,12,Tratamiento estándar,62,Femenino,No,47.7,No
+95,18,Tratamiento estándar,62,Femenino,No,46.0,No
+95,24,Tratamiento estándar,62,Femenino,No,45.5,No
+96,0,iSGLT2,65,Masculino,No,49.5,Sí
+96,6,iSGLT2,65,Masculino,No,48.0,No
+96,12,iSGLT2,65,Masculino,No,57.1,Sí
+96,18,iSGLT2,65,Masculino,No,47.3,No
+96,24,iSGLT2,65,Masculino,No,46.1,No
+97,0,Tratamiento estándar,60,Masculino,No,50.2,No
+97,6,Tratamiento estándar,60,Masculino,No,53.4,No
+97,12,Tratamiento estándar,60,Masculino,No,43.4,Sí
+97,18,Tratamiento estándar,60,Masculino,No,40.5,No
+97,24,Tratamiento estándar,60,Masculino,No,37.2,No
+98,0,iSGLT2,63,Femenino,No,49.2,No
+98,6,iSGLT2,63,Femenino,No,49.0,No
+98,12,iSGLT2,63,Femenino,No,44.6,No
+98,18,iSGLT2,63,Femenino,No,,
+98,24,iSGLT2,63,Femenino,No,,
+99,0,Tratamiento estándar,64,Femenino,No,46.1,No
+99,6,Tratamiento estándar,64,Femenino,No,50.1,No
+99,12,Tratamiento estándar,64,Femenino,No,43.3,Sí
+99,18,Tratamiento estándar,64,Femenino,No,41.2,Sí
+99,24,Tratamiento estándar,64,Femenino,No,40.6,No
+100,0,iSGLT2,48,Masculino,Sí,53.5,No
+100,6,iSGLT2,48,Masculino,Sí,46.1,No
+100,12,iSGLT2,48,Masculino,Sí,53.2,No
+100,18,iSGLT2,48,Masculino,Sí,49.9,No
+100,24,iSGLT2,48,Masculino,Sí,54.6,Sí
+101,0,Tratamiento estándar,51,Femenino,No,45.3,No
+101,6,Tratamiento estándar,51,Femenino,No,37.8,No
+101,12,Tratamiento estándar,51,Femenino,No,40.1,No
+101,18,Tratamiento estándar,51,Femenino,No,33.5,Sí
+101,24,Tratamiento estándar,51,Femenino,No,29.6,Sí
+102,0,iSGLT2,54,Femenino,Sí,44.8,Sí
+102,6,iSGLT2,54,Femenino,Sí,44.7,No
+102,12,iSGLT2,54,Femenino,Sí,40.1,No
+102,18,iSGLT2,54,Femenino,Sí,35.6,Sí
+102,24,iSGLT2,54,Femenino,Sí,36.7,No
+103,0,Tratamiento estándar,58,Femenino,Sí,33.6,Sí
+103,6,Tratamiento estándar,58,Femenino,Sí,30.8,Sí
+103,12,Tratamiento estándar,58,Femenino,Sí,25.2,Sí
+103,18,Tratamiento estándar,58,Femenino,Sí,24.5,No
+103,24,Tratamiento estándar,58,Femenino,Sí,26.8,No
+104,0,iSGLT2,59,Femenino,Sí,44.6,Sí
+104,6,iSGLT2,59,Femenino,Sí,37.3,No
+104,12,iSGLT2,59,Femenino,Sí,38.2,Sí
+104,18,iSGLT2,59,Femenino,Sí,41.9,Sí
+104,24,iSGLT2,59,Femenino,Sí,38.9,Sí
+105,0,Tratamiento estándar,69,Masculino,No,35.3,Sí
+105,6,Tratamiento estándar,69,Masculino,No,34.1,No
+105,12,Tratamiento estándar,69,Masculino,No,31.7,No
+105,18,Tratamiento estándar,69,Masculino,No,33.2,Sí
+105,24,Tratamiento estándar,69,Masculino,No,26.5,No
+106,0,iSGLT2,69,Masculino,Sí,54.9,Sí
+106,6,iSGLT2,69,Masculino,Sí,50.5,No
+106,12,iSGLT2,69,Masculino,Sí,59.5,Sí
+106,18,iSGLT2,69,Masculino,Sí,53.5,Sí
+106,24,iSGLT2,69,Masculino,Sí,49.3,Sí
+107,0,Tratamiento estándar,88,Masculino,Sí,37.3,No
+107,6,Tratamiento estándar,88,Masculino,Sí,30.1,Sí
+107,12,Tratamiento estándar,88,Masculino,Sí,37.3,No
+107,18,Tratamiento estándar,88,Masculino,Sí,35.5,Sí
+107,24,Tratamiento estándar,88,Masculino,Sí,23.5,No
+108,0,iSGLT2,43,Masculino,Sí,53.3,No
+108,6,iSGLT2,43,Masculino,Sí,50.9,No
+108,12,iSGLT2,43,Masculino,Sí,49.5,No
+108,18,iSGLT2,43,Masculino,Sí,48.3,Sí
+108,24,iSGLT2,43,Masculino,Sí,47.0,No
+109,0,Tratamiento estándar,61,Masculino,Sí,61.9,Sí
+109,6,Tratamiento estándar,61,Masculino,Sí,55.3,Sí
+109,12,Tratamiento estándar,61,Masculino,Sí,54.6,No
+109,18,Tratamiento estándar,61,Masculino,Sí,50.1,No
+109,24,Tratamiento estándar,61,Masculino,Sí,51.8,Sí
+110,0,iSGLT2,66,Femenino,No,47.7,No
+110,6,iSGLT2,66,Femenino,No,59.6,Sí
+110,12,iSGLT2,66,Femenino,No,50.0,No
+110,18,iSGLT2,66,Femenino,No,50.4,No
+110,24,iSGLT2,66,Femenino,No,52.0,No
+111,0,Tratamiento estándar,74,Femenino,No,53.0,Sí
+111,6,Tratamiento estándar,74,Femenino,No,47.6,No
+111,12,Tratamiento estándar,74,Femenino,No,43.4,No
+111,18,Tratamiento estándar,74,Femenino,No,41.4,No
+111,24,Tratamiento estándar,74,Femenino,No,41.4,No
+112,0,iSGLT2,59,Femenino,No,51.8,Sí
+112,6,iSGLT2,59,Femenino,No,49.4,No
+112,12,iSGLT2,59,Femenino,No,48.6,No
+112,18,iSGLT2,59,Femenino,No,49.2,No
+112,24,iSGLT2,59,Femenino,No,47.2,Sí
+113,0,Tratamiento estándar,51,Femenino,Sí,45.7,Sí
+113,6,Tratamiento estándar,51,Femenino,Sí,40.5,Sí
+113,12,Tratamiento estándar,51,Femenino,Sí,44.4,Sí
+113,18,Tratamiento estándar,51,Femenino,Sí,,
+113,24,Tratamiento estándar,51,Femenino,Sí,,
+114,0,iSGLT2,59,Masculino,No,56.2,No
+114,6,iSGLT2,59,Masculino,No,57.4,Sí
+114,12,iSGLT2,59,Masculino,No,50.9,No
+114,18,iSGLT2,59,Masculino,No,52.8,No
+114,24,iSGLT2,59,Masculino,No,,
+115,0,Tratamiento estándar,64,Femenino,No,52.4,No
+115,6,Tratamiento estándar,64,Femenino,No,46.8,No
+115,12,Tratamiento estándar,64,Femenino,No,44.5,Sí
+115,18,Tratamiento estándar,64,Femenino,No,49.8,No
+115,24,Tratamiento estándar,64,Femenino,No,44.4,No
+116,0,iSGLT2,61,Femenino,Sí,50.0,No
+116,6,iSGLT2,61,Femenino,Sí,52.0,No
+116,12,iSGLT2,61,Femenino,Sí,46.3,No
+116,18,iSGLT2,61,Femenino,Sí,46.0,Sí
+116,24,iSGLT2,61,Femenino,Sí,51.4,No
+117,0,Tratamiento estándar,51,Masculino,Sí,59.0,No
+117,6,Tratamiento estándar,51,Masculino,Sí,54.6,No
+117,12,Tratamiento estándar,51,Masculino,Sí,53.7,No
+117,18,Tratamiento estándar,51,Masculino,Sí,56.5,No
+117,24,Tratamiento estándar,51,Masculino,Sí,45.5,Sí
+118,0,iSGLT2,67,Masculino,No,39.0,No
+118,6,iSGLT2,67,Masculino,No,40.4,No
+118,12,iSGLT2,67,Masculino,No,30.0,No
+118,18,iSGLT2,67,Masculino,No,36.3,Sí
+118,24,iSGLT2,67,Masculino,No,36.7,Sí
+119,0,Tratamiento estándar,50,Masculino,No,46.0,Sí
+119,6,Tratamiento estándar,50,Masculino,No,39.5,Sí
+119,12,Tratamiento estándar,50,Masculino,No,40.3,No
+119,18,Tratamiento estándar,50,Masculino,No,40.9,No
+119,24,Tratamiento estándar,50,Masculino,No,40.3,Sí
+120,0,iSGLT2,50,Femenino,No,48.1,No
+120,6,iSGLT2,50,Femenino,No,41.2,Sí
+120,12,iSGLT2,50,Femenino,No,43.1,Sí
+120,18,iSGLT2,50,Femenino,No,38.8,No
+120,24,iSGLT2,50,Femenino,No,41.9,No
+121,0,Tratamiento estándar,65,Masculino,No,47.1,No
+121,6,Tratamiento estándar,65,Masculino,No,42.1,Sí
+121,12,Tratamiento estándar,65,Masculino,No,43.9,Sí
+121,18,Tratamiento estándar,65,Masculino,No,39.0,No
+121,24,Tratamiento estándar,65,Masculino,No,32.1,No
+122,0,iSGLT2,63,Femenino,Sí,46.5,No
+122,6,iSGLT2,63,Femenino,Sí,36.0,Sí
+122,12,iSGLT2,63,Femenino,Sí,38.1,No
+122,18,iSGLT2,63,Femenino,Sí,33.8,Sí
+122,24,iSGLT2,63,Femenino,Sí,32.3,No
+123,0,Tratamiento estándar,69,Masculino,Sí,48.6,Sí
+123,6,Tratamiento estándar,69,Masculino,Sí,46.1,No
+123,12,Tratamiento estándar,69,Masculino,Sí,52.0,Sí
+123,18,Tratamiento estándar,69,Masculino,Sí,,
+123,24,Tratamiento estándar,69,Masculino,Sí,,
+124,0,iSGLT2,65,Masculino,Sí,41.6,Sí
+124,6,iSGLT2,65,Masculino,Sí,34.6,Sí
+124,12,iSGLT2,65,Masculino,Sí,45.1,No
+124,18,iSGLT2,65,Masculino,Sí,,
+124,24,iSGLT2,65,Masculino,Sí,,
+125,0,Tratamiento estándar,50,Femenino,Sí,61.2,Sí
+125,6,Tratamiento estándar,50,Femenino,Sí,57.8,Sí
+125,12,Tratamiento estándar,50,Femenino,Sí,55.2,No
+125,18,Tratamiento estándar,50,Femenino,Sí,52.9,Sí
+125,24,Tratamiento estándar,50,Femenino,Sí,52.5,Sí
+126,0,iSGLT2,45,Masculino,No,60.7,No
+126,6,iSGLT2,45,Masculino,No,61.1,No
+126,12,iSGLT2,45,Masculino,No,66.4,No
+126,18,iSGLT2,45,Masculino,No,66.8,No
+126,24,iSGLT2,45,Masculino,No,55.7,Sí
+127,0,Tratamiento estándar,57,Femenino,No,55.0,No
+127,6,Tratamiento estándar,57,Femenino,No,48.5,Sí
+127,12,Tratamiento estándar,57,Femenino,No,38.4,Sí
+127,18,Tratamiento estándar,57,Femenino,No,,
+127,24,Tratamiento estándar,57,Femenino,No,,
+128,0,iSGLT2,59,Femenino,Sí,44.8,Sí
+128,6,iSGLT2,59,Femenino,Sí,41.8,Sí
+128,12,iSGLT2,59,Femenino,Sí,43.2,Sí
+128,18,iSGLT2,59,Femenino,Sí,36.7,No
+128,24,iSGLT2,59,Femenino,Sí,33.0,Sí
+129,0,Tratamiento estándar,56,Masculino,Sí,47.1,Sí
+129,6,Tratamiento estándar,56,Masculino,Sí,52.1,No
+129,12,Tratamiento estándar,56,Masculino,Sí,44.9,Sí
+129,18,Tratamiento estándar,56,Masculino,Sí,38.9,No
+129,24,Tratamiento estándar,56,Masculino,Sí,36.4,Sí
+130,0,iSGLT2,72,Femenino,No,50.6,No
+130,6,iSGLT2,72,Femenino,No,56.2,No
+130,12,iSGLT2,72,Femenino,No,50.6,No
+130,18,iSGLT2,72,Femenino,No,51.5,Sí
+130,24,iSGLT2,72,Femenino,No,45.6,No
+131,0,Tratamiento estándar,52,Masculino,No,64.2,No
+131,6,Tratamiento estándar,52,Masculino,No,66.7,No
+131,12,Tratamiento estándar,52,Masculino,No,60.9,No
+131,18,Tratamiento estándar,52,Masculino,No,59.7,Sí
+131,24,Tratamiento estándar,52,Masculino,No,58.7,No
+132,0,iSGLT2,66,Femenino,No,54.1,No
+132,6,iSGLT2,66,Femenino,No,53.8,No
+132,12,iSGLT2,66,Femenino,No,51.6,Sí
+132,18,iSGLT2,66,Femenino,No,50.9,Sí
+132,24,iSGLT2,66,Femenino,No,48.2,No
+133,0,Tratamiento estándar,44,Masculino,No,65.9,No
+133,6,Tratamiento estándar,44,Masculino,No,61.4,No
+133,12,Tratamiento estándar,44,Masculino,No,59.2,Sí
+133,18,Tratamiento estándar,44,Masculino,No,,
+133,24,Tratamiento estándar,44,Masculino,No,,
+134,0,iSGLT2,62,Femenino,Sí,50.4,Sí
+134,6,iSGLT2,62,Femenino,Sí,55.0,No
+134,12,iSGLT2,62,Femenino,Sí,52.8,No
+134,18,iSGLT2,62,Femenino,Sí,,
+134,24,iSGLT2,62,Femenino,Sí,,
+135,0,Tratamiento estándar,78,Femenino,No,50.4,Sí
+135,6,Tratamiento estándar,78,Femenino,No,48.2,Sí
+135,12,Tratamiento estándar,78,Femenino,No,48.1,Sí
+135,18,Tratamiento estándar,78,Femenino,No,44.3,No
+135,24,Tratamiento estándar,78,Femenino,No,43.9,No
+136,0,iSGLT2,46,Femenino,Sí,57.1,Sí
+136,6,iSGLT2,46,Femenino,Sí,54.9,Sí
+136,12,iSGLT2,46,Femenino,Sí,48.0,Sí
+136,18,iSGLT2,46,Femenino,Sí,53.7,No
+136,24,iSGLT2,46,Femenino,Sí,51.9,No
+137,0,Tratamiento estándar,64,Femenino,Sí,45.0,No
+137,6,Tratamiento estándar,64,Femenino,Sí,43.9,Sí
+137,12,Tratamiento estándar,64,Femenino,Sí,36.7,Sí
+137,18,Tratamiento estándar,64,Femenino,Sí,38.0,No
+137,24,Tratamiento estándar,64,Femenino,Sí,39.1,No
+138,0,iSGLT2,64,Femenino,Sí,57.4,Sí
+138,6,iSGLT2,64,Femenino,Sí,59.6,No
+138,12,iSGLT2,64,Femenino,Sí,54.9,Sí
+138,18,iSGLT2,64,Femenino,Sí,56.8,No
+138,24,iSGLT2,64,Femenino,Sí,52.8,Sí
+139,0,Tratamiento estándar,73,Masculino,Sí,36.5,Sí
+139,6,Tratamiento estándar,73,Masculino,Sí,38.1,No
+139,12,Tratamiento estándar,73,Masculino,Sí,33.9,Sí
+139,18,Tratamiento estándar,73,Masculino,Sí,36.4,Sí
+139,24,Tratamiento estándar,73,Masculino,Sí,26.3,No
+140,0,iSGLT2,49,Femenino,Sí,60.6,No
+140,6,iSGLT2,49,Femenino,Sí,56.4,Sí
+140,12,iSGLT2,49,Femenino,Sí,58.6,No
+140,18,iSGLT2,49,Femenino,Sí,60.6,No
+140,24,iSGLT2,49,Femenino,Sí,53.1,No
+141,0,Tratamiento estándar,51,Femenino,No,51.5,Sí
+141,6,Tratamiento estándar,51,Femenino,No,47.2,No
+141,12,Tratamiento estándar,51,Femenino,No,43.8,No
+141,18,Tratamiento estándar,51,Femenino,No,44.5,Sí
+141,24,Tratamiento estándar,51,Femenino,No,40.8,No
+142,0,iSGLT2,46,Femenino,Sí,59.3,No
+142,6,iSGLT2,46,Femenino,Sí,63.4,Sí
+142,12,iSGLT2,46,Femenino,Sí,59.6,No
+142,18,iSGLT2,46,Femenino,Sí,57.1,No
+142,24,iSGLT2,46,Femenino,Sí,56.9,Sí
+143,0,Tratamiento estándar,62,Masculino,Sí,43.3,No
+143,6,Tratamiento estándar,62,Masculino,Sí,37.6,Sí
+143,12,Tratamiento estándar,62,Masculino,Sí,35.9,Sí
+143,18,Tratamiento estándar,62,Masculino,Sí,41.5,Sí
+143,24,Tratamiento estándar,62,Masculino,Sí,37.8,No
+144,0,iSGLT2,72,Femenino,Sí,35.4,Sí
+144,6,iSGLT2,72,Femenino,Sí,34.3,No
+144,12,iSGLT2,72,Femenino,Sí,39.1,Sí
+144,18,iSGLT2,72,Femenino,Sí,39.5,No
+144,24,iSGLT2,72,Femenino,Sí,31.3,No
+145,0,Tratamiento estándar,68,Femenino,No,63.8,No
+145,6,Tratamiento estándar,68,Femenino,No,63.1,Sí
+145,12,Tratamiento estándar,68,Femenino,No,61.8,Sí
+145,18,Tratamiento estándar,68,Femenino,No,61.9,No
+145,24,Tratamiento estándar,68,Femenino,No,52.9,No
+146,0,iSGLT2,68,Femenino,Sí,43.6,Sí
+146,6,iSGLT2,68,Femenino,Sí,38.1,No
+146,12,iSGLT2,68,Femenino,Sí,39.5,No
+146,18,iSGLT2,68,Femenino,Sí,42.7,No
+146,24,iSGLT2,68,Femenino,Sí,38.9,Sí
+147,0,Tratamiento estándar,52,Masculino,Sí,52.0,Sí
+147,6,Tratamiento estándar,52,Masculino,Sí,44.5,No
+147,12,Tratamiento estándar,52,Masculino,Sí,44.1,No
+147,18,Tratamiento estándar,52,Masculino,Sí,42.2,Sí
+147,24,Tratamiento estándar,52,Masculino,Sí,40.0,Sí
+148,0,iSGLT2,60,Masculino,No,57.9,No
+148,6,iSGLT2,60,Masculino,No,63.3,No
+148,12,iSGLT2,60,Masculino,No,57.4,No
+148,18,iSGLT2,60,Masculino,No,55.4,No
+148,24,iSGLT2,60,Masculino,No,51.8,No
+149,0,Tratamiento estándar,68,Femenino,Sí,50.3,Sí
+149,6,Tratamiento estándar,68,Femenino,Sí,48.0,No
+149,12,Tratamiento estándar,68,Femenino,Sí,43.1,Sí
+149,18,Tratamiento estándar,68,Femenino,Sí,37.4,No
+149,24,Tratamiento estándar,68,Femenino,Sí,,
+150,0,iSGLT2,61,Masculino,Sí,53.1,Sí
+150,6,iSGLT2,61,Masculino,Sí,42.8,No
+150,12,iSGLT2,61,Masculino,Sí,42.0,No
+150,18,iSGLT2,61,Masculino,Sí,42.4,No
+150,24,iSGLT2,61,Masculino,Sí,,

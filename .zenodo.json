@@ -1,0 +1,9 @@
+{
+  "title": "EPI-PREDIC: browser-based development, validation and sample-size calculation for clinical prediction models",
+  "upload_type": "software",
+  "description": "Browser tool for clinical prediction model research: minimum sample size for development (Riley et al. criteria, validated against pmsampsize) and external validation (BMJ 2024;384:e074821), logistic, Cox and linear models with restricted cubic splines and ridge/lasso penalisation, bootstrap optimism correction, calibration, recalibration, validation of published equations, decision curve analysis and TRIPOD+AI checklist. All calculations run in the browser.",
+  "creators": [{ "name": "Fernández-Guzmán, Daniel" }],
+  "license": "cc-by-nc-nd-4.0",
+  "access_right": "open",
+  "keywords": ["prediction models", "sample size", "calibration", "decision curve analysis", "TRIPOD"]
+}

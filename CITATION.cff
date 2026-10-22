@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use EPI-PREDIC, please cite it as below."
+title: "EPI-PREDIC: browser-based development, validation and sample-size calculation for clinical prediction models"
+type: software
+authors:
+  - family-names: "Fernández-Guzmán"
+    given-names: "Daniel"
+version: "2026.10.22"
+date-released: "2026-10-22"
+license: CC-BY-NC-ND-4.0
+repository-code: "https://github.com/Danielferguz/EPI-PREDIC"
+url: "https://danielferguz.github.io/EPI-PREDIC/"
+keywords:
+  - prediction models
+  - sample size
+  - calibration
+  - decision curve analysis
+  - TRIPOD
+  - epidemiology
