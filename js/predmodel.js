@@ -1,10 +1,10 @@
 // Desarrollo y evaluación de modelos de predicción: diseño con splines cúbicos restringidos, ajuste (logística, Cox, lineal; sin penalizar,
 // ridge o lasso), medidas de discriminación y calibración, validación interna por bootstrap con corrección del optimismo (Harrell),
 // contracción uniforme, recalibración, calibración por grupos y análisis de curva de decisión.
-import { fitGLM, fitCox, fitOLS, coxLogLik, km } from './models.js?v=2026.10.25-1';
-import { enet, cvEnet, standardize } from './glmnet.js?v=2026.10.25-1';
-import { rng, qnorm, pnorm } from './dist.js?v=2026.10.25-1';
-import { isMiss, levelsOf } from './data.js?v=2026.10.25-1';
+import { fitGLM, fitCox, fitOLS, coxLogLik, km } from './models.js?v=2026.10.25-5';
+import { enet, cvEnet, standardize } from './glmnet.js?v=2026.10.25-5';
+import { rng, qnorm, pnorm } from './dist.js?v=2026.10.25-5';
+import { isMiss, levelsOf } from './data.js?v=2026.10.25-5';
 
 const expit = e => 1 / (1 + Math.exp(-e)), logit = p => Math.log(p / (1 - p)), sum = a => { let s = 0; for (const v of a) s += v; return s; };
 const clampP = p => Math.min(Math.max(p, 1e-9), 1 - 1e-9);
@@ -206,7 +206,7 @@ export async function bootstrapValidate(ds, meta, spec, rows, model, { B = 200, 
   if (doCal && calN > 5) { const c0 = lowess(ev0.p, ev0.y, 2 / 3, NG, glo, ghi); calibration = { apparent: c0, corrected: c0.map(([x, y], g) => [x, Math.min(1, Math.max(0, y - calDiff[g] / calN))]) }; }
   return { rows: res, B: B - failed, failed, shrinkage: slopes.length ? mean(slopes) : NaN, slopes, calibration };
 }
-function fitFixedLambda(ds, meta, spec, rows, lambda) {
+export function fitFixedLambda(ds, meta, spec, rows, lambda) {
   const info = designInfo(ds, meta, spec, rows), cols = columnNames(info), { X, used } = makeX(ds, meta, info, rows), m = { type: spec.type, info, cols, spec, n: used.length, rows: used, penalty: spec.penalty };
   if (spec.type === 'survival') { const t = timeVec(ds, spec, used), st = statusVec(ds, spec, used), S = standardize(X), f = fitCox(S.Z, t, st, { ridge: lambda }); m.beta = Float64Array.from(f.beta, (b, j) => b / S.sd[j]); const lp = X.map(x => x.reduce((s, a, j) => s + a * m.beta[j], 0)); m.lpMean = sum(lp) / lp.length; m.base = breslow(Float64Array.from(lp, v => v - m.lpMean), t, st); return m; }
   const fam = spec.type === 'binary' ? 'binomial' : 'gaussian', y = spec.type === 'binary' ? eventVec(ds, spec, used) : Float64Array.from(used, i => +ds.cols[spec.y][i]), f = enet(X, y, { family: fam, alpha: spec.penalty === 'lasso' ? 1 : 0, lambda });

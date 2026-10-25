@@ -1,10 +1,11 @@
 // Pestaña 4: modelo desarrollado, rendimiento aparente y corregido por bootstrap, calibración y ecuación.
-import { $, $$, esc, f2, fp, pct, ci, table, howto, card, state, errBox, download } from './state.js?v=2026.10.25-1';
-import { evaluate, shrinkModel, calibGroups, calibSurvival, lowess, riskFromLP, H0at } from './predmodel.js?v=2026.10.25-1';
-import { waldTerm, ciOf } from './models.js?v=2026.10.25-1';
-import { calibrationPlot, scatterCalib, rocPlot, rocPoints, cvPlot } from './pplots.js?v=2026.10.25-1';
-import { figWrap, bindFigs } from './figs.js?v=2026.10.25-1';
-import { qnorm } from './dist.js?v=2026.10.25-1';
+import { $, $$, esc, f2, fp, pct, ci, table, howto, card, state, errBox, download } from './state.js?v=2026.10.25-5';
+import { evaluate, shrinkModel, calibGroups, calibSurvival, lowess, riskFromLP, H0at } from './predmodel.js?v=2026.10.25-5';
+import { waldTerm, ciOf } from './models.js?v=2026.10.25-5';
+import { calibrationPlot, scatterCalib, rocPlot, rocPoints, cvPlot } from './pplots.js?v=2026.10.25-5';
+import { figWrap, bindFigs } from './figs.js?v=2026.10.25-5';
+import { qnorm } from './dist.js?v=2026.10.25-5';
+import { moreCards, bindMore } from './ui_more.js?v=2026.10.25-5';
 
 export function bindFigure() { document.addEventListener('click', () => 0); }
 const LAB = {
@@ -54,22 +55,23 @@ export function renderDev() {
   let plots = '';
   if (type === 'binary') {
     const curve = boot?.calibration?.corrected, g = calibGroups(ev.p, ev.y, 10), lw = lowess(ev.p, ev.y, 2 / 3, 40).map(([a, b]) => [a, Math.min(1, Math.max(0, b))]);
-    plots += figWrap(calibrationPlot({ groups: g, curve: curve || lw, pred: ev.p, y: ev.y, title: boot?.calibration ? 'Calibración (corregida por bootstrap)' : 'Calibración aparente', note: boot?.calibration ? 'Línea: suavizado lowess corregido por optimismo · puntos: deciles aparentes' : 'Línea: lowess · puntos: deciles de riesgo' }), 'calibracion_desarrollo');
-    plots += figWrap(rocPlot(rocPoints(ev.p, ev.y), `C = ${f2(pf.auc, 3)}`, 'Curva ROC aparente'), 'roc_desarrollo');
+    plots += figWrap(calibrationPlot({ groups: g, curve: curve || lw, pred: ev.p, y: ev.y, title: boot?.calibration ? 'Calibration (bootstrap optimism-corrected)' : 'Apparent calibration', note: boot?.calibration ? 'Line: optimism-corrected lowess · dots: apparent risk deciles' : 'Line: lowess · dots: risk deciles' }), 'calibracion_desarrollo');
+    plots += figWrap(rocPlot(rocPoints(ev.p, ev.y), `C = ${f2(pf.auc, 3)}`, 'Apparent ROC curve'), 'roc_desarrollo');
   } else if (type === 'survival') {
     const g = calibSurvival(ev.p, ev.time, ev.status, spec.horizon, 5), mx = Math.min(1, Math.max(0.05, ...g.map(r => Math.max(r.pred, r.hi))) * 1.1);
-    plots += figWrap(calibrationPlot({ groups: g, curve: null, pred: ev.p, title: `Calibración a ${spec.horizon} (quintiles de riesgo)`, note: 'Observado = Kaplan-Meier por grupo, IC 95 %', max: mx }), 'calibracion_cox_desarrollo');
-  } else plots += figWrap(scatterCalib({ pred: ev.p, y: ev.y, curve: lowess(ev.p, ev.y, 2 / 3, 40), title: 'Observado vs predicho' }), 'calibracion_lineal_desarrollo');
+    plots += figWrap(calibrationPlot({ groups: g, curve: null, pred: ev.p, title: `Calibration at ${spec.horizon} (risk quintiles)`, note: 'Observed = Kaplan–Meier by group, 95% CI', max: mx }), 'calibracion_cox_desarrollo');
+  } else plots += figWrap(scatterCalib({ pred: ev.p, y: ev.y, curve: lowess(ev.p, ev.y, 2 / 3, 40), title: 'Observed vs predicted' }), 'calibracion_lineal_desarrollo');
   if (m0.pen?.cv?.lambdas) plots += figWrap(cvPlot({ x: m0.pen.cv.lambdas.map(Math.log), y: m0.pen.cv.cv, se: m0.pen.cv.se, xmark: Math.log(m0.pen.cv.lambdas[m0.pen.cv.imin]), xmark2: Math.log(m0.pen.cv.lambdas[m0.pen.cv.i1]) }), 'cv_lambda');
-  else if (m0.pen?.cv?.grid) plots += figWrap(cvPlot({ x: m0.pen.cv.grid.map(Math.log), y: m0.pen.cv.score.map(v => -v), xmark: Math.log(m0.pen.lambda), title: 'Elección de λ (ridge de Cox)', ylab: '−log-verosimilitud parcial de validación cruzada' }), 'cv_lambda_cox');
+  else if (m0.pen?.cv?.grid) plots += figWrap(cvPlot({ x: m0.pen.cv.grid.map(Math.log), y: m0.pen.cv.score.map(v => -v), xmark: Math.log(m0.pen.lambda), title: 'Choice of λ (Cox ridge)', ylab: '−cross-validated partial log-likelihood' }), 'cv_lambda_cox');
   out.innerHTML = [
     card('Modelo desarrollado', `${howto(`Un modelo ${modelName(m0)} con ${np} parámetros ajustado a ${m0.n} pacientes${events != null ? ` (${events} eventos)` : ''}.`, 'Los coeficientes definen la ecuación de predicción; los splines modelan relaciones no lineales sin categorizar.', 'No interprete los coeficientes como efectos causales (la «falacia de la Tabla 2»): son aportes a la predicción.', ['Qué se ve', 'Para qué', 'Advertencia'])}${kp}${shr ? `<div class="explain">${shr}</div>` : ''}${m0.sep ? '<div class="warn">Posible separación completa: los coeficientes pueden ser inestables; considere penalización.</div>' : ''}`),
     card('Coeficientes', `${table(ct.head, ct.rows)}${splineNote(m)}${m0.pen?.lambda ? '<p class="sub">Con penalización no se muestran errores estándar (los intervalos de Wald no son válidos tras la contracción).</p>' : ''}`),
-    card('Rendimiento y validación interna', `${howto('Cada medida en los mismos datos (aparente), el <i>optimismo</i> estimado con bootstrap y el valor <i>corregido</i>.', 'Evaluar el modelo en los datos que lo crearon es optimista: el bootstrap repite todo el proceso de modelado (incluidos nudos y elección de λ) en cada réplica y mide cuánto empeora al aplicarlo a los datos originales.', 'Use la columna «corregida» como estimación del rendimiento esperado en nuevos pacientes de la misma población. Una pendiente corregida &lt; 0.9 sugiere sobreajuste.', ['Qué se ve', 'Para qué', 'Cómo interpretar'])}${table(['Medida', 'Aparente', 'Optimismo', 'Corregida (bootstrap)', 'Ideal'], rows)}${boot ? `<p class="sub">${boot.B} réplicas bootstrap válidas${boot.failed ? ` (${boot.failed} descartadas por no converger)` : ''}; factor de contracción uniforme (media de la pendiente en los datos originales) = <b>${f2(boot.shrinkage, 3)}</b>.</p>` : '<p class="sub">Sin bootstrap: solo se muestra el rendimiento aparente (optimista).</p>'}${extra}<div class="plots">${plots}</div>`),
+    card('Rendimiento y validación interna', `${howto('Cada medida en los mismos datos (aparente), el <i>optimismo</i> estimado con bootstrap y el valor <i>corregido</i>.', 'Evaluar el modelo en los datos que lo crearon es optimista: el bootstrap repite todo el proceso de modelado (incluidos nudos y elección de λ) en cada réplica y mide cuánto empeora al aplicarlo a los datos originales.', 'Use la columna «corregida» como estimación del rendimiento esperado en nuevos pacientes de la misma población. Una pendiente corregida &lt; 0.9 sugiere sobreajuste.', ['Qué se ve', 'Para qué', 'Cómo interpretar'])}${table(['Medida', 'Aparente', 'Optimismo', 'Corregida (bootstrap)', 'Ideal'], rows)}${boot ? `<p class="sub">${boot.B} réplicas bootstrap válidas${boot.failed ? ` (${boot.failed} descartadas por no converger)` : ''}; factor de contracción uniforme (media de la pendiente en los datos originales) = <b>${f2(boot.shrinkage, 3)}</b>.</p>` : '<p class="sub">Sin bootstrap: solo se muestra el rendimiento aparente (optimista).</p>'}${extra}${type === 'binary' ? howto('<b>Calibración</b>: riesgo observado frente al predicho (línea = suavizado, puntos = deciles, histograma = distribución de los riesgos). <b>ROC</b>: sensibilidad frente a 1 − especificidad.', 'Comprobar que los riesgos predichos coinciden con los observados y que el modelo ordena bien a los pacientes.', 'La calibración ideal sigue la diagonal; por encima = el modelo subestima, por debajo = sobrestima. En ROC, cuanto más cerca de la esquina superior izquierda, mejor; el C mide el área (0.5 = azar).') : type === 'survival' ? howto('Riesgo observado (Kaplan-Meier) frente al predicho en cinco grupos de riesgo.', 'Comprobar la calibración del riesgo al horizonte elegido.', 'Los puntos deberían seguir la diagonal; el IC amplio indica pocos eventos en el grupo.') : howto('Valor observado frente al predicho (línea = suavizado).', 'Comprobar el ajuste del modelo lineal.', 'Los puntos deberían agruparse en torno a la diagonal sin curvatura sistemática.')}<div class="plots">${plots}</div>`),
     card('Ecuación del modelo', `<p class="sub">Para publicar (TRIPOD exige la ecuación completa) y para validar el modelo en otras bases.</p><pre class="eq">${esc(equationText(m, spec.horizon))}</pre><div class="row gap"><button class="ghost" id="d-copy">Copiar</button><button class="ghost" id="d-json">Descargar modelo (.json)</button></div>`),
+    moreCards(),
     `<div class="stepnav"><button class="ghost" data-go="modelo">← Modelo</button><button class="primary" data-go="validacion">Siguiente: validación externa →</button></div>`,
   ].join('');
-  bindFigs(out);
+  bindFigs(out); bindMore();
   $('#d-copy')?.addEventListener('click', () => navigator.clipboard?.writeText(equationText(m, spec.horizon)));
   $('#d-json')?.addEventListener('click', () => download('modelo_prediccion.json', JSON.stringify(exportModel(m), null, 1), 'application/json'));
   $('#d-shrink')?.addEventListener('change', e => {

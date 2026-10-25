@@ -76,6 +76,14 @@ export async function exportFigure(svg, name, fmt) {
   }
   return save(`${base}_${set.dpi}dpi.tif`, new Blob([tiff(ctx.getImageData(0, 0, pxW, pxH), set.dpi)], { type: 'image/tiff' }));
 }
+// PNG (data URL) de un SVG para incrustarlo en documentos: ancho en mm y resolución
+export async function svgToPngDataURL(svg, mm = 150, dpi = 200) {
+  const set = { ...figSettings(), mm }, { s, w, h } = prepare(svg, set), pxW = Math.round(mm / 25.4 * dpi), pxH = Math.round(pxW * h / w);
+  const url = URL.createObjectURL(new Blob([s], { type: 'image/svg+xml' })), img = new Image(); img.decoding = 'sync';
+  await new Promise((res, rej) => { img.onload = res; img.onerror = rej; img.src = url; });
+  const cv = document.createElement('canvas'); cv.width = pxW; cv.height = pxH; const ctx = cv.getContext('2d'); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, pxW, pxH); ctx.drawImage(img, 0, 0, pxW, pxH); URL.revokeObjectURL(url);
+  return { url: cv.toDataURL('image/png'), w: pxW, h: pxH };
+}
 // envuelve un SVG con la barra de descarga
 export const figWrap = (svg, name) => `<figure class="fig" data-name="${String(name).replace(/"/g, '')}">${svg}<figcaption class="figbar"><span>Descargar:</span><button type="button" data-fig="svg">SVG</button><button type="button" data-fig="png">PNG</button><button type="button" data-fig="tiff">TIFF</button></figcaption></figure>`;
 export function bindFigs(root) {

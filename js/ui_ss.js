@@ -1,8 +1,8 @@
 // Pestaña 1: tamaño de muestra para desarrollo y validación de modelos de predicción.
-import { devBinary, devSurvival, devContinuous, valBinary, valContinuous, seFromWidth, maxR2binary, maxR2survival, cstatToR2cs } from './samplesize.js?v=2026.10.25-1';
-import { $, $$, esc, f2, table, state, errBox } from './state.js?v=2026.10.25-1';
-import { nPlot } from './pplots.js?v=2026.10.25-1';
-import { figWrap, bindFigs } from './figs.js?v=2026.10.25-1';
+import { devBinary, devSurvival, devContinuous, valBinary, valContinuous, seFromWidth, maxR2binary, maxR2survival, cstatToR2cs } from './samplesize.js?v=2026.10.25-5';
+import { $, $$, esc, f2, table, state, errBox } from './state.js?v=2026.10.25-5';
+import { nPlot } from './pplots.js?v=2026.10.25-5';
+import { figWrap, bindFigs } from './figs.js?v=2026.10.25-5';
 
 const v = id => parseFloat($(id).value);
 const ceil = Math.ceil;

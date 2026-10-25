@@ -14,7 +14,8 @@ Todo se calcula en el navegador: los datos no salen de tu computadora. Sitio est
 | 4 · Desarrollo | Coeficientes (OR/HR con IC, pruebas globales y de no linealidad), rendimiento aparente y **corregido por bootstrap de Harrell** (repite todo el proceso, incluida la elección de λ), factor de contracción uniforme, calibración corregida (lowess), ROC, ecuación y descarga del modelo |
 | 5 · Validación | Aplicación del modelo en otra base (C con IC, pendiente, CITL, O/E, calibración, comparación de poblaciones, suficiencia de la muestra), **validación de un modelo publicado** (ecuación) y recalibración |
 | 6 · Utilidad clínica | Curva de decisión (beneficio neto, intervenciones evitadas) para desenlaces binarios y de supervivencia con censura |
-| 7 · Reporte | Texto de métodos (ES/EN), tablas Word/CSV, ecuación, calculadora de riesgo y lista TRIPOD+AI |
+| 4 · Desarrollo (adicional) | **Tabla 1** (total y por desenlace, con p), **regresión cruda y ajustada** por predictor, gráficos de rendimiento (distribución de riesgos, Se/Sp/VPP/VPN por umbral, riesgo por grupos) y **simplificación del modelo** sin perder capacidad de predicción (bootstrap que repite el orden de importancia) |
+| 7 · Reporte | Texto de métodos (ES/EN), tablas Word/CSV, ecuación, calculadora de riesgo (también descargable como HTML autónomo), **código Python sin figuras**, **borrador de manuscrito ES/EN** (con tablas y figuras) y lista TRIPOD+AI |
 
 ## Validación de los motores
 

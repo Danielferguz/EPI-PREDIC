@@ -1,13 +1,13 @@
 // Pestañas 5 y 6: validación externa (modelo ajustado o ecuación publicada), recalibración y utilidad clínica (curva de decisión).
-import { $, $$, esc, f2, fp, pct, ci, table, howto, card, state, errBox } from './state.js?v=2026.10.25-1';
-import { readFile } from './io.js?v=2026.10.25-1';
-import { inferMeta, typedData, NA_DEFAULT } from './data.js?v=2026.10.25-1';
-import { evaluate, recalibrate, calibGroups, calibSurvival, lowess, dcaBinary, dcaSurvival, evalEquation, completeFor, tick, perfBinary, perfSurvival, perfContinuous, eventVec, cindex, materialize, H0at } from './predmodel.js?v=2026.10.25-1';
-import { valBinary } from './samplesize.js?v=2026.10.25-1';
-import { calibrationPlot, scatterCalib, rocPlot, rocPoints, dcaPlot } from './pplots.js?v=2026.10.25-1';
-import { figWrap, bindFigs } from './figs.js?v=2026.10.25-1';
-import { qnorm } from './dist.js?v=2026.10.25-1';
-import { rng } from './dist.js?v=2026.10.25-1';
+import { $, $$, esc, f2, fp, pct, ci, table, howto, card, state, errBox } from './state.js?v=2026.10.25-5';
+import { readFile } from './io.js?v=2026.10.25-5';
+import { inferMeta, typedData, NA_DEFAULT } from './data.js?v=2026.10.25-5';
+import { evaluate, recalibrate, calibGroups, calibSurvival, lowess, dcaBinary, dcaSurvival, evalEquation, completeFor, tick, perfBinary, perfSurvival, perfContinuous, eventVec, cindex, materialize, H0at } from './predmodel.js?v=2026.10.25-5';
+import { valBinary } from './samplesize.js?v=2026.10.25-5';
+import { calibrationPlot, scatterCalib, rocPlot, rocPoints, dcaPlot } from './pplots.js?v=2026.10.25-5';
+import { figWrap, bindFigs } from './figs.js?v=2026.10.25-5';
+import { qnorm } from './dist.js?v=2026.10.25-5';
+import { rng } from './dist.js?v=2026.10.25-5';
 
 const z = qnorm(0.975);
 const naCodes = () => [...NA_DEFAULT, ...$('#na-codes').value.split(',').map(s => s.trim()).filter(Boolean)];
@@ -55,12 +55,12 @@ function showVal(ev, m, label, { equation = false } = {}) {
   let plots = '', adequacy = '', recal = '';
   if (type === 'binary') {
     const g = calibGroups(ev.p, ev.y, 10), curve = lowess(ev.p, ev.y, 2 / 3, 40).map(([a, b]) => [a, Math.min(1, Math.max(0, b))]);
-    plots = figWrap(calibrationPlot({ groups: g, curve, pred: ev.p, y: ev.y, title: `Calibración · ${label}`, note: `Pendiente ${f2(pf.slope, 2)} · CITL ${f2(pf.citl, 2)} · O/E ${f2(pf.oe, 2)}` }), 'calibracion_validacion') + figWrap(rocPlot(rocPoints(ev.p, ev.y), `C = ${f2(pf.auc, 3)}`, 'ROC en validación'), 'roc_validacion');
+    plots = figWrap(calibrationPlot({ groups: g, curve, pred: ev.p, y: ev.y, title: `Calibration · ${label}`, note: `Slope ${f2(pf.slope, 2)} · CITL ${f2(pf.citl, 2)} · O/E ${f2(pf.oe, 2)}` }), 'calibracion_validacion') + figWrap(rocPlot(rocPoints(ev.p, ev.y), `C = ${f2(pf.auc, 3)}`, 'ROC in validation'), 'roc_validacion');
     try { const need = valBinary({ prev: pf.prev, cstat: pf.auc, seOE: 0.1, seSlope: 0.0765, seCstat: 0.0255 }); adequacy = `<p class="sub"><b>¿Es suficiente la muestra de validación?</b> Tiene ${pf.n} pacientes y ${pf.events} eventos. Para IC con ancho ≤ 0.3 en la pendiente, ≤ 0.1 en el C y ±0.2 en ln(O/E) (Riley et al. <i>BMJ</i> 2024) con prevalencia ${pct(pf.prev)} y C = ${f2(pf.auc, 2)} se requieren ≈ <b>${need.n.toLocaleString('es')}</b> pacientes${pf.n >= need.n ? ': <span class="ok">suficiente</span>.' : ': <span class="bad">los intervalos serán más anchos que el objetivo.</span>'}</p>`; } catch { /* sin cálculo */ }
   } else if (type === 'survival') {
     const g = calibSurvival(ev.p, ev.time, ev.status, pf.horizon, 5), mx = Math.min(1, Math.max(0.05, ...g.map(r => Math.max(r.pred, r.hi))) * 1.1);
-    plots = figWrap(calibrationPlot({ groups: g, curve: null, pred: ev.p, title: `Calibración a ${pf.horizon} · ${label}`, note: 'Observado = Kaplan-Meier por quintiles de riesgo (IC 95 %)', max: mx }), 'calibracion_validacion_cox');
-  } else plots = figWrap(scatterCalib({ pred: ev.p, y: ev.y, curve: lowess(ev.p, ev.y, 2 / 3, 40), title: `Observado vs predicho · ${label}` }), 'calibracion_validacion_lineal');
+    plots = figWrap(calibrationPlot({ groups: g, curve: null, pred: ev.p, title: `Calibration at ${pf.horizon} · ${label}`, note: 'Observed = Kaplan–Meier by risk quintile (95% CI)', max: mx }), 'calibracion_validacion_cox');
+  } else plots = figWrap(scatterCalib({ pred: ev.p, y: ev.y, curve: lowess(ev.p, ev.y, 2 / 3, 40), title: `Observed vs predicted · ${label}` }), 'calibracion_validacion_lineal');
   if (!equation) recal = `<div class="explain"><b>Recalibración.</b> Si la calibración es deficiente, puede actualizar el modelo con los datos de validación: solo el intercepto (corrige el riesgo medio) o intercepto y pendiente (corrige además el exceso de dispersión). El resultado es una versión actualizada que debe validarse otra vez.<div class="row gap mt wrap"><button class="ghost" data-rc="citl">Recalibrar intercepto</button><button class="ghost" data-rc="slope">Recalibrar intercepto y pendiente</button><button class="primary" id="v-use" ${state.recalM ? '' : 'hidden'}>Usar el modelo recalibrado como modelo final</button></div><div id="v-recal"></div></div>`;
   out.innerHTML = card(`Resultados de la validación · ${esc(label)}`, `${howto(`Rendimiento del modelo sin reajustar en ${pf.n} pacientes${pf.events != null ? ` (${pf.events} eventos)` : ''}.`, 'Compara con el rendimiento corregido por bootstrap del desarrollo: una caída del C o una pendiente &lt; 0.9 indican falta de transportabilidad.', 'La discriminación depende de la heterogeneidad de la población; la calibración (pendiente, CITL) es la medida clave para usar riesgos absolutos.', ['Qué se ve', 'Para qué', 'Cómo interpretar'])}${perfTable(type, pf, dev, ev.extra)}${cm}${adequacy}<div class="plots">${plots}</div>${recal}`);
   bindFigs(out);
@@ -145,7 +145,7 @@ function runDCA() {
     let cls = '';
     if (type === 'binary') { let tp = 0, fp = 0, tn = 0, fn = 0; ev.p.forEach((p, i) => { const pos = p >= pt0; if (ev.y[i]) pos ? tp++ : fn++; else pos ? fp++ : tn++; }); cls = table(['Con umbral ' + pt0, 'Valor'], [['Sensibilidad', pct(tp / (tp + fn))], ['Especificidad', pct(tn / (tn + fp))], ['Valor predictivo positivo', pct(tp / (tp + fp))], ['Valor predictivo negativo', pct(tn / (tn + fn))], ['Pacientes por encima del umbral', pct((tp + fp) / ev.p.length)]]); }
     const pts = [0.05, 0.1, 0.15, 0.2, 0.3, 0.4].filter(x => x >= lo && x <= hi), tr = (type === 'binary' ? dcaBinary(ev.p, ev.y, pts) : dcaSurvival(ev.p, ev.time, ev.status, h, pts)).map(r => [r.pt, f2(r.model, 4), f2(r.all, 4), '0', f2(r.avoid, 1)]);
-    out.innerHTML = `<div class="plots single">${figWrap(dcaPlot(rows, { title: `Curva de decisión${type === 'survival' ? ' a ' + h : ''} · ${src === 'val' ? 'validación' : 'desarrollo (aparente)'}` }), 'curva_decision')}</div><div class="kpis"><div class="kpi"><b>${f2(at.model, 4)}</b><span>beneficio neto del modelo (pt = ${pt0})</span></div><div class="kpi"><b>${f2(at.all, 4)}</b><span>tratar a todos</span></div><div class="kpi"><b>${f2(at.avoid, 1)}</b><span>intervenciones evitadas por 100 pacientes</span></div></div>${cls}<h3>Beneficio neto por umbral</h3>${table(['Umbral', 'Modelo', 'Tratar a todos', 'No tratar', 'Intervenciones evitadas por 100'], tr)}<p class="notes">Beneficio neto = VP/n − FP/n·pt/(1−pt) (Vickers y Elkin, 2006). En supervivencia se estima con Kaplan-Meier a ${h} en los pacientes sobre el umbral. ${src === 'dev' ? 'Con los datos de desarrollo el resultado es optimista; use la validación externa si dispone de ella.' : ''}</p>`;
+    out.innerHTML = `<div class="plots single">${figWrap(dcaPlot(rows, { title: `Decision curve${type === 'survival' ? ' at ' + h : ''} · ${src === 'val' ? 'validation' : 'development (apparent)'}` }), 'curva_decision')}</div><div class="kpis"><div class="kpi"><b>${f2(at.model, 4)}</b><span>beneficio neto del modelo (pt = ${pt0})</span></div><div class="kpi"><b>${f2(at.all, 4)}</b><span>tratar a todos</span></div><div class="kpi"><b>${f2(at.avoid, 1)}</b><span>intervenciones evitadas por 100 pacientes</span></div></div>${cls}<h3>Beneficio neto por umbral</h3>${table(['Umbral', 'Modelo', 'Tratar a todos', 'No tratar', 'Intervenciones evitadas por 100'], tr)}<p class="notes">Beneficio neto = VP/n − FP/n·pt/(1−pt) (Vickers y Elkin, 2006). En supervivencia se estima con Kaplan-Meier a ${h} en los pacientes sobre el umbral. ${src === 'dev' ? 'Con los datos de desarrollo el resultado es optimista; use la validación externa si dispone de ella.' : ''}</p>`;
     bindFigs(out);
   } catch (e) { out.innerHTML = errBox(e); }
 }

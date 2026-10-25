@@ -1,18 +1,22 @@
 // EPI-PREDIC · navegación, carga de datos, especificación del modelo y ejecución.
-import { $, $$, esc, f2, pct, opt, errBox, state, natural, download } from './state.js?v=2026.10.25-1';
-import { readFile } from './io.js?v=2026.10.25-1';
-import { inferMeta, typedData, NA_DEFAULT, missCount, levelsOf } from './data.js?v=2026.10.25-1';
-import { mean, sd } from './tests.js?v=2026.10.25-1';
-import { completeFor, fitPred, evaluate, bootstrapValidate, columnNames, designInfo, tick, materialize } from './predmodel.js?v=2026.10.25-1';
-import { initSampleSize } from './ui_ss.js?v=2026.10.25-1';
-import { renderDev, bindFigure } from './ui_dev.js?v=2026.10.25-1';
-import { initValidation, renderUtilityInit } from './ui_val.js?v=2026.10.25-1';
-import { renderReport } from './ui_rep.js?v=2026.10.25-1';
-import { bindFigs } from './figs.js?v=2026.10.25-1';
-import { HELP_HTML } from './help.js?v=2026.10.25-1';
+import { $, $$, esc, f2, pct, opt, errBox, state, natural, download } from './state.js?v=2026.10.25-5';
+import { readFile } from './io.js?v=2026.10.25-5';
+import { inferMeta, typedData, NA_DEFAULT, missCount, levelsOf } from './data.js?v=2026.10.25-5';
+import { mean, sd } from './tests.js?v=2026.10.25-5';
+import { completeFor, fitPred, evaluate, bootstrapValidate, columnNames, designInfo, tick, materialize } from './predmodel.js?v=2026.10.25-5';
+import { initSampleSize } from './ui_ss.js?v=2026.10.25-5';
+import { renderDev, bindFigure } from './ui_dev.js?v=2026.10.25-5';
+import { initValidation, renderUtilityInit } from './ui_val.js?v=2026.10.25-5';
+import { renderReport } from './ui_rep.js?v=2026.10.25-5';
+import { bindFigs } from './figs.js?v=2026.10.25-5';
+import { HELP_HTML } from './help.js?v=2026.10.25-5';
 
 // ---------------- ejemplos (datos simulados de nefrología) ----------------
 const EXAMPLES = [
+  { file: 'erc_krt5_manuscrito.csv', title: 'Manuscrito · TRR a 5 años (logístico, datos simulados)', design: 'Cohorte simulada · 2400 pacientes · todas las etiologías de ERC', use: 'Ejemplo para redactar un manuscrito (ES/EN): Tabla 1, regresión cruda y ajustada, modelo, bootstrap, simplificación y calculadora. Inspirado en un estudio de validación del KFRE por etiología; los datos son inventados.',
+    meta: { 'KRT within 5 years': { event: 'Yes' } }, drop: ['Follow-up (years)', 'Kidney replacement therapy'], spec: { type: 'binary', y: 'KRT within 5 years', vars: { 'Age (years)': 'lin', Sex: 'lin', Diabetes: 'lin', Hypertension: 'lin', 'CKD etiology': 'lin', 'eGFR (mL/min/1.73 m2)': 'rcs3', 'Albuminuria, UACR (mg/g)': 'log', 'Haemoglobin (g/dL)': 'lin', 'Serum albumin (g/dL)': 'lin' } } },
+  { file: 'erc_krt5_manuscrito.csv', title: 'Manuscrito · TRR en el tiempo (Cox, datos simulados)', design: 'Cohorte simulada · 2400 pacientes', use: 'Mismo ejemplo con modelo de Cox, riesgo a 5 años y calibración por grupos.',
+    meta: { 'Kidney replacement therapy': { event: 'Yes' } }, drop: ['KRT within 5 years'], spec: { type: 'survival', time: 'Follow-up (years)', status: 'Kidney replacement therapy', horizon: 5, vars: { 'Age (years)': 'lin', Sex: 'lin', Diabetes: 'lin', Hypertension: 'lin', 'CKD etiology': 'lin', 'eGFR (mL/min/1.73 m2)': 'rcs3', 'Albuminuria, UACR (mg/g)': 'log', 'Haemoglobin (g/dL)': 'lin', 'Serum albumin (g/dL)': 'lin' } } },
   { file: 'erc_prediccion_desarrollo.csv', title: 'ERC · falla renal a 2 años (logístico)', design: 'Cohorte de desarrollo · 1800 pacientes', use: 'Modelo logístico con splines, bootstrap, calibración y DCA. Validación: ejemplo simulado en el paso 5.',
     meta: { 'Falla renal a 2 años': { event: 'Sí' } }, drop: ['ID', 'Seguimiento (años)', 'Falla renal'], spec: { type: 'binary', y: 'Falla renal a 2 años', vars: { 'Edad (años)': 'lin', Sexo: 'lin', Diabetes: 'lin', 'TFGe (mL/min/1.73 m²)': 'rcs4', 'UACR (mg/g)': 'log', 'Hemoglobina (g/dL)': 'lin', 'Bicarbonato (mmol/L)': 'lin', 'Fosfato (mg/dL)': 'lin' } } },
   { file: 'erc_prediccion_desarrollo.csv', title: 'ERC · falla renal en el tiempo (Cox)', design: 'Cohorte de desarrollo · 1800 pacientes', use: 'Modelo de Cox con riesgo a 2 años, C de Harrell, calibración por grupos y DCA con censura.',
@@ -44,7 +48,7 @@ $$('[data-ex]').forEach(b => b.addEventListener('click', async () => {
   await loadFile(new File([txt], x.file, { type: 'text/csv' }));
   for (const [v, o] of Object.entries(x.meta || {})) if (state.meta[v]) Object.assign(state.meta[v], o);
   for (const v of x.drop || []) if (state.meta[v]) state.meta[v].type = 'skip';
-  rebuild(); state.draft = x.spec; renderVarTable(); renderModelForm();
+  rebuild(); state.draft = x.spec; state.isExample = true; renderVarTable(); renderModelForm();
   $$('[data-ex]').forEach(e => e.classList.toggle('active', e === b));
 }));
 $('#file').addEventListener('change', e => e.target.files[0] && loadFile(e.target.files[0]));
@@ -56,7 +60,7 @@ async function loadFile(file) {
   try {
     const { sheets } = await readFile(file), name = Object.keys(sheets)[0]; state.fname = file.name.replace(/\.[^.]+$/, ''); state.raw = sheets[name].map(r => ({ ...r }));
     if (!state.raw.length) throw new Error('El archivo no tiene filas.');
-    state.meta = inferMeta(state.raw, naCodes()); Object.assign(state, { model: null, final: null, boot: null, shrunk: null, spec: null, draft: null }); rebuild();
+    state.isExample = false; state.meta = inferMeta(state.raw, naCodes()); Object.assign(state, { model: null, final: null, boot: null, shrunk: null, spec: null, draft: null }); rebuild();
     $('#load-msg').innerHTML = `<p class="pill">✓ ${esc(state.fname)}: ${state.raw.length} filas × ${Object.keys(state.meta).length} columnas</p>`;
     $('#dev-out').innerHTML = ''; renderVarTable(); gate();
   } catch (e) { $('#load-msg').innerHTML = errBox(e); }
@@ -137,13 +141,18 @@ $('#m-run').addEventListener('click', async () => {
     const model = fitPred(a.ds, a.meta, a.spec, rows, { seed });
     state.dsX = a.ds; state.metaX = a.meta; state.specX = a.spec; state.spec = spec;
     const bootOpt = { B: spec.B, seed, horizon: spec.horizon, retune: spec.retune, onProgress: p => { prog.value = p; msg.textContent = `Bootstrap: ${Math.round(p * spec.B)} de ${spec.B} réplicas…`; } };
-    state.model = model; state.final = model; state.shrunk = null; state.dev = { app: evaluate(model, a.ds, a.meta, rows, { horizon: spec.horizon }), rows };
+    state.model = model; state.final = model; state.shrunk = null; state.simpApplied = state.pendingSimp || null; state.pendingSimp = null; state.simp = null; state.dev = { app: evaluate(model, a.ds, a.meta, rows, { horizon: spec.horizon }), rows };
     state.boot = spec.B > 0 ? await bootstrapValidate(a.ds, a.meta, a.spec, rows, model, bootOpt) : null;
     msg.textContent = ''; prog.hidden = true; gate(); renderDev(); showTab('desarrollo');
   } catch (e) { msg.innerHTML = ''; $('#m-check').insertAdjacentHTML('beforeend', errBox(e)); prog.hidden = true; console.error(e); }
   btn.disabled = false;
 });
 
+// reajusta el modelo con un subconjunto de predictores (desde «Simplificar el modelo»)
+document.addEventListener('epi:applyvars', e => {
+  const keep = new Set(e.detail.names), cur = state.spec; state.draft = { type: cur.type, y: cur.y, time: cur.time, status: cur.status, horizon: cur.horizon, vars: Object.fromEntries(cur.vars.filter(v => keep.has(v.name)).map(v => [v.name, v.form])) };
+  state.pendingSimp = { ...e.detail, all: cur.vars.map(v => ({ name: v.name, form: v.form })) }; showTab('modelo'); $('#m-run').click();
+});
 // ---------------- inicio ----------------
 initSampleSize(); initValidation(); bindFigure();
 $('#fig-width').addEventListener('change', () => ($('#fig-mm').disabled = $('#fig-width').value !== 'custom')); $('#fig-mm').disabled = true;
