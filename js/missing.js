@@ -1,9 +1,9 @@
 // Datos perdidos: patrones, prueba MCAR de Little, exploración MAR, imputación múltiple (MICE) y reglas de Rubin.
-import { isMiss, design, levelsOf } from './data.js?v=2026.10.25-5';
-import { crossW, crossWv, symInv, mv, dot, chol, zeros, sub, quadForm, logdet } from './linalg.js?v=2026.10.25-5';
-import { fitGLM } from './models.js?v=2026.10.25-5';
-import { rng, pchisqU, pfU, qt, p2t } from './dist.js?v=2026.10.25-5';
-import { welch, chisqTest } from './tests.js?v=2026.10.25-5';
+import { isMiss, design, levelsOf } from './data.js?v=2026.10.25-6';
+import { crossW, crossWv, symInv, mv, dot, chol, zeros, sub, quadForm, logdet } from './linalg.js?v=2026.10.25-6';
+import { fitGLM } from './models.js?v=2026.10.25-6';
+import { rng, pchisqU, pfU, qt, p2t } from './dist.js?v=2026.10.25-6';
+import { welch, chisqTest } from './tests.js?v=2026.10.25-6';
 
 // ---------------- resumen y patrones ----------------
 export function missingSummary(ds, vars) {

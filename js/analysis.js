@@ -1,8 +1,8 @@
 // Análisis descriptivo para el manuscrito: columna de agrupación por desenlace (Tabla 1) y regresión por predictor, cruda y ajustada.
 // Mismo código en EPI-PREDIC y EPI-Maching-Learning.
-import { fitGLM, fitCox, fitOLS, waldTerm } from './models.js?v=2026.10.25-5';
-import { levelsOf, isMiss } from './data.js?v=2026.10.25-5';
-import { qnorm } from './dist.js?v=2026.10.25-5';
+import { fitGLM, fitCox, fitOLS, waldTerm } from './models.js?v=2026.10.25-6';
+import { levelsOf, isMiss } from './data.js?v=2026.10.25-6';
+import { qnorm } from './dist.js?v=2026.10.25-6';
 
 // ---- columna de agrupación para la Tabla 1: binario → el desenlace; supervivencia → el estado; continuo → terciles
 // spec: {type:'binary'|'survival'|'continuous', y, status}
@@ -19,7 +19,7 @@ export function groupColumn(ds, meta, spec) {
 export function crudeAdjusted(ds, meta, o) {
   const vars = o.vars.filter(v => meta[v] && (meta[v].type === 'num' || meta[v].type === 'cat')), need = [...vars, ...(o.type === 'survival' ? [o.time, o.status] : [o.y])], rows = [];
   for (let i = 0; i < ds.n; i++) if (need.every(v => !isMiss(ds.cols[v][i]))) rows.push(i);
-  const colsOf = v => { const m = meta[v], col = ds.cols[v]; return m.type === 'num' ? [{ name: v, level: null, x: rows.map(i => +col[i]) }] : levelsOf(m).slice(1).map(l => ({ name: `${v}: ${l}`, level: l, x: rows.map(i => (String(col[i]) === l ? 1 : 0)) })); };
+  const colsOf = v => { const m = meta[v], col = ds.cols[v], xs = rows.map(i => +col[i]), mu = xs.reduce((a, b) => a + b, 0) / xs.length, sd = Math.sqrt(xs.reduce((a, b) => a + (b - mu) ** 2, 0) / Math.max(1, xs.length - 1)) || 1; return m.type === 'num' ? [o.perSD ? { name: `${v} (per 1 SD)`, level: null, x: xs.map(x => (x - mu) / sd) } : { name: v, level: null, x: xs }] : levelsOf(m).slice(1).map(l => ({ name: `${v}: ${l}`, level: l, x: rows.map(i => (String(col[i]) === l ? 1 : 0)) })); };
   const D = Object.fromEntries(vars.map(v => [v, colsOf(v)]));
   const yv = o.type === 'binary' ? Float64Array.from(rows, i => (String(ds.cols[o.y][i]) === String(o.event) ? 1 : 0)) : o.type === 'continuous' ? Float64Array.from(rows, i => +ds.cols[o.y][i]) : null;
   const tv = o.type === 'survival' ? Float64Array.from(rows, i => +ds.cols[o.time][i]) : null, sv = o.type === 'survival' ? Float64Array.from(rows, i => (String(ds.cols[o.status][i]) === String(o.sevent) ? 1 : 0)) : null;
@@ -38,7 +38,7 @@ export function crudeAdjusted(ds, meta, o) {
     const cr = fit(D[v]), k = D[v].length, gl = F => (F.ok && k > 1 ? waldTerm(F.f, D[v].map((_, j) => j + F.off)).p : NaN);
     const globalCrude = gl(cr), globalAdj = adj.ok && k > 1 ? waldTerm(adj.f, D[v].map((_, j) => posOf[v] + j + adj.off)).p : NaN;
     if (k > 1) out.push({ name: v, header: true, pCrude: globalCrude, pAdj: globalAdj });
-    D[v].forEach((c, j) => out.push({ name: k > 1 ? c.level : (c.level != null ? c.name : v), variable: v, level: c.level, ind: k > 1, crude: cr.ok ? eff(cr, j) : null, adj: adj.ok ? eff(adj, posOf[v] + j) : null }));
+    D[v].forEach((c, j) => out.push({ name: k > 1 ? c.level : (c.level != null || o.perSD ? c.name : v), variable: v, level: c.level, ind: k > 1, crude: cr.ok ? eff(cr, j) : null, adj: adj.ok ? eff(adj, posOf[v] + j) : null }));
   }
   return { rows: out, n: rows.length, events, measure: o.type === 'binary' ? 'OR' : o.type === 'survival' ? 'HR' : 'β', adjOk: adj.ok, dropped: ds.n - rows.length };
 }

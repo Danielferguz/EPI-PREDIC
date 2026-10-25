@@ -1,9 +1,9 @@
 // Simplificación del modelo: predictores ordenados por su aporte (χ² de Wald parcial − gl del modelo completo) y rendimiento corregido por bootstrap
 // al añadirlos de uno en uno. En cada réplica se repite el orden y el ajuste (sin optimismo por selección). Se propone el modelo más pequeño cuyo
 // rendimiento corregido no baja más que una tolerancia respecto al completo.
-import { fitPred, fitFixedLambda, evaluate, tick } from './predmodel.js?v=2026.10.25-5';
-import { waldTerm } from './models.js?v=2026.10.25-5';
-import { rng } from './dist.js?v=2026.10.25-5';
+import { fitPred, fitFixedLambda, evaluate, tick } from './predmodel.js?v=2026.10.25-6';
+import { waldTerm } from './models.js?v=2026.10.25-6';
+import { rng } from './dist.js?v=2026.10.25-6';
 
 const KEY = { binary: 'auc', survival: 'cindex', continuous: 'r2' };
 // orden de importancia: refit sin penalizar solo para ordenar (la penalización no da errores estándar)

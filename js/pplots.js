@@ -1,8 +1,8 @@
 // Gráficos SVG de modelos de predicción: calibración, ROC, distribución de riesgos, curva de decisión, validación cruzada de λ y tamaño de muestra.
-const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+export const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 export const PAL = ['#2E7F90', '#8B2E3B', '#4D4D4D', '#5BA7B8', '#C46B78', '#8FA9AF', '#B08D57', '#9A9A9A'];
-const BLUE = '#2E7F90', RED = '#8B2E3B', GREY = '#8F9699';
-const STYLE = '<style>text{font:12px system-ui,sans-serif;fill:currentColor}.h{font-weight:600}.m{fill:var(--muted,#666)}.s{font-size:11px}</style>';
+export const BLUE = '#2E7F90', RED = '#8B2E3B', GREY = '#8F9699';
+export const STYLE = '<style>text{font:12px system-ui,sans-serif;fill:currentColor}.h{font-weight:600}.m{fill:var(--muted,#666)}.s{font-size:11px}</style>';
 
 export function niceTicks(lo, hi, n = 5) {
   const span = hi - lo || 1, step0 = Math.pow(10, Math.floor(Math.log10(span / n))), m = span / step0 > 5 * n / 1.2 ? 5 : span / step0 > 2 * n / 1.2 ? 2 : 1, st = step0 * m, out = [];
@@ -10,8 +10,8 @@ export function niceTicks(lo, hi, n = 5) {
   return out;
 }
 const lin = (lo, hi, a, b) => v => a + (v - lo) / ((hi - lo) || 1) * (b - a);
-const path = (pts, sx, sy) => pts.map((p, i) => `${i ? 'L' : 'M'}${sx(p[0]).toFixed(1)},${sy(p[1]).toFixed(1)}`).join('');
-function frame({ W = 440, H = 400, xdom, ydom, xlab = '', ylab = '', title = '', sub = '', ml = 56, mb = 46, mr = 16, extraTop = 0, yticks = true }) {
+export const path = (pts, sx, sy) => pts.map((p, i) => `${i ? 'L' : 'M'}${sx(p[0]).toFixed(1)},${sy(p[1]).toFixed(1)}`).join('');
+export function frame({ W = 440, H = 400, xdom, ydom, xlab = '', ylab = '', title = '', sub = '', ml = 56, mb = 46, mr = 16, extraTop = 0, yticks = true }) {
   const m = { l: ml, r: mr, t: (title ? 30 : 14) + (sub ? 16 : 0) + extraTop, b: mb }, sx = lin(xdom[0], xdom[1], m.l, W - m.r), sy = lin(ydom[0], ydom[1], H - m.b, m.t);
   let s = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" class="plot" role="img">${STYLE}`;
   if (title) s += `<text x="8" y="18" class="h">${esc(title)}</text>`;
