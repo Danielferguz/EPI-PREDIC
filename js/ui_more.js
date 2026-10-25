@@ -1,11 +1,11 @@
 // Tarjetas adicionales de la pestaña «Desarrollo»: Tabla 1, regresión cruda y ajustada, gráficos de rendimiento y simplificación del modelo.
-import { $, $$, esc, f2, fp, pct, table, howto, card, state, errBox, download } from './state.js?v=2026.10.25-7';
-import { table1, table1HTML, wordDoc, matrixHTML, matrixCSV } from './report.js?v=2026.10.25-7';
-import { groupColumn, crudeAdjusted, uniAdjTable } from './analysis.js?v=2026.10.25-7';
-import { calibGroups, calibSurvival } from './predmodel.js?v=2026.10.25-7';
-import { riskDistPlot, thresholdPlot, decilePlot, importancePlot, pathPlot } from './pplots.js?v=2026.10.25-7';
-import { simplifyPath } from './simplify.js?v=2026.10.25-7';
-import { figWrap, bindFigs } from './figs.js?v=2026.10.25-7';
+import { $, $$, esc, f2, fp, pct, table, howto, card, state, errBox, download } from './state.js?v=2026.10.25-8';
+import { table1, table1HTML, wordDoc, matrixHTML, matrixCSV } from './report.js?v=2026.10.25-8';
+import { groupColumn, crudeAdjusted, uniAdjTable } from './analysis.js?v=2026.10.25-8';
+import { calibGroups, calibSurvival } from './predmodel.js?v=2026.10.25-8';
+import { riskDistPlot, thresholdPlot, decilePlot, importancePlot, pathPlot } from './pplots.js?v=2026.10.25-8';
+import { simplifyPath } from './simplify.js?v=2026.10.25-8';
+import { figWrap, bindFigs } from './figs.js?v=2026.10.25-8';
 
 const specOf = () => { const s = state.spec; return { type: s.type, y: s.y, event: s.event, time: s.time, status: s.status, sevent: s.event }; };
 const names = () => (state.simpApplied?.all || state.spec.vars).map(v => v.name); // Tabla 1: todos los candidatos, aunque el modelo final se haya simplificado

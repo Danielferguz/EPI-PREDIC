@@ -6,6 +6,7 @@ import { enet } from '../js/glmnet.js';
 import { rng } from '../js/dist.js';
 import { concordance } from '../js/models.js';
 
+import { recommend } from '../js/updating.js';
 const R = f => JSON.parse(readFileSync(new URL(f, import.meta.url)));
 const ref = R('reference_pred.json'), gref = R('reference_glmnet.json');
 let fails = 0, checks = 0;
@@ -69,4 +70,9 @@ const num = n => ({ name: n, type: 'num', levels: [], ref: null }), cat = (n, lv
   ok('bootstrap: la pendiente corregida elimina > 70 % del sesgo de la aparente', Math.abs(acc.cor[0] - acc.tru[0]) < 0.3 * Math.abs(acc.app[0] - acc.tru[0]));
   ok('bootstrap: el C corregido elimina > 70 % del sesgo del aparente', Math.abs(acc.cor[1] - acc.tru[1]) < 0.3 * Math.abs(acc.app[1] - acc.tru[1]));
 }
+// actualización: la estrategia más sencilla con calibración aceptable, o la de menor Brier si ninguna la alcanza
+{ const a = recommend('binary', { orig: { slope: 0.85, citl: 0.2, brier: 0.14 }, citl: { slope: 0.85, citl: 0, brier: 0.139 }, slope: { slope: 0.99, citl: 0, brier: 0.139 }, rev: { slope: 1.0, citl: 0, brier: 0.141 } }, ['orig', 'citl', 'slope', 'rev']);
+  ok('actualización: elige la recalibración con pendiente (la más sencilla aceptable)', a.id === 'slope');
+  const b = recommend('binary', { orig: { slope: 0.7, citl: 0.4, brier: 0.15 }, citl: { slope: 0.7, citl: 0, brier: 0.148 }, rev: { slope: 0.8, citl: 0, brier: 0.14 } }, ['orig', 'citl', 'rev']);
+  ok('actualización: si ninguna es aceptable, elige la de menor Brier', b.id === 'rev'); }
 console.log(`\n${checks - fails}/${checks} comprobaciones correctas`); process.exit(fails ? 1 : 0);

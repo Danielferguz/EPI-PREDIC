@@ -7,7 +7,7 @@
 <meta name="description" content="EPI-PREDIC (EPI-LAB): desarrollo y validación de modelos de predicción clínica en el navegador. Cálculo del tamaño de muestra (Riley et al.), regresión logística y de Cox con splines y penalización, validación interna por bootstrap, calibración, curva de decisión y lista TRIPOD.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Source+Sans+3:wght@400;600&display=swap">
-<link rel="stylesheet" href="css/style.css?v=2026.10.25-7">
+<link rel="stylesheet" href="css/style.css?v=2026.10.25-8">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js" defer></script>
 </head>
 <body>
@@ -17,6 +17,7 @@
     <div><h1><span class="epi">EPI</span><span class="data">-PREDIC</span></h1><p>Un módulo de <b>EPI-LAB</b> · Modelos de predicción clínica</p></div>
   </div>
   <nav class="tabs" role="tablist">
+    <button role="tab" data-tab="ruta"><span class="n">⌖</span>Ruta del modelo</button>
     <button role="tab" data-tab="muestra" class="active"><span class="n">1</span>Tamaño de muestra</button>
     <button role="tab" data-tab="datos"><span class="n">2</span>Datos</button>
     <button role="tab" data-tab="modelo"><span class="n">3</span>Modelo</button>
@@ -26,6 +27,7 @@
     <button role="tab" data-tab="reporte"><span class="n">7</span>Reporte</button>
     <button role="tab" data-tab="ayuda"><span class="n">?</span>Ayuda</button>
   </nav>
+  <div class="stagebar" id="stagebar"></div>
 </header>
 
 <main>
@@ -183,9 +185,10 @@
   </div>
 </section>
 
+<section id="tab-ruta" class="tab"><div id="roadmap"></div></section>
 <section id="tab-ayuda" class="tab"><div class="card prose" id="help"></div></section>
 </main>
-<footer class="foot">EPI-PREDIC · un módulo de EPI-LAB · © Daniel Fernández-Guzmán · CC BY-NC-ND 4.0 · Los cálculos se realizan en su navegador; ningún dato se envía a servidores. · v2026.10.25-7</footer>
-<script type="module" src="js/app.js?v=2026.10.25-7"></script>
+<footer class="foot">EPI-PREDIC · un módulo de EPI-LAB · © Daniel Fernández-Guzmán · CC BY-NC-ND 4.0 · Los cálculos se realizan en su navegador; ningún dato se envía a servidores. · v2026.10.25-8</footer>
+<script type="module" src="js/app.js?v=2026.10.25-8"></script>
 </body>
 </html>

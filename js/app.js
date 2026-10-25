@@ -1,15 +1,16 @@
 // EPI-PREDIC · navegación, carga de datos, especificación del modelo y ejecución.
-import { $, $$, esc, f2, pct, opt, errBox, state, natural, download } from './state.js?v=2026.10.25-7';
-import { readFile } from './io.js?v=2026.10.25-7';
-import { inferMeta, typedData, NA_DEFAULT, missCount, levelsOf } from './data.js?v=2026.10.25-7';
-import { mean, sd } from './tests.js?v=2026.10.25-7';
-import { completeFor, fitPred, evaluate, bootstrapValidate, columnNames, designInfo, tick, materialize } from './predmodel.js?v=2026.10.25-7';
-import { initSampleSize } from './ui_ss.js?v=2026.10.25-7';
-import { renderDev, bindFigure } from './ui_dev.js?v=2026.10.25-7';
-import { initValidation, renderUtilityInit } from './ui_val.js?v=2026.10.25-7';
-import { renderReport } from './ui_rep.js?v=2026.10.25-7';
-import { bindFigs } from './figs.js?v=2026.10.25-7';
-import { HELP_HTML } from './help.js?v=2026.10.25-7';
+import { $, $$, esc, f2, pct, opt, errBox, state, natural, download } from './state.js?v=2026.10.25-8';
+import { readFile } from './io.js?v=2026.10.25-8';
+import { inferMeta, typedData, NA_DEFAULT, missCount, levelsOf } from './data.js?v=2026.10.25-8';
+import { mean, sd } from './tests.js?v=2026.10.25-8';
+import { completeFor, fitPred, evaluate, bootstrapValidate, columnNames, designInfo, tick, materialize } from './predmodel.js?v=2026.10.25-8';
+import { initSampleSize } from './ui_ss.js?v=2026.10.25-8';
+import { renderDev, bindFigure } from './ui_dev.js?v=2026.10.25-8';
+import { initValidation, renderUtilityInit } from './ui_val.js?v=2026.10.25-8';
+import { renderReport } from './ui_rep.js?v=2026.10.25-8';
+import { bindFigs } from './figs.js?v=2026.10.25-8';
+import { initRoadmap, initStageBar } from './roadmap.js?v=2026.10.25-8';
+import { HELP_HTML } from './help.js?v=2026.10.25-8';
 
 // ---------------- ejemplos (datos simulados de nefrología) ----------------
 const EXAMPLES = [
@@ -33,9 +34,13 @@ const EXAMPLES = [
 function showTab(t) {
   $$('.tabs button').forEach(b => b.classList.toggle('active', b.dataset.tab === t)); $$('.tab').forEach(s => s.classList.toggle('active', s.id === 'tab-' + t));
   if (t === 'modelo') renderModelForm(); if (t === 'utilidad') renderUtilityInit(); if (t === 'reporte') renderReport(); if (t === 'validacion') $('#v-info').textContent = state.val ? `Base de validación: ${state.val.name} (${state.val.raw.length} filas)` : $('#v-info').textContent;
-  window.scrollTo({ top: 0 });
+  stageMark?.(t); window.scrollTo({ top: 0 });
 }
+let stageMark = null;
 export { showTab };
+const goTool = (tab, sel) => { showTab(tab); if (sel) setTimeout(() => { const el = $(sel); if (el && !el.closest('[hidden]')) { el.scrollIntoView({ behavior: 'smooth', block: 'center' }); el.focus?.(); } }, 60); };
+const rm = initRoadmap($('#roadmap'), { app: 'p', go: goTool });
+stageMark = initStageBar($('#stagebar'), st => { showTab('ruta'); rm.show(st); });
 $$('.tabs button').forEach(b => b.addEventListener('click', () => showTab(b.dataset.tab)));
 document.addEventListener('click', e => { const g = e.target.closest('[data-go]'); if (g) showTab(g.dataset.go); });
 $('#help').innerHTML = HELP_HTML;

@@ -1,13 +1,14 @@
 // Pestañas 5 y 6: validación externa (modelo ajustado o ecuación publicada), recalibración y utilidad clínica (curva de decisión).
-import { $, $$, esc, f2, fp, pct, ci, table, howto, card, state, errBox } from './state.js?v=2026.10.25-7';
-import { readFile } from './io.js?v=2026.10.25-7';
-import { inferMeta, typedData, NA_DEFAULT } from './data.js?v=2026.10.25-7';
-import { evaluate, recalibrate, calibGroups, calibSurvival, lowess, dcaBinary, dcaSurvival, evalEquation, completeFor, tick, perfBinary, perfSurvival, perfContinuous, eventVec, cindex, materialize, H0at } from './predmodel.js?v=2026.10.25-7';
-import { valBinary } from './samplesize.js?v=2026.10.25-7';
-import { calibrationPlot, scatterCalib, rocPlot, rocPoints, dcaPlot } from './pplots.js?v=2026.10.25-7';
-import { figWrap, bindFigs } from './figs.js?v=2026.10.25-7';
-import { qnorm } from './dist.js?v=2026.10.25-7';
-import { rng } from './dist.js?v=2026.10.25-7';
+import { $, $$, esc, f2, fp, pct, ci, table, howto, card, state, errBox } from './state.js?v=2026.10.25-8';
+import { readFile } from './io.js?v=2026.10.25-8';
+import { inferMeta, typedData, NA_DEFAULT } from './data.js?v=2026.10.25-8';
+import { evaluate, recalibrate, calibGroups, calibSurvival, lowess, dcaBinary, dcaSurvival, evalEquation, completeFor, tick, perfBinary, perfSurvival, perfContinuous, eventVec, cindex, materialize, H0at } from './predmodel.js?v=2026.10.25-8';
+import { valBinary } from './samplesize.js?v=2026.10.25-8';
+import { calibrationPlot, scatterCalib, rocPlot, rocPoints, dcaPlot } from './pplots.js?v=2026.10.25-8';
+import { figWrap, bindFigs } from './figs.js?v=2026.10.25-8';
+import { qnorm } from './dist.js?v=2026.10.25-8';
+import { STRATEGIES, applyUpdate, extensionCandidates, cvCompare, recommend } from './updating.js?v=2026.10.25-8';
+import { rng } from './dist.js?v=2026.10.25-8';
 
 const z = qnorm(0.975);
 const naCodes = () => [...NA_DEFAULT, ...$('#na-codes').value.split(',').map(s => s.trim()).filter(Boolean)];
@@ -61,11 +62,40 @@ function showVal(ev, m, label, { equation = false } = {}) {
     const g = calibSurvival(ev.p, ev.time, ev.status, pf.horizon, 5), mx = Math.min(1, Math.max(0.05, ...g.map(r => Math.max(r.pred, r.hi))) * 1.1);
     plots = figWrap(calibrationPlot({ groups: g, curve: null, pred: ev.p, title: `Calibration at ${pf.horizon} · ${label}`, note: 'Observed = Kaplan–Meier by risk quintile (95% CI)', max: mx }), 'calibracion_validacion_cox');
   } else plots = figWrap(scatterCalib({ pred: ev.p, y: ev.y, curve: lowess(ev.p, ev.y, 2 / 3, 40), title: `Observed vs predicted · ${label}` }), 'calibracion_validacion_lineal');
-  if (!equation) recal = `<div class="explain"><b>Recalibración.</b> Si la calibración es deficiente, puede actualizar el modelo con los datos de validación: solo el intercepto (corrige el riesgo medio) o intercepto y pendiente (corrige además el exceso de dispersión). El resultado es una versión actualizada que debe validarse otra vez.<div class="row gap mt wrap"><button class="ghost" data-rc="citl">Recalibrar intercepto</button><button class="ghost" data-rc="slope">Recalibrar intercepto y pendiente</button><button class="primary" id="v-use" ${state.recalM ? '' : 'hidden'}>Usar el modelo recalibrado como modelo final</button></div><div id="v-recal"></div></div>`;
+  if (!equation && type === 'survival') recal = `<div class="explain"><b>Recalibración.</b> Si la calibración es deficiente, puede actualizar el modelo con los datos de validación: solo el intercepto (corrige el riesgo medio) o intercepto y pendiente (corrige además el exceso de dispersión). El resultado es una versión actualizada que debe validarse otra vez.<div class="row gap mt wrap"><button class="ghost" data-rc="citl">Recalibrar intercepto</button><button class="ghost" data-rc="slope">Recalibrar intercepto y pendiente</button><button class="primary" id="v-use" ${state.recalM ? '' : 'hidden'}>Usar el modelo recalibrado como modelo final</button></div><div id="v-recal"></div></div>`;
   out.innerHTML = card(`Resultados de la validación · ${esc(label)}`, `${howto(`Rendimiento del modelo sin reajustar en ${pf.n} pacientes${pf.events != null ? ` (${pf.events} eventos)` : ''}.`, 'Compara con el rendimiento corregido por bootstrap del desarrollo: una caída del C o una pendiente &lt; 0.9 indican falta de transportabilidad.', 'La discriminación depende de la heterogeneidad de la población; la calibración (pendiente, CITL) es la medida clave para usar riesgos absolutos.', ['Qué se ve', 'Para qué', 'Cómo interpretar'])}${perfTable(type, pf, dev, ev.extra)}${cm}${adequacy}<div class="plots">${plots}</div>${recal}`);
+  if (!equation && type !== 'survival') { out.insertAdjacentHTML('beforeend', updateCard(m)); bindUpdate(); }
   bindFigs(out);
   $$('[data-rc]', out).forEach(b => b.addEventListener('click', () => doRecal(b.dataset.rc)));
   state.valEv = ev; state.valLabel = label;
+}
+// ---------------------------------------------------------------- actualización del modelo (recalibración, revisión, extensión)
+function updateCard(m) {
+  const cands = extensionCandidates(m, state.meta, state.valPrep.ds), box = (id, lab, on) => `<label class="inline"><input type="checkbox" data-up="${id}"${on ? ' checked' : ''}${id === 'orig' ? ' disabled' : ''}> ${esc(lab)}</label>`;
+  return `<div class="card" id="up-card"><h2>Actualizar el modelo con los datos de validación</h2>${howto('Cuatro maneras de adaptar el modelo al nuevo entorno, de la más sencilla a la más flexible: corregir el nivel de riesgo (intercepto), corregir también la escala (pendiente), reestimar todos los coeficientes (revisión) o añadir un marcador nuevo (extensión).', 'Si el modelo discrimina bien pero se calibra mal, basta recalibrar. Cuanto más se reestima, más eventos hacen falta y más se pierde del modelo original.', 'Cada estrategia se evalúa con validación cruzada dentro de la base de validación (se actualiza con 4/5 y se prueba en el 1/5 restante, 3 repeticiones), no con los mismos datos con los que se ajustó. Elija la más sencilla que deje la pendiente en 0.9–1.1 y el intercepto cerca de 0.')}
+    <div class="row gap wrap">${STRATEGIES.map(([id, lab]) => box(id, lab, id !== 'ext')).join('')}</div>
+    <div class="row gap wrap mt"><label>Marcador nuevo (solo para la extensión) <select id="up-extra">${cands.length ? cands.map(c => `<option>${esc(c)}</option>`).join('') : '<option value="">(no hay variables adicionales)</option>'}</select></label></div>
+    <div class="row gap mt wrap"><button class="primary" id="up-run">Comparar estrategias</button><span id="up-msg" class="muted"></span></div><div id="up-out"></div></div>`;
+}
+function bindUpdate() {
+  const m = state.final, bin = m.type === 'binary', num = (v, d = 3) => (isFinite(v) ? f2(v, d) : '–');
+  $('#up-run').addEventListener('click', async () => {
+    const msg = $('#up-msg'), outEl = $('#up-out'); msg.textContent = 'Comparando…'; outEl.innerHTML = ''; await tick();
+    try {
+      const ids = $$('[data-up]').filter(c => c.checked || c.dataset.up === 'orig').map(c => c.dataset.up), extra = ids.includes('ext') ? $('#up-extra').value : null;
+      if (ids.includes('ext') && !extra) throw new Error('No hay un marcador adicional para la extensión: desmarque esa estrategia.');
+      const { prep, rows } = { prep: state.valPrep, rows: state.valRows }, { res, n } = cvCompare({ ids, m, ds: prep.ds, meta: prep.meta, rows, extra }), rec = recommend(m.type, res, ids);
+      const lab = Object.fromEntries(STRATEGIES.map(([id, l]) => [id, l])), par = id => (id === 'rev' ? m.cols.length + 1 : id === 'ext' ? m.cols.length + 2 : { orig: 0, citl: 1, slope: 2 }[id]);
+      const head = bin ? ['Estrategia', 'Parámetros reestimados', 'C (AUC)', 'Pendiente', 'CITL', 'O/E', 'Brier'] : ['Estrategia', 'Parámetros reestimados', 'R²', 'Pendiente', 'CITL', 'RMSE'];
+      const rowsT = ids.map(id => { const r = res[id], b = id === rec?.id ? '<b>' : '', e = id === rec?.id ? '</b>' : ''; return r.err ? [esc(lab[id]), par(id), `<span class="muted">${esc(r.err)}</span>`, '', '', '', ''].slice(0, head.length) : [`${b}${esc(lab[id])}${e}`, par(id), ...(bin ? [num(r.auc), num(r.slope), num(r.citl), num(r.oe), num(r.brier, 4)] : [num(r.r2), num(r.slope), num(r.citl), num(r.rmse)])]; });
+      const adopt = ids.filter(id => id !== 'ext' && !res[id].err);
+      outEl.innerHTML = `<p class="sub">Rendimiento por validación cruzada (5 pliegues × 3 repeticiones) en ${n} pacientes de la base de validación.</p>${table(head, rowsT)}
+        ${rec ? `<p><b>Sugerencia:</b> ${esc(lab[rec.id])} — ${esc(rec.why)}.</p>` : ''}${ids.includes('ext') && res.ext && !res.ext.err ? `<p class="sub">La extensión añade «${esc(extra)}»: compare su Brier/AUC con la revisión para ver si el marcador aporta. Para adoptarla, añada la variable en el paso 3 y reajuste.</p>` : ''}
+        <div class="row gap wrap"><label>Usar como modelo final <select id="up-pick">${adopt.map(id => `<option value="${id}"${id === rec?.id ? ' selected' : ''}>${esc(lab[id])}</option>`).join('')}</select></label><button class="ghost" id="up-use">Usar</button></div><p class="sub" id="up-done"></p>`;
+      $('#up-use').addEventListener('click', () => { try { const id = $('#up-pick').value, mk = applyUpdate(id, state.final, prep.ds, prep.meta, rows); state.final = mk; state.shrunk = null; state.updated = { id, label: lab[id], n: rows.length }; $('#up-done').textContent = id === 'orig' ? 'Se mantiene el modelo original.' : `Hecho: «${lab[id]}» es ahora el modelo final (se usará en utilidad clínica y reporte). Se estimó con las ${rows.length} filas completas de la base de validación; valídelo de nuevo en datos independientes.`; } catch (e) { $('#up-done').innerHTML = errBox(e); } });
+      msg.textContent = '';
+    } catch (e) { msg.textContent = ''; outEl.innerHTML = errBox(e); }
+  });
 }
 function doRecal(kind) {
   try {

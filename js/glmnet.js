@@ -1,7 +1,7 @@
 // Regresión penalizada (red elástica) por descenso de coordenadas, al estilo de glmnet (Friedman, Hastie y Tibshirani, 2010).
 // Familias: gaussiana y binomial (logística). α = 1 lasso, α = 0 ridge. Las covariables se estandarizan internamente
 // y los coeficientes se devuelven en la escala original. El intercepto no se penaliza.
-import { rng } from './dist.js?v=2026.10.25-7';
+import { rng } from './dist.js?v=2026.10.25-8';
 
 const sgn = (z, g) => (z > g ? z - g : z < -g ? z + g : 0);
 const expit = e => 1 / (1 + Math.exp(-e));
