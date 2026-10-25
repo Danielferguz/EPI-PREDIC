@@ -1,7 +1,7 @@
 // Tamaño de muestra para modelos de predicción clínica.
 //  · Desarrollo (Riley et al., Stat Med 2019; BMJ 2020): resultados binarios, continuos y de supervivencia (criterios de pmsampsize).
 //  · Validación externa (Riley et al., Stat Med 2021; BMJ 2024;384:e074821): resultados binarios y continuos (criterios de pmvalsampsize).
-import { qt, qnorm, pnorm, dnorm } from './dist.js?v=2026.10.22-1';
+import { qt, qnorm, pnorm, dnorm } from './dist.js?v=2026.10.25-1';
 
 const ceil = Math.ceil, ln = Math.log, exp = Math.exp, Z = qnorm(0.975);
 const expit = x => 1 / (1 + exp(-x));

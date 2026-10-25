@@ -10,6 +10,7 @@ export const HELP_HTML = `
 <li><b>Validación</b> en otra base (otro centro/periodo) o de un <i>modelo publicado</i> (ecuación): C, pendiente de calibración, CITL, O/E, calibración y suficiencia de la muestra. Recalibración del intercepto y de la pendiente.</li>
 <li><b>Utilidad clínica</b>: curva de decisión (beneficio neto) para desenlaces binarios y de supervivencia (con censura).</li>
 <li><b>Reporte</b>: texto de métodos (ES/EN), tablas Word/CSV, ecuación del modelo, calculadora de riesgo y lista TRIPOD+AI.</li></ol>
+<p><b>Con EPI-Maching-Learning.</b> EPI-PREDIC <i>desarrolla y valida</i> un modelo de regresión (tamaño de muestra, contracción por bootstrap, validación externa, TRIPOD+AI); <a href="../EPI-Maching-Learning/" target="_blank" rel="noopener">EPI-Maching-Learning</a> <i>compara algoritmos</i> flexibles y el Super Learner, orienta qué modelos son razonables según los eventos, simplifica el modelo por importancia por permutación y descarga código Python y una calculadora de riesgo. Flujo sugerido: tamaño de muestra aquí → comparar algoritmos y simplificar allí → modelo final y validación externa aquí.</p>
 <h3>Qué mide cada indicador</h3>
 <table class="data"><thead><tr><th>Indicador</th><th>Qué responde</th><th>Valor ideal</th></tr></thead><tbody>
 <tr><td>Estadístico C (AUC) / índice C de Harrell</td><td>¿Ordena bien a los pacientes con y sin evento? (discriminación)</td><td>1 (0.5 = azar)</td></tr>

@@ -7,7 +7,7 @@
 <meta name="description" content="EPI-PREDIC (EPI-LAB): desarrollo y validación de modelos de predicción clínica en el navegador. Cálculo del tamaño de muestra (Riley et al.), regresión logística y de Cox con splines y penalización, validación interna por bootstrap, calibración, curva de decisión y lista TRIPOD.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Source+Sans+3:wght@400;600&display=swap">
-<link rel="stylesheet" href="css/style.css?v=2026.10.22-1">
+<link rel="stylesheet" href="css/style.css?v=2026.10.25-1">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js" defer></script>
 </head>
 <body>
@@ -31,6 +31,7 @@
 <main>
 <!-- 1 · TAMAÑO DE MUESTRA -->
 <section id="tab-muestra" class="tab active">
+  <div class="card"><p class="sub"><b>¿Va a comparar algoritmos flexibles (bosques, boosting, redes, Super Learner)?</b> Calcule aquí el tamaño de muestra de la regresión y use <a href="../EPI-Maching-Learning/" target="_blank" rel="noopener">EPI-Maching-Learning</a> para compararlos y simplificar el modelo (variables que aportan al AUC). Luego vuelva a desarrollar y validar externamente el modelo final en EPI-PREDIC. Los algoritmos flexibles necesitan bastante más datos que el mínimo calculado aquí.</p></div>
   <div class="card">
     <h2>¿Cuántos pacientes necesita el modelo?</h2>
     <div class="howto"><div><b>Qué se hace</b>Se calcula el tamaño de muestra mínimo para <i>desarrollar</i> un modelo (criterios de Riley et al.: poco sobreajuste, pequeña diferencia entre R² aparente y ajustado, riesgo global preciso) o para <i>validarlo</i> en datos nuevos.</div><div><b>Para qué</b>La regla de «10 eventos por variable» es poco fiable: la muestra depende del número de parámetros, de la frecuencia del desenlace y del rendimiento esperado (R² de Cox-Snell o estadístico C).</div><div><b>Cómo interpretar</b>El tamaño final es el <b>mayor</b> de los criterios. Es un mínimo: la selección de variables, el desbalance o los splines exigen más.</div></div>
@@ -100,6 +101,7 @@
   <div class="card has-data" hidden>
     <h2>Pregunta de predicción y especificación del modelo</h2>
     <div class="howto"><div><b>Qué se hace</b>Se elige qué se predice (un evento Sí/No, el tiempo hasta un evento, o un valor continuo) y con qué variables.</div><div><b>Para qué</b>Los predictores deben decidirse por conocimiento clínico, no por significación estadística. Los splines permiten relaciones no lineales sin categorizar.</div><div><b>Cómo decidir</b>Con pocos eventos por parámetro, use penalización (ridge/lasso) o menos variables. Mantenga el número de parámetros coherente con el paso 1.</div></div>
+    <p class="sub">¿Quiere probar antes si un algoritmo flexible mejora a la regresión, o reducir los predictores por su importancia en el AUC? Hágalo en <a href="../EPI-Maching-Learning/" target="_blank" rel="noopener">EPI-Maching-Learning</a> y traiga aquí la lista de variables elegida: la selección de variables dentro de EPI-PREDIC no se ofrece por valor p ni por pasos.</p>
     <div class="form">
       <label>Tipo de modelo <select id="m-type"><option value="binary">Logístico (evento Sí/No)</option><option value="survival">Cox (tiempo hasta el evento)</option><option value="continuous">Lineal (desenlace continuo)</option></select></label>
       <label class="mb mc">Desenlace <select id="m-y"></select></label>
@@ -183,7 +185,7 @@
 
 <section id="tab-ayuda" class="tab"><div class="card prose" id="help"></div></section>
 </main>
-<footer class="foot">EPI-PREDIC · un módulo de EPI-LAB · © Daniel Fernández-Guzmán · CC BY-NC-ND 4.0 · Los cálculos se realizan en su navegador; ningún dato se envía a servidores. · v2026.10.22-1</footer>
-<script type="module" src="js/app.js?v=2026.10.22-1"></script>
+<footer class="foot">EPI-PREDIC · un módulo de EPI-LAB · © Daniel Fernández-Guzmán · CC BY-NC-ND 4.0 · Los cálculos se realizan en su navegador; ningún dato se envía a servidores. · v2026.10.25-1</footer>
+<script type="module" src="js/app.js?v=2026.10.25-1"></script>
 </body>
 </html>

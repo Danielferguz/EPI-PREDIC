@@ -1,8 +1,8 @@
 // Pestaña 7: texto de métodos, tablas, ecuación, calculadora de riesgo y lista TRIPOD+AI.
-import { $, $$, esc, f2, fp, pct, ci, table, howto, card, state, download } from './state.js?v=2026.10.22-1';
-import { predictLPs, riskFromLP, materialize, evaluate } from './predmodel.js?v=2026.10.22-1';
-import { coefTable, equationText, exportModel, modelName } from './ui_dev.js?v=2026.10.22-1';
-import { wordDoc, matrixHTML, matrixCSV } from './report.js?v=2026.10.22-1';
+import { $, $$, esc, f2, fp, pct, ci, table, howto, card, state, download } from './state.js?v=2026.10.25-1';
+import { predictLPs, riskFromLP, materialize, evaluate } from './predmodel.js?v=2026.10.25-1';
+import { coefTable, equationText, exportModel, modelName } from './ui_dev.js?v=2026.10.25-1';
+import { wordDoc, matrixHTML, matrixCSV } from './report.js?v=2026.10.25-1';
 
 const PEN = { none: 'máxima verosimilitud sin penalización', ridge: 'regresión ridge', lasso: 'regresión lasso' };
 const PEN_EN = { none: 'maximum likelihood without penalisation', ridge: 'ridge regression', lasso: 'lasso regression' };
@@ -24,7 +24,7 @@ export function methodsText(lang = 'es') {
     L.push(b ? `La validación interna se hizo con bootstrap (${b.B} réplicas), repitiendo en cada una todo el proceso de modelado, para estimar el optimismo y corregir ${meas}.` : `No se realizó validación interna; el rendimiento informado es aparente.`);
     if (val) L.push(`El modelo se validó externamente en ${val.perf.n} pacientes (${esc(state.valLabel)}) sin reajustarlo; se informan ${meas} con sus intervalos de confianza del 95 %.`);
     if (dca) L.push('La utilidad clínica se evaluó con el análisis de curva de decisión (beneficio neto) en un rango de umbrales de riesgo.');
-    L.push('El análisis se realizó con EPI-PREDIC (EPI-LAB; Fernández-Guzmán D., https://github.com/Danielferguz/EPI-PREDIC), cuyos motores fueron validados frente a statsmodels, scikit-learn, lifelines y pmsampsize.');
+    L.push('El análisis se realizó con EPI-PREDIC (EPI-LAB; Fernández-Guzmán D.), cuyos motores fueron validados frente a statsmodels, scikit-learn, lifelines y pmsampsize.');
   } else {
     L.push(`A ${modelName(m) === 'logístico' ? 'logistic' : modelName(m) === 'de Cox' ? 'Cox' : 'linear'} prediction model was developed for ${outcome}, following the TRIPOD+AI recommendations. The development dataset (${esc(state.fname)}) included ${N} participants${ev != null ? `; after excluding ${missing} with incomplete data (complete-case analysis), the model was fitted in ${m.n} participants with ${ev} events` : `; the model was fitted in ${m.n} participants with complete data`}.`);
     L.push(`Candidate predictors were ${preds}, pre-specified on clinical grounds (${m.cols.length} parameters). ${ss ? `The minimum sample size was calculated with the Riley et al. criteria (${ss.result.n.toLocaleString('en')} participants${ss.result.events ? `, ${f2(ss.result.events, 0)} events` : ''}).` : ''}`);
@@ -32,7 +32,7 @@ export function methodsText(lang = 'es') {
     L.push(b ? `Internal validation used bootstrapping (${b.B} resamples), repeating the entire modelling process in each, to estimate optimism and correct ${meas}.` : 'No internal validation was performed; reported performance is apparent.');
     if (val) L.push(`The model was externally validated in ${val.perf.n} participants (${esc(state.valLabel)}) without refitting; ${meas} are reported with 95% confidence intervals.`);
     if (dca) L.push('Clinical utility was assessed with decision curve analysis (net benefit) over a range of risk thresholds.');
-    L.push('Analyses were run in EPI-PREDIC (EPI-LAB; Fernández-Guzmán D., https://github.com/Danielferguz/EPI-PREDIC), whose engines were validated against statsmodels, scikit-learn, lifelines and pmsampsize.');
+    L.push('Analyses were run in EPI-PREDIC (EPI-LAB; Fernández-Guzmán D.), whose engines were validated against statsmodels, scikit-learn, lifelines and pmsampsize.');
   }
   return L.join('\n\n');
 }

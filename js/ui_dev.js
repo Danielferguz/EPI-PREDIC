@@ -1,10 +1,10 @@
 // Pestaña 4: modelo desarrollado, rendimiento aparente y corregido por bootstrap, calibración y ecuación.
-import { $, $$, esc, f2, fp, pct, ci, table, howto, card, state, errBox, download } from './state.js?v=2026.10.22-1';
-import { evaluate, shrinkModel, calibGroups, calibSurvival, lowess, riskFromLP, H0at } from './predmodel.js?v=2026.10.22-1';
-import { waldTerm, ciOf } from './models.js?v=2026.10.22-1';
-import { calibrationPlot, scatterCalib, rocPlot, rocPoints, cvPlot } from './pplots.js?v=2026.10.22-1';
-import { figWrap, bindFigs } from './figs.js?v=2026.10.22-1';
-import { qnorm } from './dist.js?v=2026.10.22-1';
+import { $, $$, esc, f2, fp, pct, ci, table, howto, card, state, errBox, download } from './state.js?v=2026.10.25-1';
+import { evaluate, shrinkModel, calibGroups, calibSurvival, lowess, riskFromLP, H0at } from './predmodel.js?v=2026.10.25-1';
+import { waldTerm, ciOf } from './models.js?v=2026.10.25-1';
+import { calibrationPlot, scatterCalib, rocPlot, rocPoints, cvPlot } from './pplots.js?v=2026.10.25-1';
+import { figWrap, bindFigs } from './figs.js?v=2026.10.25-1';
+import { qnorm } from './dist.js?v=2026.10.25-1';
 
 export function bindFigure() { document.addEventListener('click', () => 0); }
 const LAB = {

@@ -1,15 +1,15 @@
 // EPI-PREDIC · navegación, carga de datos, especificación del modelo y ejecución.
-import { $, $$, esc, f2, pct, opt, errBox, state, natural, download } from './state.js?v=2026.10.22-1';
-import { readFile } from './io.js?v=2026.10.22-1';
-import { inferMeta, typedData, NA_DEFAULT, missCount, levelsOf } from './data.js?v=2026.10.22-1';
-import { mean, sd } from './tests.js?v=2026.10.22-1';
-import { completeFor, fitPred, evaluate, bootstrapValidate, columnNames, designInfo, tick, materialize } from './predmodel.js?v=2026.10.22-1';
-import { initSampleSize } from './ui_ss.js?v=2026.10.22-1';
-import { renderDev, bindFigure } from './ui_dev.js?v=2026.10.22-1';
-import { initValidation, renderUtilityInit } from './ui_val.js?v=2026.10.22-1';
-import { renderReport } from './ui_rep.js?v=2026.10.22-1';
-import { bindFigs } from './figs.js?v=2026.10.22-1';
-import { HELP_HTML } from './help.js?v=2026.10.22-1';
+import { $, $$, esc, f2, pct, opt, errBox, state, natural, download } from './state.js?v=2026.10.25-1';
+import { readFile } from './io.js?v=2026.10.25-1';
+import { inferMeta, typedData, NA_DEFAULT, missCount, levelsOf } from './data.js?v=2026.10.25-1';
+import { mean, sd } from './tests.js?v=2026.10.25-1';
+import { completeFor, fitPred, evaluate, bootstrapValidate, columnNames, designInfo, tick, materialize } from './predmodel.js?v=2026.10.25-1';
+import { initSampleSize } from './ui_ss.js?v=2026.10.25-1';
+import { renderDev, bindFigure } from './ui_dev.js?v=2026.10.25-1';
+import { initValidation, renderUtilityInit } from './ui_val.js?v=2026.10.25-1';
+import { renderReport } from './ui_rep.js?v=2026.10.25-1';
+import { bindFigs } from './figs.js?v=2026.10.25-1';
+import { HELP_HTML } from './help.js?v=2026.10.25-1';
 
 // ---------------- ejemplos (datos simulados de nefrología) ----------------
 const EXAMPLES = [
