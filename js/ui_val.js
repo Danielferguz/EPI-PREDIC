@@ -1,13 +1,13 @@
 // Pestañas 5 y 6: validación externa (modelo ajustado o ecuación publicada), recalibración y utilidad clínica (curva de decisión).
-import { $, $$, esc, f2, fp, pct, ci, table, howto, card, state, errBox } from './state.js?v=2026.10.25-6';
-import { readFile } from './io.js?v=2026.10.25-6';
-import { inferMeta, typedData, NA_DEFAULT } from './data.js?v=2026.10.25-6';
-import { evaluate, recalibrate, calibGroups, calibSurvival, lowess, dcaBinary, dcaSurvival, evalEquation, completeFor, tick, perfBinary, perfSurvival, perfContinuous, eventVec, cindex, materialize, H0at } from './predmodel.js?v=2026.10.25-6';
-import { valBinary } from './samplesize.js?v=2026.10.25-6';
-import { calibrationPlot, scatterCalib, rocPlot, rocPoints, dcaPlot } from './pplots.js?v=2026.10.25-6';
-import { figWrap, bindFigs } from './figs.js?v=2026.10.25-6';
-import { qnorm } from './dist.js?v=2026.10.25-6';
-import { rng } from './dist.js?v=2026.10.25-6';
+import { $, $$, esc, f2, fp, pct, ci, table, howto, card, state, errBox } from './state.js?v=2026.10.25-7';
+import { readFile } from './io.js?v=2026.10.25-7';
+import { inferMeta, typedData, NA_DEFAULT } from './data.js?v=2026.10.25-7';
+import { evaluate, recalibrate, calibGroups, calibSurvival, lowess, dcaBinary, dcaSurvival, evalEquation, completeFor, tick, perfBinary, perfSurvival, perfContinuous, eventVec, cindex, materialize, H0at } from './predmodel.js?v=2026.10.25-7';
+import { valBinary } from './samplesize.js?v=2026.10.25-7';
+import { calibrationPlot, scatterCalib, rocPlot, rocPoints, dcaPlot } from './pplots.js?v=2026.10.25-7';
+import { figWrap, bindFigs } from './figs.js?v=2026.10.25-7';
+import { qnorm } from './dist.js?v=2026.10.25-7';
+import { rng } from './dist.js?v=2026.10.25-7';
 
 const z = qnorm(0.975);
 const naCodes = () => [...NA_DEFAULT, ...$('#na-codes').value.split(',').map(s => s.trim()).filter(Boolean)];

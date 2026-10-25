@@ -1,8 +1,8 @@
 // Análisis descriptivo para el manuscrito: columna de agrupación por desenlace (Tabla 1) y regresión por predictor, cruda y ajustada.
 // Mismo código en EPI-PREDIC y EPI-Maching-Learning.
-import { fitGLM, fitCox, fitOLS, waldTerm } from './models.js?v=2026.10.25-6';
-import { levelsOf, isMiss } from './data.js?v=2026.10.25-6';
-import { qnorm } from './dist.js?v=2026.10.25-6';
+import { fitGLM, fitCox, fitOLS, waldTerm } from './models.js?v=2026.10.25-7';
+import { levelsOf, isMiss } from './data.js?v=2026.10.25-7';
+import { qnorm } from './dist.js?v=2026.10.25-7';
 
 // ---- columna de agrupación para la Tabla 1: binario → el desenlace; supervivencia → el estado; continuo → terciles
 // spec: {type:'binary'|'survival'|'continuous', y, status}

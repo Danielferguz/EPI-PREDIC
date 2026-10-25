@@ -132,6 +132,7 @@ details summary { cursor: pointer; color: var(--teal-ink); }
 figure.fig { margin: 0 0 10px; max-width: 100%; }
 .figbar { display: flex; gap: 6px; align-items: center; justify-content: flex-end; font-size: .78rem; color: var(--muted); margin-top: 2px; }
 .figbar button { padding: 2px 9px; font-size: .78rem; }
+#pf-out figure.fig { max-width: 460px; }
 #km figure, #miss-pat figure, #miss-bar figure, #d-out figure, .single figure { max-width: 780px; }
 [hidden] { display: none !important; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }

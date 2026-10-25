@@ -1,6 +1,6 @@
 // Motores de estimación: MCO, MLG (logística, Poisson), Cox (Efron), Kaplan-Meier, log-rank, GEE y modelo lineal mixto.
-import { crossW, crossWv, symInv, mv, dot, logdet, zeros, sub, quadForm } from './linalg.js?v=2026.10.25-6';
-import { lgamma, qt, qnorm, p2t, p2z, pchisqU, pfU } from './dist.js?v=2026.10.25-6';
+import { crossW, crossWv, symInv, mv, dot, logdet, zeros, sub, quadForm } from './linalg.js?v=2026.10.25-7';
+import { lgamma, qt, qnorm, p2t, p2z, pchisqU, pfU } from './dist.js?v=2026.10.25-7';
 
 const sum = a => { let s = 0; for (const v of a) s += v; return s; };
 
