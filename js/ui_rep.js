@@ -1,12 +1,12 @@
 // Pestaña 7: texto de métodos, tablas, ecuación, calculadora de riesgo y lista TRIPOD+AI.
-import { $, $$, esc, f2, fp, pct, ci, table, howto, card, state, download } from './state.js?v=2026.10.25-8';
-import { predictLPs, riskFromLP, materialize, evaluate } from './predmodel.js?v=2026.10.25-8';
-import { coefTable, equationText, exportModel, modelName } from './ui_dev.js?v=2026.10.25-8';
-import { wordDoc, matrixHTML, matrixCSV } from './report.js?v=2026.10.25-8';
-import { levelsOf } from './data.js?v=2026.10.25-8';
-import { pythonScript } from './pycode.js?v=2026.10.25-8';
-import { calcPageHTML } from './calcpage.js?v=2026.10.25-8';
-import { buildManuscript } from './manuscript.js?v=2026.10.25-8';
+import { $, $$, esc, f2, fp, pct, ci, table, howto, card, state, download } from './state.js?v=2026.10.25-9';
+import { predictLPs, riskFromLP, materialize, evaluate } from './predmodel.js?v=2026.10.25-9';
+import { coefTable, equationText, exportModel, modelName } from './ui_dev.js?v=2026.10.25-9';
+import { wordDoc, matrixHTML, matrixCSV } from './report.js?v=2026.10.25-9';
+import { levelsOf } from './data.js?v=2026.10.25-9';
+import { pythonScript } from './pycode.js?v=2026.10.25-9';
+import { calcPageHTML } from './calcpage.js?v=2026.10.25-9';
+import { buildManuscript } from './manuscript.js?v=2026.10.25-9';
 
 const PEN = { none: 'máxima verosimilitud sin penalización', ridge: 'regresión ridge', lasso: 'regresión lasso' };
 const PEN_EN = { none: 'maximum likelihood without penalisation', ridge: 'ridge regression', lasso: 'lasso regression' };

@@ -1,0 +1,301 @@
+ID,Edad,Grupo de edad,Sexo,Diabetes,Acceso vascular,Tiempo en hemodiálisis (meses),Apoyo familiar,Hemoglobina (g/dL),Albúmina (g/dL),Kt/V,Puntaje PHQ-9,Depresión
+1,38.0,18 a 39 años,Masculino,No,Fístula arteriovenosa,20.0,Adecuado,11.6,3.91,1.08,5.0,No
+2,49.0,40 a 59 años,Masculino,Sí,Fístula arteriovenosa,23.0,Adecuado,12.0,3.85,1.13,2.0,No
+3,62.0,≥ 60 años,Femenino,Sí,Fístula arteriovenosa,60.0,Adecuado,8.9,3.75,1.58,4.0,No
+4,48.0,40 a 59 años,Masculino,No,Fístula arteriovenosa,12.0,Insuficiente,10.6,3.79,1.45,12.0,Sí
+5,40.0,40 a 59 años,Femenino,No,Fístula arteriovenosa,48.0,Adecuado,12.9,4.15,1.2,6.0,No
+6,79.0,≥ 60 años,Masculino,No,Catéter venoso central,48.0,Adecuado,10.1,3.46,,10.0,Sí
+7,52.0,40 a 59 años,Femenino,Sí,Catéter venoso central,52.0,Adecuado,11.8,3.54,1.08,7.0,No
+8,75.0,≥ 60 años,Masculino,Sí,Fístula arteriovenosa,59.0,Adecuado,9.5,4.33,1.32,8.0,No
+9,66.0,≥ 60 años,Masculino,No,Catéter venoso central,93.0,Insuficiente,10.3,,1.43,13.0,Sí
+10,41.0,40 a 59 años,Femenino,No,Fístula arteriovenosa,62.0,Adecuado,8.7,3.54,1.4,8.0,No
+11,71.0,≥ 60 años,Masculino,No,Catéter venoso central,35.0,Adecuado,10.4,3.34,1.46,5.0,No
+12,75.0,≥ 60 años,Masculino,No,Catéter venoso central,60.0,Adecuado,9.7,3.83,1.29,11.0,Sí
+13,79.0,≥ 60 años,Femenino,No,Catéter venoso central,16.0,Adecuado,9.9,,,11.0,Sí
+14,71.0,≥ 60 años,Masculino,Sí,Catéter venoso central,12.0,Adecuado,9.2,3.89,1.08,5.0,No
+15,66.0,≥ 60 años,Masculino,No,Catéter venoso central,18.0,Adecuado,11.3,4.3,1.2,3.0,No
+16,74.0,≥ 60 años,Masculino,No,Catéter venoso central,13.0,Adecuado,11.3,,0.98,12.0,Sí
+17,64.0,≥ 60 años,Masculino,Sí,Fístula arteriovenosa,52.0,Adecuado,11.6,3.93,1.51,3.0,No
+18,86.0,≥ 60 años,Masculino,Sí,Catéter venoso central,42.0,Adecuado,10.5,3.78,1.44,5.0,No
+19,87.0,≥ 60 años,Femenino,No,Fístula arteriovenosa,20.0,Insuficiente,10.1,3.66,1.2,5.0,No
+20,26.0,18 a 39 años,Masculino,No,Fístula arteriovenosa,100.0,Adecuado,10.9,3.38,1.62,8.0,No
+21,65.0,≥ 60 años,Masculino,No,Fístula arteriovenosa,38.0,Insuficiente,7.0,4.23,1.17,9.0,No
+22,45.0,40 a 59 años,Femenino,No,Catéter venoso central,7.0,Adecuado,10.7,3.37,1.11,11.0,Sí
+23,55.0,40 a 59 años,Masculino,No,Fístula arteriovenosa,47.0,Adecuado,11.2,3.74,1.29,2.0,No
+24,68.0,≥ 60 años,Masculino,No,Fístula arteriovenosa,69.0,Adecuado,10.0,3.14,1.15,5.0,No
+25,53.0,40 a 59 años,Femenino,Sí,Catéter venoso central,18.0,Insuficiente,11.3,3.48,0.93,10.0,Sí
+26,65.0,≥ 60 años,Masculino,Sí,Fístula arteriovenosa,41.0,Insuficiente,13.0,3.57,1.46,6.0,No
+27,66.0,≥ 60 años,Femenino,Sí,Fístula arteriovenosa,89.0,Adecuado,8.8,3.68,1.07,6.0,No
+28,56.0,40 a 59 años,Femenino,No,Fístula arteriovenosa,15.0,Adecuado,11.1,3.54,1.18,5.0,No
+29,51.0,40 a 59 años,Femenino,No,Catéter venoso central,35.0,Adecuado,9.2,2.62,1.43,,No
+30,71.0,≥ 60 años,Femenino,No,Fístula arteriovenosa,28.0,Insuficiente,9.7,3.77,1.3,8.0,No
+31,57.0,40 a 59 años,Masculino,No,Catéter venoso central,51.0,Adecuado,9.1,2.98,1.31,6.0,No
+32,68.0,≥ 60 años,Femenino,No,Fístula arteriovenosa,60.0,Adecuado,9.9,,1.23,11.0,Sí
+33,87.0,≥ 60 años,Masculino,No,Fístula arteriovenosa,91.0,Insuficiente,8.1,4.3,1.59,8.0,No
+34,41.0,40 a 59 años,Masculino,Sí,Catéter venoso central,89.0,Adecuado,9.8,,1.47,8.0,No
+35,47.0,40 a 59 años,Masculino,No,Fístula arteriovenosa,27.0,Adecuado,9.7,3.81,1.61,0.0,No
+36,35.0,18 a 39 años,Masculino,Sí,Fístula arteriovenosa,18.0,Insuficiente,10.6,3.38,1.08,5.0,No
+37,45.0,40 a 59 años,Masculino,No,Fístula arteriovenosa,77.0,Adecuado,9.1,4.08,1.74,9.0,No
+38,46.0,40 a 59 años,Femenino,No,Fístula arteriovenosa,31.0,Insuficiente,8.4,3.75,1.2,13.0,Sí
+39,51.0,40 a 59 años,Masculino,Sí,Fístula arteriovenosa,25.0,Adecuado,12.3,3.25,,2.0,No
+40,55.0,40 a 59 años,Femenino,No,Fístula arteriovenosa,12.0,Adecuado,11.0,4.53,1.62,12.0,Sí
+41,64.0,≥ 60 años,Femenino,Sí,Catéter venoso central,2.0,Insuficiente,10.2,4.01,1.15,18.0,Sí
+42,56.0,40 a 59 años,Masculino,No,Fístula arteriovenosa,29.0,Adecuado,9.9,3.88,1.21,4.0,No
+43,33.0,18 a 39 años,Masculino,No,Catéter venoso central,23.0,Adecuado,9.9,3.55,1.38,12.0,Sí
+44,40.0,40 a 59 años,Masculino,No,Fístula arteriovenosa,85.0,Adecuado,10.0,3.41,,4.0,No
+45,64.0,≥ 60 años,Masculino,Sí,Fístula arteriovenosa,41.0,Adecuado,10.4,3.09,1.4,9.0,No
+46,63.0,≥ 60 años,Masculino,No,Fístula arteriovenosa,77.0,Adecuado,11.1,4.72,1.08,7.0,No
+47,59.0,40 a 59 años,Femenino,No,Catéter venoso central,17.0,Adecuado,9.2,3.63,1.48,13.0,Sí
+48,40.0,40 a 59 años,Masculino,No,Catéter venoso central,13.0,Adecuado,9.9,3.21,1.18,10.0,Sí
+49,64.0,≥ 60 años,Masculino,Sí,Catéter venoso central,11.0,Insuficiente,11.0,,1.08,8.0,No
+50,44.0,40 a 59 años,Femenino,No,Catéter venoso central,35.0,,11.8,3.85,1.59,8.0,No
+51,76.0,≥ 60 años,Masculino,No,Catéter venoso central,21.0,Adecuado,8.3,3.6,1.06,12.0,Sí
+52,32.0,18 a 39 años,Masculino,Sí,Catéter venoso central,39.0,Adecuado,10.3,3.83,0.99,7.0,No
+53,59.0,40 a 59 años,Masculino,No,Catéter venoso central,27.0,Adecuado,8.7,3.94,1.63,12.0,Sí
+54,46.0,40 a 59 años,Masculino,Sí,Fístula arteriovenosa,45.0,,9.7,4.07,1.39,,No
+55,63.0,≥ 60 años,Femenino,Sí,Fístula arteriovenosa,72.0,Insuficiente,12.1,4.08,0.91,9.0,No
+56,75.0,≥ 60 años,Masculino,Sí,Fístula arteriovenosa,67.0,Insuficiente,10.3,3.91,1.02,12.0,Sí
+57,49.0,40 a 59 años,Masculino,No,Fístula arteriovenosa,35.0,Adecuado,8.4,3.99,1.46,6.0,No
+58,56.0,40 a 59 años,Masculino,No,Catéter venoso central,46.0,,8.6,3.91,1.13,11.0,Sí
+59,69.0,≥ 60 años,Femenino,Sí,Catéter venoso central,19.0,Adecuado,10.3,3.3,1.38,1.0,No
+60,65.0,≥ 60 años,Femenino,No,Fístula arteriovenosa,59.0,Adecuado,10.7,,0.94,6.0,No
+61,45.0,40 a 59 años,Masculino,Sí,Fístula arteriovenosa,45.0,Insuficiente,10.4,3.39,1.56,16.0,Sí
+62,43.0,40 a 59 años,Femenino,No,Fístula arteriovenosa,16.0,Insuficiente,11.1,3.97,1.62,4.0,No
+63,58.0,40 a 59 años,Masculino,Sí,Catéter venoso central,88.0,Insuficiente,11.3,3.8,1.31,6.0,No
+64,52.0,40 a 59 años,Femenino,Sí,Catéter venoso central,151.0,Adecuado,10.9,3.47,0.91,14.0,Sí
+65,64.0,≥ 60 años,Masculino,No,Fístula arteriovenosa,51.0,Insuficiente,10.1,,0.94,7.0,No
+66,49.0,40 a 59 años,Femenino,Sí,Fístula arteriovenosa,27.0,Adecuado,13.0,3.49,1.02,4.0,No
+67,40.0,40 a 59 años,Femenino,No,Catéter venoso central,45.0,Adecuado,9.7,3.57,1.2,8.0,No
+68,67.0,≥ 60 años,Femenino,No,Fístula arteriovenosa,84.0,Adecuado,10.0,2.58,1.63,13.0,Sí
+69,35.0,18 a 39 años,Femenino,No,Catéter venoso central,28.0,Adecuado,12.5,3.32,1.4,6.0,No
+70,38.0,18 a 39 años,Masculino,Sí,Fístula arteriovenosa,16.0,Adecuado,11.0,3.49,1.28,0.0,No
+71,58.0,40 a 59 años,Femenino,No,Fístula arteriovenosa,41.0,Adecuado,9.6,2.42,1.43,13.0,Sí
+72,58.0,40 a 59 años,Masculino,Sí,Fístula arteriovenosa,23.0,Adecuado,9.7,3.83,1.48,12.0,Sí
+73,75.0,≥ 60 años,Femenino,No,Catéter venoso central,38.0,Insuficiente,9.2,3.82,,,Sí
+74,71.0,≥ 60 años,Masculino,Sí,Catéter venoso central,16.0,Adecuado,11.3,4.06,1.56,7.0,No
+75,41.0,40 a 59 años,Masculino,No,Fístula arteriovenosa,134.0,Insuficiente,8.5,3.76,1.51,6.0,No
+76,76.0,≥ 60 años,Masculino,Sí,Catéter venoso central,51.0,Insuficiente,9.8,3.87,1.43,17.0,Sí
+77,81.0,≥ 60 años,Femenino,No,Fístula arteriovenosa,10.0,Adecuado,12.9,4.17,1.31,0.0,No
+78,58.0,40 a 59 años,Masculino,Sí,Catéter venoso central,11.0,Adecuado,12.9,4.44,1.45,10.0,Sí
+79,46.0,40 a 59 años,Femenino,No,Catéter venoso central,45.0,Adecuado,9.8,3.69,,13.0,Sí
+80,64.0,≥ 60 años,Masculino,Sí,Catéter venoso central,32.0,Adecuado,9.2,3.74,1.61,12.0,Sí
+81,56.0,40 a 59 años,Masculino,Sí,Catéter venoso central,34.0,Adecuado,9.0,3.82,1.59,12.0,Sí
+82,40.0,40 a 59 años,Femenino,No,Fístula arteriovenosa,26.0,Adecuado,10.2,3.87,1.26,11.0,Sí
+83,35.0,18 a 39 años,Femenino,Sí,Catéter venoso central,6.0,Adecuado,10.9,3.78,1.59,9.0,No
+84,59.0,40 a 59 años,Masculino,No,Fístula arteriovenosa,34.0,Insuficiente,10.7,3.43,1.16,11.0,Sí
+85,46.0,40 a 59 años,Femenino,No,Fístula arteriovenosa,17.0,Insuficiente,12.0,4.09,,9.0,No
+86,66.0,≥ 60 años,Femenino,Sí,Catéter venoso central,22.0,Adecuado,9.6,,1.39,11.0,Sí
+87,58.0,40 a 59 años,Masculino,No,Fístula arteriovenosa,20.0,Adecuado,11.5,3.86,0.97,6.0,No
+88,56.0,40 a 59 años,Masculino,Sí,Fístula arteriovenosa,52.0,Insuficiente,11.8,3.58,1.38,8.0,No
+89,66.0,≥ 60 años,Femenino,No,Fístula arteriovenosa,35.0,Insuficiente,10.9,3.78,,13.0,Sí
+90,59.0,40 a 59 años,Masculino,No,Catéter venoso central,25.0,Insuficiente,9.1,3.68,1.05,7.0,No
+91,76.0,≥ 60 años,Femenino,No,Fístula arteriovenosa,68.0,Adecuado,9.7,4.44,1.21,7.0,No
+92,66.0,≥ 60 años,Masculino,No,Fístula arteriovenosa,13.0,Adecuado,10.3,3.85,1.32,12.0,Sí
+93,60.0,≥ 60 años,Femenino,No,Catéter venoso central,23.0,Insuficiente,10.6,2.98,1.18,8.0,No
+94,22.0,18 a 39 años,Masculino,No,Catéter venoso central,56.0,Adecuado,11.6,3.57,1.06,9.0,No
+95,65.0,≥ 60 años,Femenino,No,Fístula arteriovenosa,56.0,Insuficiente,9.0,4.3,1.13,9.0,No
+96,81.0,≥ 60 años,Femenino,Sí,Fístula arteriovenosa,60.0,Adecuado,8.9,3.6,1.0,4.0,No
+97,55.0,40 a 59 años,Femenino,Sí,Catéter venoso central,13.0,Adecuado,9.1,3.92,1.46,10.0,Sí
+98,62.0,≥ 60 años,Femenino,Sí,Fístula arteriovenosa,9.0,Adecuado,11.3,3.75,,10.0,Sí
+99,48.0,40 a 59 años,Masculino,No,Fístula arteriovenosa,77.0,Adecuado,9.2,3.87,1.59,7.0,No
+100,87.0,≥ 60 años,Masculino,No,Catéter venoso central,47.0,Insuficiente,12.2,,1.74,10.0,Sí
+101,43.0,40 a 59 años,Masculino,No,Fístula arteriovenosa,33.0,Adecuado,13.0,3.12,1.31,7.0,No
+102,49.0,40 a 59 años,Femenino,No,Catéter venoso central,12.0,Adecuado,10.0,3.48,1.56,10.0,Sí
+103,60.0,≥ 60 años,Masculino,Sí,Fístula arteriovenosa,26.0,Adecuado,8.5,3.34,1.19,3.0,No
+104,83.0,≥ 60 años,Femenino,No,Fístula arteriovenosa,52.0,Insuficiente,10.5,3.44,1.57,11.0,Sí
+105,59.0,40 a 59 años,Masculino,Sí,Fístula arteriovenosa,49.0,Adecuado,10.3,3.91,1.13,9.0,No
+106,52.0,40 a 59 años,Masculino,No,Fístula arteriovenosa,23.0,Insuficiente,11.4,3.59,1.31,10.0,Sí
+107,57.0,40 a 59 años,Masculino,No,Catéter venoso central,7.0,Insuficiente,8.3,3.22,1.2,13.0,Sí
+108,73.0,≥ 60 años,Masculino,No,Catéter venoso central,16.0,Adecuado,9.1,4.18,1.2,6.0,No
+109,53.0,40 a 59 años,Masculino,No,Fístula arteriovenosa,60.0,Adecuado,10.3,3.83,1.46,5.0,No
+110,51.0,40 a 59 años,Masculino,No,Fístula arteriovenosa,27.0,Insuficiente,10.1,3.63,1.08,4.0,No
+111,40.0,40 a 59 años,Masculino,No,Fístula arteriovenosa,14.0,Adecuado,9.8,3.69,1.28,8.0,No
+112,59.0,40 a 59 años,Masculino,Sí,Fístula arteriovenosa,60.0,Insuficiente,11.0,3.99,1.19,,No
+113,56.0,40 a 59 años,Femenino,No,Fístula arteriovenosa,167.0,Adecuado,11.8,3.47,,13.0,Sí
+114,48.0,40 a 59 años,Masculino,No,Catéter venoso central,13.0,Adecuado,10.4,4.95,1.01,10.0,Sí
+115,55.0,40 a 59 años,Femenino,No,Fístula arteriovenosa,13.0,Adecuado,11.8,3.13,1.73,2.0,No
+116,47.0,40 a 59 años,Masculino,No,Fístula arteriovenosa,32.0,Insuficiente,11.3,4.33,1.0,9.0,No
+117,86.0,≥ 60 años,Masculino,No,Catéter venoso central,83.0,Insuficiente,8.4,3.6,1.27,9.0,No
+118,73.0,≥ 60 años,Femenino,No,Fístula arteriovenosa,49.0,Adecuado,9.7,4.26,1.15,0.0,No
+119,71.0,≥ 60 años,Masculino,No,Fístula arteriovenosa,104.0,Insuficiente,10.6,3.31,,11.0,Sí
+120,38.0,18 a 39 años,Femenino,Sí,Catéter venoso central,67.0,Adecuado,8.7,,1.47,6.0,No
+121,59.0,40 a 59 años,Masculino,No,Fístula arteriovenosa,49.0,Insuficiente,9.2,3.72,1.44,7.0,No
+122,73.0,≥ 60 años,Masculino,No,Fístula arteriovenosa,38.0,Adecuado,8.7,3.5,1.7,10.0,Sí
+123,53.0,40 a 59 años,Masculino,Sí,Fístula arteriovenosa,49.0,Insuficiente,10.2,4.21,1.57,10.0,Sí
+124,71.0,≥ 60 años,Masculino,Sí,Fístula arteriovenosa,19.0,Adecuado,10.2,3.36,1.23,17.0,Sí
+125,59.0,40 a 59 años,Femenino,Sí,Catéter venoso central,72.0,Insuficiente,10.4,3.54,1.05,13.0,Sí
+126,59.0,40 a 59 años,Femenino,Sí,Fístula arteriovenosa,32.0,Insuficiente,9.4,3.85,1.13,9.0,No
+127,87.0,≥ 60 años,Femenino,No,Fístula arteriovenosa,45.0,,9.7,3.2,1.13,6.0,No
+128,64.0,≥ 60 años,Masculino,No,Fístula arteriovenosa,22.0,Adecuado,8.5,4.09,1.26,0.0,No
+129,64.0,≥ 60 años,Femenino,Sí,Fístula arteriovenosa,26.0,Adecuado,9.8,4.34,1.56,6.0,No
+130,82.0,≥ 60 años,Femenino,Sí,Catéter venoso central,45.0,Adecuado,12.0,3.2,1.23,8.0,No
+131,87.0,≥ 60 años,Masculino,Sí,Catéter venoso central,131.0,Adecuado,9.8,3.64,1.39,,Sí
+132,49.0,40 a 59 años,Femenino,Sí,Fístula arteriovenosa,21.0,Adecuado,9.7,3.68,1.4,7.0,No
+133,87.0,≥ 60 años,Masculino,Sí,Catéter venoso central,20.0,Adecuado,13.3,4.09,1.08,1.0,No
+134,64.0,≥ 60 años,Femenino,No,Fístula arteriovenosa,67.0,Adecuado,9.8,4.02,1.59,8.0,No
+135,41.0,40 a 59 años,Masculino,Sí,Fístula arteriovenosa,39.0,Adecuado,9.2,,1.0,9.0,No
+136,73.0,≥ 60 años,Masculino,No,Fístula arteriovenosa,20.0,Insuficiente,8.9,3.65,1.3,11.0,Sí
+137,47.0,40 a 59 años,Masculino,No,Fístula arteriovenosa,78.0,Adecuado,11.3,4.07,1.28,7.0,No
+138,46.0,40 a 59 años,Femenino,Sí,Catéter venoso central,60.0,Adecuado,11.7,3.92,1.46,5.0,No
+139,64.0,≥ 60 años,Masculino,Sí,Catéter venoso central,7.0,Adecuado,7.2,4.34,0.94,5.0,No
+140,52.0,40 a 59 años,Masculino,No,Fístula arteriovenosa,21.0,Insuficiente,10.6,3.65,0.84,6.0,No
+141,87.0,≥ 60 años,Masculino,Sí,Fístula arteriovenosa,23.0,Adecuado,11.3,3.68,1.66,6.0,No
+142,43.0,40 a 59 años,Masculino,No,Fístula arteriovenosa,25.0,Adecuado,10.7,2.71,1.1,8.0,No
+143,52.0,40 a 59 años,Masculino,No,Catéter venoso central,2.0,Adecuado,11.4,,1.66,12.0,Sí
+144,57.0,40 a 59 años,Femenino,Sí,Fístula arteriovenosa,64.0,Adecuado,8.4,,0.98,9.0,No
+145,71.0,≥ 60 años,Masculino,No,Fístula arteriovenosa,72.0,Adecuado,9.9,3.92,1.36,5.0,No
+146,76.0,≥ 60 años,Masculino,No,Catéter venoso central,36.0,Adecuado,11.1,4.11,1.47,0.0,No
+147,38.0,18 a 39 años,Femenino,Sí,Fístula arteriovenosa,49.0,Adecuado,10.1,3.73,1.22,11.0,Sí
+148,46.0,40 a 59 años,Masculino,No,Fístula arteriovenosa,40.0,Adecuado,9.8,3.28,1.38,3.0,No
+149,73.0,≥ 60 años,Femenino,No,Fístula arteriovenosa,89.0,Insuficiente,8.7,4.1,1.27,8.0,No
+150,57.0,40 a 59 años,Masculino,Sí,Fístula arteriovenosa,39.0,Insuficiente,9.1,3.96,1.06,6.0,No
+151,59.0,40 a 59 años,Femenino,No,Catéter venoso central,36.0,Insuficiente,9.7,3.04,1.43,11.0,Sí
+152,63.0,≥ 60 años,Masculino,Sí,Catéter venoso central,12.0,Adecuado,8.1,3.7,1.18,9.0,No
+153,71.0,≥ 60 años,Femenino,No,Catéter venoso central,38.0,Adecuado,9.1,3.55,0.86,9.0,No
+154,48.0,40 a 59 años,Femenino,Sí,Fístula arteriovenosa,89.0,Adecuado,11.8,3.68,1.69,4.0,No
+155,57.0,40 a 59 años,Masculino,Sí,Fístula arteriovenosa,16.0,Adecuado,9.9,4.02,1.33,10.0,Sí
+156,59.0,40 a 59 años,Masculino,No,Fístula arteriovenosa,72.0,Adecuado,9.2,,1.52,3.0,No
+157,33.0,18 a 39 años,Femenino,No,Catéter venoso central,26.0,Adecuado,7.9,3.42,1.18,9.0,No
+158,65.0,≥ 60 años,Masculino,Sí,Fístula arteriovenosa,60.0,Insuficiente,10.8,3.71,1.25,12.0,Sí
+159,55.0,40 a 59 años,Femenino,Sí,Fístula arteriovenosa,37.0,Insuficiente,9.2,4.32,1.43,5.0,No
+160,81.0,≥ 60 años,Masculino,No,Catéter venoso central,60.0,Adecuado,8.7,3.33,1.54,17.0,Sí
+161,40.0,40 a 59 años,Femenino,No,Catéter venoso central,12.0,Adecuado,11.2,3.31,1.56,7.0,No
+162,87.0,≥ 60 años,Femenino,No,Fístula arteriovenosa,72.0,Adecuado,10.1,4.4,0.97,12.0,Sí
+163,46.0,40 a 59 años,Masculino,No,Catéter venoso central,36.0,Adecuado,10.2,3.54,1.37,15.0,Sí
+164,23.0,18 a 39 años,Masculino,No,Fístula arteriovenosa,73.0,Adecuado,9.9,4.28,1.62,6.0,No
+165,60.0,≥ 60 años,Masculino,No,Catéter venoso central,34.0,Insuficiente,11.2,4.3,1.49,9.0,No
+166,74.0,≥ 60 años,Femenino,No,Fístula arteriovenosa,32.0,Insuficiente,12.5,3.73,1.1,12.0,Sí
+167,43.0,40 a 59 años,Femenino,No,Catéter venoso central,23.0,Adecuado,11.3,4.95,0.93,9.0,No
+168,43.0,40 a 59 años,Femenino,Sí,Fístula arteriovenosa,25.0,,9.1,4.13,1.21,18.0,Sí
+169,52.0,40 a 59 años,Masculino,No,Catéter venoso central,60.0,Insuficiente,9.5,3.89,1.52,13.0,Sí
+170,58.0,40 a 59 años,Masculino,No,Fístula arteriovenosa,17.0,Adecuado,10.3,3.85,1.54,6.0,No
+171,56.0,40 a 59 años,Masculino,No,Fístula arteriovenosa,95.0,Adecuado,10.2,3.07,1.33,12.0,Sí
+172,66.0,≥ 60 años,Femenino,No,Catéter venoso central,38.0,Adecuado,11.7,4.21,1.37,8.0,No
+173,66.0,≥ 60 años,Masculino,No,Fístula arteriovenosa,23.0,,9.6,3.63,1.69,15.0,Sí
+174,81.0,≥ 60 años,Masculino,Sí,Catéter venoso central,28.0,Adecuado,9.6,3.55,1.44,4.0,No
+175,45.0,40 a 59 años,Masculino,No,Fístula arteriovenosa,93.0,Adecuado,10.5,3.77,1.26,14.0,Sí
+176,24.0,18 a 39 años,Masculino,Sí,Fístula arteriovenosa,42.0,Insuficiente,11.3,3.73,1.17,15.0,Sí
+177,77.0,≥ 60 años,Masculino,Sí,Catéter venoso central,49.0,Adecuado,10.3,4.25,1.4,15.0,Sí
+178,65.0,≥ 60 años,Femenino,No,Fístula arteriovenosa,45.0,Adecuado,9.9,4.17,1.28,8.0,No
+179,58.0,40 a 59 años,Masculino,No,Fístula arteriovenosa,33.0,Insuficiente,10.1,3.6,1.4,1.0,No
+180,57.0,40 a 59 años,Femenino,No,Fístula arteriovenosa,26.0,Adecuado,9.8,3.07,1.46,5.0,No
+181,61.0,≥ 60 años,Femenino,No,Fístula arteriovenosa,27.0,Adecuado,8.7,3.8,1.5,8.0,No
+182,66.0,≥ 60 años,Masculino,Sí,Catéter venoso central,85.0,Adecuado,10.8,2.73,1.39,15.0,Sí
+183,59.0,40 a 59 años,Masculino,No,Fístula arteriovenosa,6.0,Insuficiente,9.8,4.23,1.62,8.0,No
+184,57.0,40 a 59 años,Masculino,No,Catéter venoso central,23.0,Adecuado,9.2,,1.55,7.0,No
+185,57.0,40 a 59 años,Femenino,Sí,Fístula arteriovenosa,43.0,Adecuado,8.5,3.97,1.47,10.0,Sí
+186,71.0,≥ 60 años,Masculino,No,Fístula arteriovenosa,59.0,Adecuado,9.2,3.67,1.65,13.0,Sí
+187,56.0,40 a 59 años,Femenino,Sí,Fístula arteriovenosa,24.0,Adecuado,10.5,3.64,1.52,6.0,No
+188,65.0,≥ 60 años,Femenino,Sí,Fístula arteriovenosa,85.0,Adecuado,10.5,3.88,1.53,9.0,No
+189,52.0,40 a 59 años,Masculino,No,Catéter venoso central,14.0,Adecuado,11.7,3.34,1.35,9.0,No
+190,28.0,18 a 39 años,Masculino,Sí,Catéter venoso central,77.0,Adecuado,8.9,4.11,1.05,12.0,Sí
+191,35.0,18 a 39 años,Femenino,No,Fístula arteriovenosa,60.0,Adecuado,10.1,3.66,1.07,11.0,Sí
+192,77.0,≥ 60 años,Femenino,Sí,Fístula arteriovenosa,35.0,Adecuado,9.7,3.86,1.58,13.0,Sí
+193,43.0,40 a 59 años,Femenino,No,Fístula arteriovenosa,11.0,Insuficiente,10.9,3.92,1.22,2.0,No
+194,36.0,18 a 39 años,Femenino,Sí,Catéter venoso central,72.0,Adecuado,10.8,3.5,1.28,12.0,Sí
+195,49.0,40 a 59 años,Femenino,Sí,Fístula arteriovenosa,40.0,Adecuado,12.2,3.92,1.18,6.0,No
+196,35.0,18 a 39 años,Masculino,No,Fístula arteriovenosa,12.0,Adecuado,10.2,4.52,1.49,3.0,No
+197,87.0,≥ 60 años,Femenino,No,Catéter venoso central,40.0,Insuficiente,11.8,3.64,1.23,10.0,Sí
+198,38.0,18 a 39 años,Masculino,No,Fístula arteriovenosa,21.0,Adecuado,11.9,3.68,1.56,6.0,No
+199,46.0,40 a 59 años,Femenino,No,Catéter venoso central,30.0,Insuficiente,9.9,4.01,,9.0,No
+200,83.0,≥ 60 años,Masculino,No,Catéter venoso central,14.0,Adecuado,9.6,3.57,1.31,11.0,Sí
+201,49.0,40 a 59 años,Masculino,Sí,Fístula arteriovenosa,36.0,Adecuado,9.4,3.99,,7.0,No
+202,62.0,≥ 60 años,Masculino,No,Catéter venoso central,13.0,Insuficiente,13.0,3.73,1.45,8.0,No
+203,38.0,18 a 39 años,Femenino,No,Catéter venoso central,25.0,Adecuado,11.5,3.51,1.26,,No
+204,37.0,18 a 39 años,Femenino,Sí,Fístula arteriovenosa,15.0,Adecuado,11.3,3.85,1.0,,No
+205,57.0,40 a 59 años,Femenino,No,Catéter venoso central,20.0,Adecuado,8.7,3.34,1.26,10.0,Sí
+206,39.0,18 a 39 años,Femenino,Sí,Fístula arteriovenosa,27.0,Insuficiente,11.4,3.7,1.08,7.0,No
+207,60.0,≥ 60 años,Masculino,No,Fístula arteriovenosa,50.0,Adecuado,7.9,3.71,1.26,13.0,Sí
+208,44.0,40 a 59 años,Masculino,No,Fístula arteriovenosa,19.0,Adecuado,9.8,3.22,1.47,10.0,Sí
+209,29.0,18 a 39 años,Masculino,No,Fístula arteriovenosa,72.0,Adecuado,7.6,,1.15,10.0,Sí
+210,57.0,40 a 59 años,Masculino,No,Fístula arteriovenosa,72.0,,11.2,3.92,1.68,9.0,No
+211,54.0,40 a 59 años,Femenino,No,Fístula arteriovenosa,60.0,Adecuado,11.5,2.55,1.66,6.0,No
+212,50.0,40 a 59 años,Masculino,Sí,Fístula arteriovenosa,17.0,Adecuado,11.1,3.1,1.44,13.0,Sí
+213,60.0,≥ 60 años,Masculino,No,Catéter venoso central,36.0,Adecuado,10.7,3.46,,3.0,No
+214,56.0,40 a 59 años,Femenino,No,Catéter venoso central,42.0,Adecuado,7.7,3.8,1.59,10.0,Sí
+215,42.0,40 a 59 años,Masculino,No,Fístula arteriovenosa,35.0,Adecuado,10.6,3.69,1.28,1.0,No
+216,46.0,40 a 59 años,Masculino,No,Catéter venoso central,87.0,Insuficiente,9.6,4.14,1.59,8.0,No
+217,64.0,≥ 60 años,Femenino,Sí,Fístula arteriovenosa,22.0,,11.3,4.08,1.12,8.0,No
+218,49.0,40 a 59 años,Femenino,Sí,Catéter venoso central,39.0,Adecuado,11.3,3.84,1.56,9.0,No
+219,44.0,40 a 59 años,Masculino,No,Catéter venoso central,56.0,,12.3,3.39,1.74,15.0,Sí
+220,53.0,40 a 59 años,Masculino,No,Fístula arteriovenosa,16.0,Adecuado,10.4,2.91,1.69,8.0,No
+221,26.0,18 a 39 años,Masculino,Sí,Fístula arteriovenosa,13.0,Adecuado,9.7,3.48,1.4,9.0,No
+222,58.0,40 a 59 años,Masculino,Sí,Fístula arteriovenosa,23.0,Adecuado,10.6,3.59,1.49,7.0,No
+223,65.0,≥ 60 años,Masculino,No,Catéter venoso central,19.0,Insuficiente,11.8,,1.1,,No
+224,22.0,18 a 39 años,Masculino,No,Fístula arteriovenosa,27.0,Adecuado,10.4,4.01,1.37,9.0,No
+225,40.0,40 a 59 años,Femenino,Sí,Fístula arteriovenosa,33.0,Adecuado,12.9,3.77,1.39,11.0,Sí
+226,39.0,18 a 39 años,Femenino,No,Catéter venoso central,43.0,Adecuado,9.2,4.17,1.24,5.0,No
+227,41.0,40 a 59 años,Femenino,No,Fístula arteriovenosa,50.0,Insuficiente,9.6,3.64,1.17,,No
+228,56.0,40 a 59 años,Masculino,No,Catéter venoso central,13.0,Insuficiente,8.4,3.32,0.92,5.0,No
+229,77.0,≥ 60 años,Masculino,No,Fístula arteriovenosa,156.0,Adecuado,8.9,3.47,1.44,8.0,No
+230,66.0,≥ 60 años,Masculino,Sí,Fístula arteriovenosa,25.0,Adecuado,11.3,3.57,1.22,,No
+231,34.0,18 a 39 años,Femenino,No,Fístula arteriovenosa,14.0,,12.3,2.73,1.57,10.0,Sí
+232,45.0,40 a 59 años,Femenino,No,Fístula arteriovenosa,34.0,Adecuado,8.3,2.7,1.73,2.0,No
+233,46.0,40 a 59 años,Femenino,No,Catéter venoso central,23.0,Adecuado,10.7,3.65,1.29,3.0,No
+234,64.0,≥ 60 años,Femenino,Sí,Catéter venoso central,46.0,Adecuado,10.9,4.08,,9.0,No
+235,41.0,40 a 59 años,Masculino,No,Fístula arteriovenosa,34.0,Adecuado,9.0,3.73,1.37,9.0,No
+236,57.0,40 a 59 años,Femenino,No,Catéter venoso central,8.0,Adecuado,8.1,3.55,1.31,9.0,No
+237,62.0,≥ 60 años,Femenino,No,Fístula arteriovenosa,11.0,Adecuado,7.7,3.59,1.38,,No
+238,48.0,40 a 59 años,Femenino,No,Catéter venoso central,25.0,Insuficiente,11.3,3.09,1.02,11.0,Sí
+239,49.0,40 a 59 años,Masculino,Sí,Fístula arteriovenosa,23.0,Adecuado,10.0,3.65,1.19,5.0,No
+240,53.0,40 a 59 años,Masculino,No,Catéter venoso central,41.0,Insuficiente,9.7,,1.05,3.0,No
+241,74.0,≥ 60 años,Femenino,No,Fístula arteriovenosa,9.0,Adecuado,12.4,2.89,1.15,11.0,Sí
+242,23.0,18 a 39 años,Masculino,Sí,Fístula arteriovenosa,93.0,Adecuado,9.9,4.0,1.15,11.0,Sí
+243,29.0,18 a 39 años,Masculino,No,Fístula arteriovenosa,59.0,,11.7,3.69,0.93,5.0,No
+244,40.0,40 a 59 años,Masculino,No,Fístula arteriovenosa,47.0,,7.6,4.11,,8.0,No
+245,64.0,≥ 60 años,Femenino,Sí,Catéter venoso central,42.0,Adecuado,9.8,3.92,1.45,7.0,No
+246,76.0,≥ 60 años,Masculino,No,Catéter venoso central,71.0,Adecuado,11.1,4.1,1.46,14.0,Sí
+247,40.0,40 a 59 años,Masculino,No,Fístula arteriovenosa,6.0,Adecuado,11.3,3.46,1.13,8.0,No
+248,46.0,40 a 59 años,Femenino,No,Fístula arteriovenosa,16.0,Adecuado,7.7,3.64,0.93,13.0,Sí
+249,43.0,40 a 59 años,Femenino,No,Fístula arteriovenosa,118.0,Insuficiente,9.9,3.7,1.75,,No
+250,47.0,40 a 59 años,Masculino,No,Fístula arteriovenosa,77.0,Adecuado,12.0,3.11,1.67,3.0,No
+251,76.0,≥ 60 años,Femenino,No,Fístula arteriovenosa,89.0,Insuficiente,10.7,3.97,1.63,16.0,Sí
+252,51.0,40 a 59 años,Masculino,Sí,Catéter venoso central,45.0,Adecuado,11.7,3.79,,10.0,Sí
+253,41.0,40 a 59 años,Masculino,Sí,Fístula arteriovenosa,17.0,Adecuado,10.5,3.59,1.03,11.0,Sí
+254,77.0,≥ 60 años,Femenino,No,Catéter venoso central,56.0,Adecuado,8.4,3.64,1.32,16.0,Sí
+255,57.0,40 a 59 años,Masculino,No,Catéter venoso central,4.0,Adecuado,12.6,4.52,1.57,13.0,Sí
+256,65.0,≥ 60 años,Femenino,No,Catéter venoso central,59.0,Adecuado,9.7,3.67,1.15,,Sí
+257,61.0,≥ 60 años,Masculino,Sí,Fístula arteriovenosa,51.0,Insuficiente,11.7,4.09,,2.0,No
+258,55.0,40 a 59 años,Masculino,No,Fístula arteriovenosa,38.0,Adecuado,10.5,3.85,1.31,9.0,No
+259,55.0,40 a 59 años,Femenino,No,Catéter venoso central,74.0,Adecuado,11.1,4.44,1.22,6.0,No
+260,57.0,40 a 59 años,Femenino,No,Catéter venoso central,50.0,Insuficiente,11.3,,1.06,8.0,No
+261,46.0,40 a 59 años,Femenino,No,Catéter venoso central,13.0,Insuficiente,10.9,3.6,0.88,13.0,Sí
+262,49.0,40 a 59 años,Masculino,Sí,Catéter venoso central,108.0,Adecuado,10.9,,1.07,10.0,Sí
+263,86.0,≥ 60 años,Masculino,No,Fístula arteriovenosa,88.0,Insuficiente,12.0,3.1,1.44,7.0,No
+264,87.0,≥ 60 años,Masculino,Sí,Fístula arteriovenosa,51.0,Insuficiente,11.7,3.85,1.62,7.0,No
+265,75.0,≥ 60 años,Femenino,Sí,Fístula arteriovenosa,22.0,Adecuado,9.4,3.64,1.59,,Sí
+266,41.0,40 a 59 años,Femenino,Sí,Fístula arteriovenosa,13.0,Adecuado,10.6,3.87,1.52,12.0,Sí
+267,42.0,40 a 59 años,Masculino,No,Catéter venoso central,52.0,Adecuado,11.2,2.99,1.51,13.0,Sí
+268,64.0,≥ 60 años,Masculino,Sí,Catéter venoso central,15.0,Insuficiente,8.9,3.99,1.29,6.0,No
+269,22.0,18 a 39 años,Masculino,No,Fístula arteriovenosa,44.0,Insuficiente,11.3,3.83,1.13,9.0,No
+270,52.0,40 a 59 años,Femenino,No,Fístula arteriovenosa,26.0,Adecuado,10.1,3.35,1.44,9.0,No
+271,71.0,≥ 60 años,Femenino,Sí,Fístula arteriovenosa,194.0,Adecuado,8.0,,1.28,13.0,Sí
+272,33.0,18 a 39 años,Masculino,No,Catéter venoso central,52.0,Insuficiente,9.1,3.67,1.66,,Sí
+273,46.0,40 a 59 años,Masculino,No,Catéter venoso central,49.0,Insuficiente,9.9,3.96,,12.0,Sí
+274,55.0,40 a 59 años,Masculino,No,Fístula arteriovenosa,66.0,Adecuado,7.9,4.27,,12.0,Sí
+275,43.0,40 a 59 años,Masculino,No,Fístula arteriovenosa,25.0,Insuficiente,10.5,3.3,1.45,9.0,No
+276,43.0,40 a 59 años,Masculino,No,Fístula arteriovenosa,52.0,Adecuado,10.5,4.1,1.13,11.0,Sí
+277,48.0,40 a 59 años,Femenino,No,Fístula arteriovenosa,127.0,Adecuado,10.6,3.75,1.52,15.0,Sí
+278,30.0,18 a 39 años,Femenino,Sí,Fístula arteriovenosa,77.0,Adecuado,9.8,4.14,1.26,7.0,No
+279,64.0,≥ 60 años,Femenino,No,Catéter venoso central,13.0,Adecuado,12.0,2.46,1.52,5.0,No
+280,73.0,≥ 60 años,Masculino,No,Catéter venoso central,9.0,Adecuado,10.4,3.72,0.94,7.0,No
+281,87.0,≥ 60 años,Femenino,No,Fístula arteriovenosa,86.0,Adecuado,8.8,4.42,1.38,9.0,No
+282,52.0,40 a 59 años,Masculino,No,Catéter venoso central,49.0,Adecuado,9.2,4.0,1.61,8.0,No
+283,66.0,≥ 60 años,Femenino,No,Fístula arteriovenosa,34.0,,8.5,4.27,1.45,6.0,No
+284,60.0,≥ 60 años,Masculino,No,Catéter venoso central,26.0,Adecuado,9.2,4.44,1.43,6.0,No
+285,77.0,≥ 60 años,Femenino,No,Catéter venoso central,31.0,,10.4,3.84,1.43,11.0,Sí
+286,51.0,40 a 59 años,Masculino,No,Catéter venoso central,18.0,Adecuado,9.7,3.15,1.32,13.0,Sí
+287,39.0,18 a 39 años,Masculino,No,Fístula arteriovenosa,28.0,Adecuado,11.0,3.86,1.15,3.0,No
+288,75.0,≥ 60 años,Masculino,Sí,Fístula arteriovenosa,67.0,Adecuado,9.8,3.41,1.59,8.0,No
+289,46.0,40 a 59 años,Femenino,No,Fístula arteriovenosa,13.0,Adecuado,9.8,4.33,0.94,2.0,No
+290,52.0,40 a 59 años,Masculino,No,Catéter venoso central,0.0,Insuficiente,11.3,2.41,1.23,,No
+291,64.0,≥ 60 años,Masculino,No,Fístula arteriovenosa,78.0,Adecuado,8.7,3.1,1.07,10.0,Sí
+292,27.0,18 a 39 años,Femenino,Sí,Fístula arteriovenosa,77.0,Insuficiente,8.5,3.75,1.24,9.0,No
+293,64.0,≥ 60 años,Masculino,Sí,Fístula arteriovenosa,46.0,Adecuado,11.9,3.08,1.43,7.0,No
+294,52.0,40 a 59 años,Femenino,Sí,Fístula arteriovenosa,12.0,Adecuado,10.5,4.03,1.2,3.0,No
+295,36.0,18 a 39 años,Masculino,No,Catéter venoso central,18.0,Insuficiente,8.5,3.91,1.02,,Sí
+296,65.0,≥ 60 años,Masculino,No,Fístula arteriovenosa,24.0,,9.9,4.52,0.94,1.0,No
+297,69.0,≥ 60 años,Masculino,No,Fístula arteriovenosa,59.0,,7.0,4.08,1.2,9.0,No
+298,62.0,≥ 60 años,Femenino,No,Catéter venoso central,13.0,Adecuado,11.5,3.63,1.65,8.0,No
+299,73.0,≥ 60 años,Femenino,No,Fístula arteriovenosa,58.0,Insuficiente,10.2,3.09,1.48,6.0,No
+300,40.0,40 a 59 años,Femenino,No,Catéter venoso central,34.0,Adecuado,10.0,3.21,1.2,9.0,No

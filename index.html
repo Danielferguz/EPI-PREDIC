@@ -7,7 +7,7 @@
 <meta name="description" content="EPI-PREDIC (EPI-LAB): desarrollo y validación de modelos de predicción clínica en el navegador. Cálculo del tamaño de muestra (Riley et al.), regresión logística y de Cox con splines y penalización, validación interna por bootstrap, calibración, curva de decisión y lista TRIPOD.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Source+Sans+3:wght@400;600&display=swap">
-<link rel="stylesheet" href="css/style.css?v=2026.10.25-8">
+<link rel="stylesheet" href="css/style.css?v=2026.10.25-9">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js" defer></script>
 </head>
 <body>
@@ -143,8 +143,9 @@
     <div class="howto"><div><b>Qué se hace</b>Se aplica el modelo ya ajustado (sin reajustarlo) a pacientes distintos: otro centro, otro periodo u otra población.</div><div><b>Para qué</b>La validación interna solo corrige el sobreajuste; la externa muestra si el modelo se transporta: discriminación, calibración y utilidad en el nuevo entorno.</div><div><b>Cómo interpretar</b>Pendiente de calibración &lt; 1 = predicciones demasiado extremas; CITL ≠ 0 u O/E ≠ 1 = riesgo medio mal estimado. Si no calibra, recalibre antes de usarlo.</div></div>
     <div class="row gap wrap seg"><button class="ghost active" data-vm="data">Aplicar el modelo ajustado aquí</button><button class="ghost" data-vm="eq">Validar un modelo publicado (ecuación)</button></div>
     <div id="val-data">
-      <div class="drop slim" id="vdrop"><input type="file" id="vfile" accept=".csv,.txt,.tsv,.xlsx,.xls"><label for="vfile"><b>Cargar la base de validación (CSV/Excel)</b> o <a href="#" id="vex">usar la validación simulada de ejemplo</a></label></div>
+      <div class="drop slim" id="vdrop"><input type="file" id="vfile" accept=".csv,.txt,.tsv,.xlsx,.xls"><label for="vfile"><b>Cargar la base de validación (CSV/Excel)</b> o <a href="#" id="vex">usar la base de práctica de este ejemplo</a></label></div>
       <p class="sub" id="v-info"></p>
+      <div id="v-practice"></div>
     </div>
     <div id="val-eq" hidden>
       <p class="sub">Escriba el intercepto (o riesgo basal) y los coeficientes del modelo publicado; cada coeficiente se aplica a una <b>columna numérica</b> de su base de validación (para variables categóricas use columnas 0/1).</p>
@@ -188,7 +189,7 @@
 <section id="tab-ruta" class="tab"><div id="roadmap"></div></section>
 <section id="tab-ayuda" class="tab"><div class="card prose" id="help"></div></section>
 </main>
-<footer class="foot">EPI-PREDIC · un módulo de EPI-LAB · © Daniel Fernández-Guzmán · CC BY-NC-ND 4.0 · Los cálculos se realizan en su navegador; ningún dato se envía a servidores. · v2026.10.25-8</footer>
-<script type="module" src="js/app.js?v=2026.10.25-8"></script>
+<footer class="foot">EPI-PREDIC · un módulo de EPI-LAB · © Daniel Fernández-Guzmán · CC BY-NC-ND 4.0 · Los cálculos se realizan en su navegador; ningún dato se envía a servidores. · v2026.10.25-9</footer>
+<script type="module" src="js/app.js?v=2026.10.25-9"></script>
 </body>
 </html>

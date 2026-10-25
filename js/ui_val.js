@@ -1,14 +1,15 @@
 // Pestañas 5 y 6: validación externa (modelo ajustado o ecuación publicada), recalibración y utilidad clínica (curva de decisión).
-import { $, $$, esc, f2, fp, pct, ci, table, howto, card, state, errBox } from './state.js?v=2026.10.25-8';
-import { readFile } from './io.js?v=2026.10.25-8';
-import { inferMeta, typedData, NA_DEFAULT } from './data.js?v=2026.10.25-8';
-import { evaluate, recalibrate, calibGroups, calibSurvival, lowess, dcaBinary, dcaSurvival, evalEquation, completeFor, tick, perfBinary, perfSurvival, perfContinuous, eventVec, cindex, materialize, H0at } from './predmodel.js?v=2026.10.25-8';
-import { valBinary } from './samplesize.js?v=2026.10.25-8';
-import { calibrationPlot, scatterCalib, rocPlot, rocPoints, dcaPlot } from './pplots.js?v=2026.10.25-8';
-import { figWrap, bindFigs } from './figs.js?v=2026.10.25-8';
-import { qnorm } from './dist.js?v=2026.10.25-8';
-import { STRATEGIES, applyUpdate, extensionCandidates, cvCompare, recommend } from './updating.js?v=2026.10.25-8';
-import { rng } from './dist.js?v=2026.10.25-8';
+import { $, $$, esc, f2, fp, pct, ci, table, howto, card, state, errBox } from './state.js?v=2026.10.25-9';
+import { readFile } from './io.js?v=2026.10.25-9';
+import { inferMeta, typedData, NA_DEFAULT } from './data.js?v=2026.10.25-9';
+import { evaluate, recalibrate, calibGroups, calibSurvival, lowess, dcaBinary, dcaSurvival, evalEquation, completeFor, tick, perfBinary, perfSurvival, perfContinuous, eventVec, cindex, materialize, H0at } from './predmodel.js?v=2026.10.25-9';
+import { valBinary } from './samplesize.js?v=2026.10.25-9';
+import { calibrationPlot, scatterCalib, rocPlot, rocPoints, dcaPlot } from './pplots.js?v=2026.10.25-9';
+import { figWrap, bindFigs } from './figs.js?v=2026.10.25-9';
+import { qnorm } from './dist.js?v=2026.10.25-9';
+import { practiceHTML, practiceHint, practiceFor } from './practice.js?v=2026.10.25-9';
+import { STRATEGIES, applyUpdate, extensionCandidates, cvCompare, recommend } from './updating.js?v=2026.10.25-9';
+import { rng } from './dist.js?v=2026.10.25-9';
 
 const z = qnorm(0.975);
 const naCodes = () => [...NA_DEFAULT, ...$('#na-codes').value.split(',').map(s => s.trim()).filter(Boolean)];
@@ -27,7 +28,7 @@ function valDataset() {
   for (const [k, m] of Object.entries(state.meta)) { if (m.type === 'skip') continue; if (!(k in v.raw[0])) continue; active[k] = m; }
   const ds0 = typedData(v.raw, active, naCodes());
   const miss = [...new Set([...state.spec.vars.map(x => x.name), ...(state.spec.type === 'survival' ? [state.spec.time, state.spec.status] : [state.spec.y])])].filter(k => !(k in v.raw[0]));
-  if (miss.length) throw new Error(`La base de validación no contiene: ${miss.join(', ')}.`);
+  if (miss.length) throw new Error(`La base de validación no contiene: ${miss.join(', ')}.${practiceHint(state.fname)}`);
   return materialize(state.spec, ds0, state.meta);
 }
 const bootC = (lp, time, status, B = 150, seed = 3) => { const R = rng(seed), n = lp.length, cs = []; for (let b = 0; b < B; b++) { const ix = Array.from({ length: n }, () => R.int(n)), r = cindex(Float64Array.from(ix, i => lp[i]), Float64Array.from(ix, i => time[i]), Float64Array.from(ix, i => status[i])).c; if (isFinite(r)) cs.push(r); } cs.sort((a, b) => a - b); return [cs[Math.floor(0.025 * cs.length)], cs[Math.ceil(0.975 * cs.length) - 1]]; };
@@ -148,15 +149,18 @@ function runEqMode() {
   $('#v-msg').textContent = `${used.length} de ${state.val.raw.length} pacientes con datos completos.`;
 }
 
+export const renderPractice = () => { const el = $('#v-practice'); if (el) el.innerHTML = practiceHTML(state.fname); };
 export function initValidation() {
   $('#vfile').addEventListener('change', e => e.target.files[0] && loadVal(e.target.files[0]).catch(err => ($('#v-info').innerHTML = errBox(err))));
   $('#vfile2').addEventListener('change', e => e.target.files[0] && loadVal(e.target.files[0]).then(() => drawEq()).catch(err => ($('#v-info').innerHTML = errBox(err))));
-  $('#vex').addEventListener('click', async e => { e.preventDefault(); try { const t = await (await fetch('examples/erc_prediccion_validacion.csv')).text(); await loadVal(new File([t], 'erc_prediccion_validacion.csv')); } catch (err) { $('#v-info').innerHTML = errBox(err); } });
+  const loadPractice = async file => { try { await loadVal(new File([await (await fetch('examples/' + file)).text()], file)); } catch (err) { $('#v-info').innerHTML = errBox(err); } };
+  $('#vex').addEventListener('click', e => { e.preventDefault(); const c = practiceFor(state.fname); if (c) loadPractice(c.file); else $('#v-info').innerHTML = errBox('El ejemplo de desarrollo cargado no tiene base de práctica emparejada: elija una de la lista de abajo (tras cargar su ejemplo de desarrollo en el paso 2) o cargue su propia base.'); });
+  $('#v-practice').addEventListener('click', e => { const b = e.target.closest('[data-practice]'); if (b) loadPractice(b.dataset.practice); });
   $$('[data-vm]').forEach(b => b.addEventListener('click', () => { state.vmode = b.dataset.vm; $$('[data-vm]').forEach(x => x.classList.toggle('active', x === b)); $('#val-data').hidden = b.dataset.vm !== 'data'; $('#val-eq').hidden = b.dataset.vm !== 'eq'; if (b.dataset.vm === 'eq') { if (state.val) fillEqSelects(); else drawEq(); } }));
   $('#eq-add').addEventListener('click', () => { state.eqTerms.push({ name: '', coef: '' }); drawEq(); });
   $('#eq-type').addEventListener('change', () => { const t = $('#eq-type').value; $$('.eqb').forEach(e => (e.hidden = t !== 'binary')); $$('.eqs').forEach(e => (e.hidden = t !== 'survival')); if (state.val) fillEqSelects(); }); $$('.eqs').forEach(e => (e.hidden = true));
   $('#v-run').addEventListener('click', async () => { $('#v-msg').textContent = 'Evaluando…'; await tick(); try { if (state.vmode === 'data') await runDataMode(); else runEqMode(); } catch (e) { $('#v-msg').textContent = ''; $('#val-out').innerHTML = card('Error', errBox(e)); } });
-  $('#u-run').addEventListener('click', runDCA); drawEq();
+  $('#u-run').addEventListener('click', runDCA); drawEq(); renderPractice();
 }
 
 // ---------------------------------------------------------------- utilidad clínica

@@ -1,10 +1,10 @@
 // Desarrollo y evaluación de modelos de predicción: diseño con splines cúbicos restringidos, ajuste (logística, Cox, lineal; sin penalizar,
 // ridge o lasso), medidas de discriminación y calibración, validación interna por bootstrap con corrección del optimismo (Harrell),
 // contracción uniforme, recalibración, calibración por grupos y análisis de curva de decisión.
-import { fitGLM, fitCox, fitOLS, coxLogLik, km } from './models.js?v=2026.10.25-8';
-import { enet, cvEnet, standardize } from './glmnet.js?v=2026.10.25-8';
-import { rng, qnorm, pnorm } from './dist.js?v=2026.10.25-8';
-import { isMiss, levelsOf } from './data.js?v=2026.10.25-8';
+import { fitGLM, fitCox, fitOLS, coxLogLik, km } from './models.js?v=2026.10.25-9';
+import { enet, cvEnet, standardize } from './glmnet.js?v=2026.10.25-9';
+import { rng, qnorm, pnorm } from './dist.js?v=2026.10.25-9';
+import { isMiss, levelsOf } from './data.js?v=2026.10.25-9';
 
 const expit = e => 1 / (1 + Math.exp(-e)), logit = p => Math.log(p / (1 - p)), sum = a => { let s = 0; for (const v of a) s += v; return s; };
 const clampP = p => Math.min(Math.max(p, 1e-9), 1 - 1e-9);

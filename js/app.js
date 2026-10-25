@@ -1,16 +1,16 @@
 // EPI-PREDIC · navegación, carga de datos, especificación del modelo y ejecución.
-import { $, $$, esc, f2, pct, opt, errBox, state, natural, download } from './state.js?v=2026.10.25-8';
-import { readFile } from './io.js?v=2026.10.25-8';
-import { inferMeta, typedData, NA_DEFAULT, missCount, levelsOf } from './data.js?v=2026.10.25-8';
-import { mean, sd } from './tests.js?v=2026.10.25-8';
-import { completeFor, fitPred, evaluate, bootstrapValidate, columnNames, designInfo, tick, materialize } from './predmodel.js?v=2026.10.25-8';
-import { initSampleSize } from './ui_ss.js?v=2026.10.25-8';
-import { renderDev, bindFigure } from './ui_dev.js?v=2026.10.25-8';
-import { initValidation, renderUtilityInit } from './ui_val.js?v=2026.10.25-8';
-import { renderReport } from './ui_rep.js?v=2026.10.25-8';
-import { bindFigs } from './figs.js?v=2026.10.25-8';
-import { initRoadmap, initStageBar } from './roadmap.js?v=2026.10.25-8';
-import { HELP_HTML } from './help.js?v=2026.10.25-8';
+import { $, $$, esc, f2, pct, opt, errBox, state, natural, download } from './state.js?v=2026.10.25-9';
+import { readFile } from './io.js?v=2026.10.25-9';
+import { inferMeta, typedData, NA_DEFAULT, missCount, levelsOf } from './data.js?v=2026.10.25-9';
+import { mean, sd } from './tests.js?v=2026.10.25-9';
+import { completeFor, fitPred, evaluate, bootstrapValidate, columnNames, designInfo, tick, materialize } from './predmodel.js?v=2026.10.25-9';
+import { initSampleSize } from './ui_ss.js?v=2026.10.25-9';
+import { renderDev, bindFigure } from './ui_dev.js?v=2026.10.25-9';
+import { initValidation, renderUtilityInit, renderPractice } from './ui_val.js?v=2026.10.25-9';
+import { renderReport } from './ui_rep.js?v=2026.10.25-9';
+import { bindFigs } from './figs.js?v=2026.10.25-9';
+import { initRoadmap, initStageBar } from './roadmap.js?v=2026.10.25-9';
+import { HELP_HTML } from './help.js?v=2026.10.25-9';
 
 // ---------------- ejemplos (datos simulados de nefrología) ----------------
 const EXAMPLES = [
@@ -33,7 +33,7 @@ const EXAMPLES = [
 // ---------------- navegación ----------------
 function showTab(t) {
   $$('.tabs button').forEach(b => b.classList.toggle('active', b.dataset.tab === t)); $$('.tab').forEach(s => s.classList.toggle('active', s.id === 'tab-' + t));
-  if (t === 'modelo') renderModelForm(); if (t === 'utilidad') renderUtilityInit(); if (t === 'reporte') renderReport(); if (t === 'validacion') $('#v-info').textContent = state.val ? `Base de validación: ${state.val.name} (${state.val.raw.length} filas)` : $('#v-info').textContent;
+  if (t === 'modelo') renderModelForm(); if (t === 'utilidad') renderUtilityInit(); if (t === 'reporte') renderReport(); if (t === 'validacion') renderPractice(); if (t === 'validacion') $('#v-info').textContent = state.val ? `Base de validación: ${state.val.name} (${state.val.raw.length} filas)` : $('#v-info').textContent;
   stageMark?.(t); window.scrollTo({ top: 0 });
 }
 let stageMark = null;

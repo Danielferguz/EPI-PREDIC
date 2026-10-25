@@ -1,11 +1,11 @@
 // Pestaña 4: modelo desarrollado, rendimiento aparente y corregido por bootstrap, calibración y ecuación.
-import { $, $$, esc, f2, fp, pct, ci, table, howto, card, state, errBox, download } from './state.js?v=2026.10.25-8';
-import { evaluate, shrinkModel, calibGroups, calibSurvival, lowess, riskFromLP, H0at } from './predmodel.js?v=2026.10.25-8';
-import { waldTerm, ciOf } from './models.js?v=2026.10.25-8';
-import { calibrationPlot, scatterCalib, rocPlot, rocPoints, cvPlot } from './pplots.js?v=2026.10.25-8';
-import { figWrap, bindFigs } from './figs.js?v=2026.10.25-8';
-import { qnorm } from './dist.js?v=2026.10.25-8';
-import { moreCards, bindMore } from './ui_more.js?v=2026.10.25-8';
+import { $, $$, esc, f2, fp, pct, ci, table, howto, card, state, errBox, download } from './state.js?v=2026.10.25-9';
+import { evaluate, shrinkModel, calibGroups, calibSurvival, lowess, riskFromLP, H0at } from './predmodel.js?v=2026.10.25-9';
+import { waldTerm, ciOf } from './models.js?v=2026.10.25-9';
+import { calibrationPlot, scatterCalib, rocPlot, rocPoints, cvPlot } from './pplots.js?v=2026.10.25-9';
+import { figWrap, bindFigs } from './figs.js?v=2026.10.25-9';
+import { qnorm } from './dist.js?v=2026.10.25-9';
+import { moreCards, bindMore } from './ui_more.js?v=2026.10.25-9';
 
 export function bindFigure() { document.addEventListener('click', () => 0); }
 const LAB = {

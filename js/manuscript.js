@@ -1,8 +1,8 @@
 // Borrador de manuscrito (ES/EN, estilo revista) generado con los resultados del análisis: título, objetivo, métodos, resultados con tablas y figuras.
-import { state, esc, f2 } from './state.js?v=2026.10.25-8';
-import { t1Table, uaTable } from './ui_more.js?v=2026.10.25-8';
-import { coefTable } from './ui_dev.js?v=2026.10.25-8';
-import { svgToPngDataURL } from './figs.js?v=2026.10.25-8';
+import { state, esc, f2 } from './state.js?v=2026.10.25-9';
+import { t1Table, uaTable } from './ui_more.js?v=2026.10.25-9';
+import { coefTable } from './ui_dev.js?v=2026.10.25-9';
+import { svgToPngDataURL } from './figs.js?v=2026.10.25-9';
 
 const FORM_EN = { lin: 'linear', log: 'natural-log transformed', rcs3: 'restricted cubic spline (3 knots)', rcs4: 'restricted cubic spline (4 knots)', rcs5: 'restricted cubic spline (5 knots)' };
 const FORM_ES = { lin: 'lineal', log: 'logaritmo natural', rcs3: 'spline cúbico restringido (3 nudos)', rcs4: 'spline cúbico restringido (4 nudos)', rcs5: 'spline cúbico restringido (5 nudos)' };

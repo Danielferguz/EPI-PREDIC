@@ -1,0 +1,501 @@
+ID,Acceso vascular,Edad,Sexo,Diabetes,Índice de Charlson,Albúmina (g/dL),Hemoglobina (g/dL),Tiempo de seguimiento (meses),Fallecido
+1,Catéter venoso central,60.0,Masculino,Sí,12,3.57,9.7,11.7,Sí
+2,Fístula arteriovenosa,58.0,Femenino,No,2,3.53,9.1,29.7,No
+3,Catéter venoso central,60.0,Femenino,Sí,5,3.37,12.1,8.6,Sí
+4,Fístula arteriovenosa,78.0,Femenino,Sí,5,3.71,10.6,13.9,No
+5,Catéter venoso central,68.0,Masculino,Sí,4,3.62,9.5,30.1,Sí
+6,Catéter venoso central,65.0,Femenino,Sí,2,3.05,7.8,8.9,No
+7,Fístula arteriovenosa,61.0,Femenino,No,3,2.92,7.6,45.7,No
+8,Catéter venoso central,53.0,Masculino,No,5,4.1,7.4,5.8,No
+9,Fístula arteriovenosa,87.0,Femenino,Sí,2,4.17,13.2,6.0,Sí
+10,Fístula arteriovenosa,60.0,Masculino,No,6,,7.3,15.8,No
+11,Fístula arteriovenosa,66.0,Femenino,No,2,3.04,11.8,39.6,No
+12,Catéter venoso central,87.0,Femenino,Sí,1,3.54,9.2,10.4,No
+13,Fístula arteriovenosa,57.0,Masculino,No,5,3.69,9.7,7.5,No
+14,Fístula arteriovenosa,73.0,Femenino,Sí,3,3.99,9.3,8.7,Sí
+15,Catéter venoso central,55.0,Femenino,No,5,3.71,12.5,42.9,No
+16,Fístula arteriovenosa,48.0,Femenino,No,6,3.97,9.8,25.1,No
+17,Fístula arteriovenosa,59.0,Masculino,No,1,,8.9,15.1,Sí
+18,Fístula arteriovenosa,83.0,Masculino,No,4,3.3,9.1,42.6,No
+19,Fístula arteriovenosa,82.0,Femenino,Sí,4,2.54,10.6,11.5,Sí
+20,Catéter venoso central,57.0,Masculino,No,4,3.98,8.5,54.3,No
+21,Catéter venoso central,62.0,Femenino,Sí,7,4.12,11.0,24.1,Sí
+22,Catéter venoso central,51.0,Masculino,No,5,4.5,7.6,12.9,No
+23,Fístula arteriovenosa,63.0,Femenino,Sí,6,3.8,8.8,50.8,No
+24,Fístula arteriovenosa,65.0,Masculino,No,5,2.93,11.8,12.0,No
+25,Catéter venoso central,75.0,Masculino,No,3,3.85,10.0,20.7,No
+26,Fístula arteriovenosa,57.0,Masculino,No,1,3.97,9.8,17.8,No
+27,Catéter venoso central,51.0,Masculino,Sí,1,3.78,9.5,29.1,No
+28,Fístula arteriovenosa,59.0,Masculino,Sí,4,3.41,10.8,41.1,Sí
+29,Catéter venoso central,56.0,Femenino,No,9,3.33,10.6,4.8,Sí
+30,Fístula arteriovenosa,66.0,Masculino,No,4,2.77,10.6,8.6,Sí
+31,Catéter venoso central,56.0,Femenino,Sí,3,3.3,9.0,20.2,Sí
+32,Fístula arteriovenosa,57.0,Femenino,No,7,3.26,8.4,56.5,No
+33,Catéter venoso central,84.0,Femenino,Sí,5,3.11,11.3,5.0,No
+34,Catéter venoso central,66.0,Femenino,Sí,7,3.73,8.2,33.1,No
+35,Fístula arteriovenosa,52.0,Femenino,Sí,4,3.75,9.0,10.6,No
+36,Fístula arteriovenosa,70.0,Femenino,Sí,4,2.93,10.6,1.4,Sí
+37,Fístula arteriovenosa,42.0,Femenino,No,4,3.93,9.6,58.8,No
+38,Fístula arteriovenosa,47.0,Masculino,No,2,3.03,9.4,45.5,No
+39,Catéter venoso central,65.0,Femenino,Sí,8,2.99,8.7,24.0,No
+40,Fístula arteriovenosa,47.0,Femenino,No,1,3.21,8.9,11.7,No
+41,Catéter venoso central,46.0,Femenino,No,5,,10.3,53.3,Sí
+42,Catéter venoso central,73.0,Masculino,Sí,4,4.12,10.1,20.1,Sí
+43,Fístula arteriovenosa,60.0,Femenino,No,2,4.21,10.8,31.3,No
+44,Fístula arteriovenosa,57.0,Masculino,Sí,2,4.05,9.1,33.3,No
+45,Catéter venoso central,87.0,Femenino,No,2,3.7,8.2,9.2,Sí
+46,Fístula arteriovenosa,81.0,Femenino,Sí,4,2.68,11.8,42.0,Sí
+47,Catéter venoso central,49.0,Masculino,Sí,2,2.86,11.6,33.1,Sí
+48,Fístula arteriovenosa,48.0,Femenino,No,3,3.03,10.8,16.5,Sí
+49,Fístula arteriovenosa,58.0,Masculino,Sí,2,3.07,10.1,2.4,Sí
+50,Fístula arteriovenosa,70.0,Femenino,Sí,6,2.77,12.9,20.4,No
+51,Fístula arteriovenosa,70.0,Masculino,No,3,4.32,11.5,54.0,No
+52,Fístula arteriovenosa,69.0,Masculino,Sí,4,3.61,12.9,21.9,No
+53,Catéter venoso central,71.0,Femenino,No,3,2.59,8.9,24.3,Sí
+54,Fístula arteriovenosa,57.0,Masculino,Sí,6,3.06,10.2,27.7,Sí
+55,Fístula arteriovenosa,56.0,Masculino,Sí,2,,11.2,21.3,No
+56,Fístula arteriovenosa,69.0,Masculino,No,2,,9.9,56.4,No
+57,Fístula arteriovenosa,60.0,Masculino,Sí,3,3.01,11.1,18.0,No
+58,Fístula arteriovenosa,62.0,Femenino,No,1,3.67,8.5,7.7,No
+59,Fístula arteriovenosa,72.0,Femenino,No,4,2.87,8.7,45.9,No
+60,Catéter venoso central,56.0,Masculino,No,6,3.85,10.2,16.9,No
+61,Fístula arteriovenosa,72.0,Masculino,Sí,6,3.99,10.3,57.8,No
+62,Catéter venoso central,62.0,Masculino,No,7,4.17,10.8,25.5,No
+63,Fístula arteriovenosa,66.0,Masculino,No,5,3.19,8.9,37.6,No
+64,Fístula arteriovenosa,62.0,Femenino,Sí,5,4.0,9.8,6.3,No
+65,Fístula arteriovenosa,53.0,Femenino,No,1,4.26,11.1,39.8,No
+66,Fístula arteriovenosa,41.0,Masculino,No,5,3.2,8.2,25.2,No
+67,Catéter venoso central,58.0,Masculino,Sí,1,3.56,10.0,24.5,Sí
+68,Catéter venoso central,68.0,Femenino,Sí,3,3.54,12.8,32.8,Sí
+69,Fístula arteriovenosa,55.0,Masculino,No,3,2.88,11.4,4.5,No
+70,Catéter venoso central,73.0,Femenino,No,2,3.9,11.4,34.8,No
+71,Catéter venoso central,72.0,Femenino,No,0,4.37,11.0,6.0,No
+72,Fístula arteriovenosa,63.0,Masculino,No,3,,10.3,16.2,No
+73,Fístula arteriovenosa,64.0,Masculino,No,2,3.92,10.8,52.7,No
+74,Catéter venoso central,65.0,Masculino,No,6,3.58,11.0,7.3,Sí
+75,Fístula arteriovenosa,81.0,Masculino,Sí,3,4.17,14.8,21.1,Sí
+76,Catéter venoso central,62.0,Femenino,Sí,5,3.36,11.9,36.0,Sí
+77,Fístula arteriovenosa,56.0,Femenino,No,9,3.63,8.9,17.9,No
+78,Catéter venoso central,92.0,Femenino,No,4,4.08,10.8,20.1,No
+79,Fístula arteriovenosa,63.0,Masculino,Sí,6,4.22,8.6,19.1,No
+80,Catéter venoso central,69.0,Masculino,No,6,3.63,7.4,18.0,Sí
+81,Fístula arteriovenosa,61.0,Masculino,Sí,2,3.4,11.7,23.1,No
+82,Catéter venoso central,63.0,Masculino,No,8,4.53,9.7,53.5,No
+83,Fístula arteriovenosa,58.0,Masculino,No,2,3.02,11.3,7.1,No
+84,Fístula arteriovenosa,50.0,Femenino,Sí,3,2.71,11.2,30.5,No
+85,Fístula arteriovenosa,60.0,Masculino,Sí,5,4.26,8.0,38.7,Sí
+86,Fístula arteriovenosa,66.0,Masculino,No,0,4.54,8.2,38.7,No
+87,Fístula arteriovenosa,82.0,Masculino,No,5,3.15,7.6,20.6,Sí
+88,Catéter venoso central,76.0,Masculino,No,3,3.94,11.0,48.9,No
+89,Fístula arteriovenosa,47.0,Femenino,Sí,6,4.14,10.3,14.3,No
+90,Fístula arteriovenosa,59.0,Femenino,Sí,4,3.45,8.2,45.1,Sí
+91,Fístula arteriovenosa,68.0,Femenino,Sí,7,4.31,10.1,16.1,No
+92,Fístula arteriovenosa,70.0,Masculino,No,5,4.17,11.1,42.0,No
+93,Fístula arteriovenosa,73.0,Masculino,Sí,6,3.39,10.6,42.5,No
+94,Catéter venoso central,69.0,Masculino,No,3,3.28,10.6,25.1,No
+95,Catéter venoso central,65.0,Femenino,No,4,3.89,7.8,4.1,Sí
+96,Fístula arteriovenosa,78.0,Masculino,No,3,4.29,9.9,25.9,No
+97,Fístula arteriovenosa,82.0,Masculino,No,2,4.21,12.1,8.0,No
+98,Catéter venoso central,66.0,Masculino,Sí,3,3.46,7.1,13.3,No
+99,Catéter venoso central,62.0,Femenino,No,5,3.82,8.3,19.3,No
+100,Fístula arteriovenosa,80.0,Femenino,Sí,4,,11.4,32.8,No
+101,Fístula arteriovenosa,58.0,Masculino,No,2,3.56,12.3,36.2,No
+102,Catéter venoso central,70.0,Masculino,No,5,3.44,11.0,15.5,Sí
+103,Fístula arteriovenosa,71.0,Masculino,Sí,4,4.32,10.4,42.4,Sí
+104,Fístula arteriovenosa,62.0,Femenino,Sí,5,3.24,11.7,26.9,No
+105,Fístula arteriovenosa,57.0,Masculino,No,5,,11.0,4.8,No
+106,Fístula arteriovenosa,72.0,Masculino,Sí,9,3.48,10.1,17.2,No
+107,Catéter venoso central,66.0,Femenino,No,5,4.21,9.9,16.7,No
+108,Catéter venoso central,54.0,Femenino,No,3,4.0,11.2,6.0,No
+109,Fístula arteriovenosa,86.0,Femenino,Sí,4,3.35,10.4,0.5,Sí
+110,Catéter venoso central,76.0,Masculino,No,4,3.96,9.0,24.4,Sí
+111,Fístula arteriovenosa,57.0,Masculino,No,8,3.23,7.7,25.8,Sí
+112,Fístula arteriovenosa,54.0,Masculino,No,4,4.17,9.4,30.7,No
+113,Catéter venoso central,74.0,Masculino,Sí,3,,11.4,5.2,Sí
+114,Fístula arteriovenosa,68.0,Masculino,No,2,4.05,12.4,13.5,Sí
+115,Catéter venoso central,67.0,Masculino,No,8,4.03,8.7,11.5,No
+116,Catéter venoso central,73.0,Femenino,No,2,3.85,8.1,15.2,Sí
+117,Fístula arteriovenosa,33.0,Femenino,Sí,3,3.35,11.7,49.3,No
+118,Fístula arteriovenosa,73.0,Femenino,No,5,4.43,8.0,6.1,No
+119,Fístula arteriovenosa,63.0,Masculino,No,6,2.52,10.1,41.0,Sí
+120,Catéter venoso central,66.0,Femenino,Sí,4,3.61,9.1,23.2,No
+121,Fístula arteriovenosa,59.0,Femenino,Sí,3,,12.0,4.1,Sí
+122,Fístula arteriovenosa,60.0,Femenino,Sí,5,3.97,11.0,8.8,No
+123,Catéter venoso central,73.0,Masculino,No,5,3.64,9.1,5.7,No
+124,Fístula arteriovenosa,49.0,Masculino,No,7,3.87,9.1,18.5,Sí
+125,Catéter venoso central,40.0,Femenino,No,1,,8.2,8.7,No
+126,Fístula arteriovenosa,70.0,Femenino,No,4,4.5,9.1,4.6,No
+127,Catéter venoso central,60.0,Femenino,No,2,3.53,9.9,30.0,Sí
+128,Fístula arteriovenosa,66.0,Femenino,Sí,2,3.99,9.0,24.4,No
+129,Fístula arteriovenosa,45.0,Masculino,Sí,5,4.03,10.4,0.2,Sí
+130,Catéter venoso central,61.0,Femenino,Sí,4,3.63,11.1,6.7,Sí
+131,Fístula arteriovenosa,54.0,Masculino,No,6,3.01,9.6,59.2,No
+132,Catéter venoso central,66.0,Femenino,Sí,5,3.97,10.3,10.1,No
+133,Catéter venoso central,49.0,Masculino,Sí,1,3.61,9.6,27.6,No
+134,Catéter venoso central,60.0,Femenino,Sí,5,3.24,12.4,6.1,No
+135,Fístula arteriovenosa,72.0,Masculino,Sí,1,3.97,11.6,39.1,Sí
+136,Fístula arteriovenosa,72.0,Femenino,No,2,3.68,8.2,6.5,Sí
+137,Catéter venoso central,77.0,Masculino,No,5,3.43,9.9,4.2,Sí
+138,Fístula arteriovenosa,90.0,Femenino,No,4,3.56,9.9,30.5,Sí
+139,Fístula arteriovenosa,35.0,Masculino,Sí,5,3.67,10.4,6.4,No
+140,Catéter venoso central,72.0,Femenino,Sí,2,4.23,11.5,29.2,Sí
+141,Catéter venoso central,80.0,Masculino,Sí,6,2.87,9.9,11.8,Sí
+142,Catéter venoso central,56.0,Femenino,Sí,2,3.22,8.3,47.8,No
+143,Catéter venoso central,56.0,Masculino,Sí,6,3.7,8.9,12.0,No
+144,Catéter venoso central,78.0,Masculino,Sí,5,2.78,11.1,2.5,Sí
+145,Fístula arteriovenosa,63.0,Femenino,Sí,2,4.51,13.8,5.1,No
+146,Fístula arteriovenosa,70.0,Masculino,No,5,3.54,10.5,48.9,No
+147,Catéter venoso central,77.0,Femenino,Sí,1,3.7,10.0,25.2,Sí
+148,Fístula arteriovenosa,64.0,Masculino,Sí,4,4.06,11.2,13.5,Sí
+149,Catéter venoso central,59.0,Femenino,No,3,3.52,12.1,56.6,No
+150,Catéter venoso central,74.0,Femenino,No,7,3.86,8.7,41.6,No
+151,Fístula arteriovenosa,45.0,Masculino,No,4,,8.9,42.7,No
+152,Fístula arteriovenosa,48.0,Masculino,No,7,4.21,9.0,7.8,No
+153,Fístula arteriovenosa,77.0,Femenino,No,9,3.78,9.6,28.6,No
+154,Catéter venoso central,72.0,Femenino,No,4,3.88,11.8,33.2,No
+155,Catéter venoso central,74.0,Masculino,Sí,3,3.06,10.1,18.8,Sí
+156,Fístula arteriovenosa,56.0,Femenino,Sí,2,2.86,11.0,9.1,No
+157,Catéter venoso central,68.0,Masculino,No,3,3.22,14.0,4.4,Sí
+158,Catéter venoso central,81.0,Masculino,No,5,3.35,10.6,19.8,Sí
+159,Fístula arteriovenosa,71.0,Masculino,Sí,3,4.05,13.3,13.5,Sí
+160,Fístula arteriovenosa,62.0,Masculino,No,6,3.02,10.5,11.7,No
+161,Catéter venoso central,37.0,Femenino,No,6,3.25,9.0,21.7,No
+162,Fístula arteriovenosa,61.0,Masculino,No,3,3.73,7.8,47.6,No
+163,Fístula arteriovenosa,91.0,Femenino,No,5,3.23,10.4,10.1,Sí
+164,Fístula arteriovenosa,66.0,Masculino,No,3,4.53,10.3,32.6,No
+165,Fístula arteriovenosa,67.0,Femenino,No,4,3.18,9.6,11.7,No
+166,Fístula arteriovenosa,68.0,Masculino,Sí,4,4.43,11.7,8.0,Sí
+167,Fístula arteriovenosa,65.0,Masculino,Sí,2,3.06,10.3,18.0,No
+168,Catéter venoso central,81.0,Masculino,No,6,3.67,11.0,18.6,No
+169,Fístula arteriovenosa,61.0,Masculino,Sí,5,3.97,11.9,59.0,No
+170,Fístula arteriovenosa,79.0,Masculino,Sí,4,2.93,9.1,9.3,No
+171,Catéter venoso central,76.0,Femenino,No,7,3.65,11.4,7.1,No
+172,Fístula arteriovenosa,53.0,Masculino,Sí,3,4.1,10.2,10.8,No
+173,Fístula arteriovenosa,72.0,Masculino,Sí,4,3.47,10.2,10.0,Sí
+174,Fístula arteriovenosa,54.0,Masculino,No,4,4.06,10.7,5.8,No
+175,Fístula arteriovenosa,92.0,Masculino,No,2,4.22,8.9,6.6,No
+176,Fístula arteriovenosa,53.0,Femenino,No,5,3.26,9.4,10.1,Sí
+177,Fístula arteriovenosa,59.0,Femenino,Sí,7,3.2,10.2,41.5,No
+178,Fístula arteriovenosa,81.0,Masculino,No,8,3.08,11.4,14.5,No
+179,Fístula arteriovenosa,81.0,Masculino,No,2,2.96,9.8,23.6,Sí
+180,Fístula arteriovenosa,73.0,Femenino,Sí,1,2.93,9.7,42.5,Sí
+181,Catéter venoso central,74.0,Femenino,Sí,3,3.55,8.2,34.5,No
+182,Catéter venoso central,63.0,Femenino,Sí,8,3.42,11.2,39.2,No
+183,Fístula arteriovenosa,66.0,Masculino,No,8,3.45,9.1,8.3,No
+184,Catéter venoso central,58.0,Femenino,No,3,3.41,8.8,55.8,No
+185,Fístula arteriovenosa,64.0,Masculino,No,7,4.29,9.5,18.9,Sí
+186,Catéter venoso central,68.0,Femenino,No,3,3.73,11.9,26.1,No
+187,Catéter venoso central,70.0,Masculino,Sí,1,,10.8,4.3,No
+188,Fístula arteriovenosa,62.0,Masculino,Sí,3,3.76,11.1,35.9,Sí
+189,Catéter venoso central,91.0,Femenino,Sí,4,4.35,10.8,11.2,Sí
+190,Catéter venoso central,56.0,Masculino,No,6,,11.5,35.5,No
+191,Catéter venoso central,77.0,Masculino,Sí,2,4.23,12.9,17.8,Sí
+192,Catéter venoso central,73.0,Femenino,Sí,8,3.63,11.2,34.3,No
+193,Fístula arteriovenosa,91.0,Femenino,Sí,4,3.44,9.9,9.1,Sí
+194,Fístula arteriovenosa,50.0,Femenino,Sí,4,3.54,9.1,9.8,Sí
+195,Fístula arteriovenosa,91.0,Femenino,No,4,,10.7,17.8,No
+196,Catéter venoso central,51.0,Femenino,Sí,3,3.36,9.1,9.2,No
+197,Fístula arteriovenosa,77.0,Masculino,Sí,7,3.25,9.7,45.4,No
+198,Fístula arteriovenosa,63.0,Masculino,No,2,3.34,12.3,41.6,No
+199,Fístula arteriovenosa,62.0,Masculino,No,4,3.18,11.1,39.1,No
+200,Fístula arteriovenosa,65.0,Masculino,No,6,3.43,10.3,26.4,No
+201,Fístula arteriovenosa,75.0,Masculino,No,4,3.6,10.2,5.1,No
+202,Catéter venoso central,70.0,Femenino,No,4,4.21,11.1,44.5,No
+203,Fístula arteriovenosa,68.0,Masculino,Sí,2,3.91,13.3,1.9,Sí
+204,Fístula arteriovenosa,84.0,Masculino,No,1,4.14,10.8,58.9,No
+205,Fístula arteriovenosa,46.0,Femenino,Sí,3,,11.8,18.7,No
+206,Fístula arteriovenosa,55.0,Masculino,Sí,4,3.66,10.1,56.9,No
+207,Fístula arteriovenosa,48.0,Femenino,Sí,4,3.8,9.4,21.5,No
+208,Fístula arteriovenosa,87.0,Masculino,Sí,3,3.33,12.7,13.1,No
+209,Catéter venoso central,57.0,Femenino,No,4,3.18,8.5,21.3,Sí
+210,Fístula arteriovenosa,90.0,Masculino,Sí,2,3.23,10.7,44.9,No
+211,Fístula arteriovenosa,59.0,Femenino,Sí,8,3.12,9.3,25.6,No
+212,Fístula arteriovenosa,51.0,Masculino,No,3,3.58,8.8,11.6,No
+213,Fístula arteriovenosa,53.0,Femenino,Sí,5,3.27,11.4,9.8,No
+214,Catéter venoso central,90.0,Masculino,No,2,2.56,10.4,21.5,Sí
+215,Catéter venoso central,92.0,Femenino,No,2,3.94,10.3,59.4,No
+216,Fístula arteriovenosa,77.0,Masculino,Sí,5,3.15,13.7,10.7,Sí
+217,Fístula arteriovenosa,66.0,Femenino,No,6,3.13,11.1,24.6,Sí
+218,Fístula arteriovenosa,84.0,Masculino,Sí,1,3.62,12.7,31.1,No
+219,Fístula arteriovenosa,72.0,Femenino,No,4,3.71,9.0,42.8,No
+220,Fístula arteriovenosa,66.0,Masculino,No,4,,10.3,30.0,No
+221,Fístula arteriovenosa,80.0,Femenino,No,2,3.27,11.6,33.3,No
+222,Fístula arteriovenosa,49.0,Masculino,No,4,4.01,10.5,14.0,No
+223,Catéter venoso central,80.0,Masculino,Sí,4,4.22,9.0,10.4,No
+224,Catéter venoso central,70.0,Femenino,Sí,5,3.47,11.4,27.5,Sí
+225,Catéter venoso central,63.0,Masculino,Sí,4,3.33,10.4,47.2,No
+226,Fístula arteriovenosa,61.0,Masculino,No,4,3.4,10.8,39.1,No
+227,Fístula arteriovenosa,69.0,Femenino,No,6,3.96,8.2,39.0,Sí
+228,Catéter venoso central,88.0,Femenino,Sí,6,3.21,8.8,4.6,Sí
+229,Catéter venoso central,54.0,Masculino,Sí,4,4.15,8.9,50.6,No
+230,Fístula arteriovenosa,69.0,Masculino,No,1,3.87,10.6,21.8,Sí
+231,Catéter venoso central,54.0,Femenino,Sí,2,3.35,10.3,32.2,No
+232,Fístula arteriovenosa,56.0,Femenino,Sí,7,4.22,9.1,26.8,Sí
+233,Catéter venoso central,66.0,Femenino,Sí,5,,10.4,25.3,Sí
+234,Fístula arteriovenosa,52.0,Masculino,Sí,1,3.71,9.2,47.3,No
+235,Fístula arteriovenosa,73.0,Femenino,Sí,7,2.8,10.7,10.1,Sí
+236,Catéter venoso central,77.0,Masculino,Sí,2,4.38,10.1,42.5,No
+237,Catéter venoso central,71.0,Femenino,No,3,3.58,11.2,1.0,Sí
+238,Catéter venoso central,77.0,Masculino,Sí,4,2.94,9.9,12.4,Sí
+239,Fístula arteriovenosa,72.0,Masculino,Sí,1,3.37,10.9,44.3,No
+240,Fístula arteriovenosa,68.0,Masculino,No,5,3.34,11.2,41.2,No
+241,Fístula arteriovenosa,63.0,Femenino,No,7,5.04,7.0,35.6,No
+242,Fístula arteriovenosa,66.0,Masculino,No,1,3.84,11.4,26.1,No
+243,Catéter venoso central,68.0,Masculino,No,3,2.64,10.0,8.6,No
+244,Fístula arteriovenosa,50.0,Masculino,No,2,4.23,12.6,26.6,No
+245,Fístula arteriovenosa,50.0,Femenino,Sí,3,2.93,11.3,5.0,Sí
+246,Catéter venoso central,72.0,Femenino,Sí,6,3.81,11.0,13.3,Sí
+247,Catéter venoso central,50.0,Femenino,No,4,2.82,10.4,2.6,Sí
+248,Fístula arteriovenosa,60.0,Masculino,Sí,1,3.99,13.2,48.9,No
+249,Fístula arteriovenosa,82.0,Femenino,Sí,3,4.23,11.8,27.8,No
+250,Catéter venoso central,61.0,Femenino,Sí,6,4.14,11.9,15.4,No
+251,Catéter venoso central,62.0,Masculino,Sí,0,3.86,9.3,29.1,No
+252,Catéter venoso central,62.0,Masculino,No,8,4.47,8.3,21.7,Sí
+253,Fístula arteriovenosa,72.0,Femenino,No,3,,12.5,7.7,No
+254,Fístula arteriovenosa,60.0,Femenino,Sí,4,2.51,9.0,8.7,Sí
+255,Catéter venoso central,77.0,Masculino,No,3,3.62,12.8,4.0,Sí
+256,Catéter venoso central,59.0,Masculino,Sí,4,3.89,10.0,37.5,No
+257,Catéter venoso central,72.0,Masculino,Sí,7,3.29,8.2,5.7,No
+258,Fístula arteriovenosa,53.0,Femenino,Sí,5,3.75,10.3,19.0,No
+259,Fístula arteriovenosa,72.0,Femenino,Sí,5,3.44,10.2,2.0,Sí
+260,Fístula arteriovenosa,92.0,Femenino,Sí,5,3.5,8.4,19.7,No
+261,Fístula arteriovenosa,60.0,Femenino,Sí,1,3.39,8.2,11.9,No
+262,Catéter venoso central,68.0,Masculino,Sí,2,2.87,11.1,27.5,No
+263,Fístula arteriovenosa,78.0,Femenino,No,1,,9.0,29.5,No
+264,Catéter venoso central,65.0,Masculino,Sí,2,3.44,9.9,15.7,Sí
+265,Fístula arteriovenosa,60.0,Femenino,Sí,2,4.63,9.0,28.1,No
+266,Fístula arteriovenosa,68.0,Femenino,No,5,3.23,10.1,30.9,Sí
+267,Fístula arteriovenosa,84.0,Masculino,No,6,3.35,11.9,11.1,No
+268,Catéter venoso central,42.0,Masculino,No,5,3.97,9.6,47.0,No
+269,Fístula arteriovenosa,59.0,Masculino,Sí,3,3.18,11.2,12.7,Sí
+270,Catéter venoso central,79.0,Femenino,No,4,3.94,7.8,30.3,No
+271,Fístula arteriovenosa,67.0,Femenino,No,6,3.97,8.0,11.8,Sí
+272,Catéter venoso central,67.0,Femenino,Sí,3,4.12,10.6,28.7,Sí
+273,Catéter venoso central,67.0,Femenino,Sí,5,4.61,9.6,22.7,No
+274,Fístula arteriovenosa,66.0,Femenino,Sí,5,3.82,9.5,24.3,Sí
+275,Fístula arteriovenosa,69.0,Femenino,Sí,1,3.99,11.0,8.8,No
+276,Fístula arteriovenosa,67.0,Masculino,Sí,4,,10.6,30.3,No
+277,Catéter venoso central,68.0,Masculino,Sí,7,3.56,9.6,22.8,Sí
+278,Catéter venoso central,66.0,Femenino,Sí,7,3.92,9.7,38.6,No
+279,Fístula arteriovenosa,70.0,Femenino,Sí,6,3.55,9.8,12.2,No
+280,Catéter venoso central,61.0,Femenino,No,1,3.56,8.8,7.8,No
+281,Catéter venoso central,58.0,Masculino,No,3,2.71,7.8,5.1,No
+282,Fístula arteriovenosa,59.0,Masculino,No,1,3.97,7.8,55.5,No
+283,Fístula arteriovenosa,69.0,Femenino,Sí,1,4.17,11.1,23.6,Sí
+284,Fístula arteriovenosa,48.0,Femenino,No,7,3.71,9.7,44.9,No
+285,Fístula arteriovenosa,65.0,Femenino,Sí,3,3.25,9.2,11.2,No
+286,Catéter venoso central,48.0,Masculino,No,2,3.78,10.8,7.7,No
+287,Fístula arteriovenosa,62.0,Masculino,Sí,3,3.26,11.0,51.5,No
+288,Catéter venoso central,56.0,Femenino,Sí,5,4.18,9.8,1.0,Sí
+289,Catéter venoso central,54.0,Masculino,Sí,3,3.87,11.2,9.9,Sí
+290,Fístula arteriovenosa,64.0,Femenino,No,4,3.25,10.4,31.2,No
+291,Fístula arteriovenosa,34.0,Femenino,Sí,2,3.53,11.1,46.1,No
+292,Fístula arteriovenosa,50.0,Masculino,Sí,4,4.14,7.1,11.3,No
+293,Catéter venoso central,66.0,Femenino,No,4,2.62,9.1,1.0,Sí
+294,Fístula arteriovenosa,72.0,Masculino,No,4,2.89,10.6,45.4,Sí
+295,Fístula arteriovenosa,54.0,Femenino,No,6,3.44,10.2,48.7,No
+296,Fístula arteriovenosa,80.0,Femenino,Sí,6,3.71,9.6,4.4,Sí
+297,Catéter venoso central,62.0,Femenino,No,6,3.73,10.6,54.6,No
+298,Fístula arteriovenosa,74.0,Femenino,Sí,7,3.52,8.0,5.7,Sí
+299,Fístula arteriovenosa,60.0,Masculino,Sí,1,4.38,10.9,15.1,No
+300,Fístula arteriovenosa,74.0,Masculino,Sí,4,3.5,8.0,6.5,Sí
+301,Fístula arteriovenosa,59.0,Femenino,Sí,12,,8.4,6.3,Sí
+302,Fístula arteriovenosa,74.0,Masculino,No,2,4.24,9.3,13.2,No
+303,Catéter venoso central,49.0,Masculino,Sí,3,3.35,8.8,34.7,No
+304,Fístula arteriovenosa,47.0,Masculino,Sí,4,3.97,10.4,12.7,Sí
+305,Fístula arteriovenosa,53.0,Femenino,No,3,4.43,11.2,32.4,No
+306,Catéter venoso central,49.0,Masculino,No,5,3.18,9.6,15.2,No
+307,Catéter venoso central,83.0,Masculino,No,5,3.71,8.8,9.9,No
+308,Fístula arteriovenosa,68.0,Masculino,No,1,3.71,11.0,23.8,No
+309,Fístula arteriovenosa,51.0,Femenino,No,4,,9.5,49.7,No
+310,Catéter venoso central,50.0,Masculino,Sí,2,3.11,9.8,25.3,Sí
+311,Fístula arteriovenosa,49.0,Masculino,No,5,,11.5,55.2,No
+312,Fístula arteriovenosa,75.0,Femenino,Sí,4,4.17,9.0,33.6,No
+313,Fístula arteriovenosa,84.0,Femenino,No,6,3.58,11.2,7.5,No
+314,Fístula arteriovenosa,66.0,Femenino,No,2,4.22,8.9,33.4,No
+315,Fístula arteriovenosa,84.0,Masculino,Sí,6,3.2,12.9,42.1,Sí
+316,Catéter venoso central,57.0,Masculino,Sí,5,3.61,10.5,18.1,Sí
+317,Fístula arteriovenosa,76.0,Femenino,No,6,3.67,10.2,12.4,Sí
+318,Fístula arteriovenosa,52.0,Femenino,No,6,4.83,9.8,21.8,No
+319,Fístula arteriovenosa,91.0,Femenino,No,6,3.33,11.1,32.8,Sí
+320,Catéter venoso central,42.0,Masculino,No,7,3.03,9.5,22.9,Sí
+321,Fístula arteriovenosa,88.0,Masculino,No,3,3.56,11.3,48.7,No
+322,Fístula arteriovenosa,67.0,Femenino,Sí,3,4.23,8.7,13.2,No
+323,Catéter venoso central,86.0,Femenino,No,2,3.62,10.8,11.3,Sí
+324,Fístula arteriovenosa,86.0,Masculino,No,6,,12.6,34.1,No
+325,Catéter venoso central,84.0,Femenino,Sí,4,3.75,10.3,5.8,Sí
+326,Fístula arteriovenosa,82.0,Femenino,Sí,2,3.56,10.7,44.4,No
+327,Fístula arteriovenosa,67.0,Femenino,Sí,5,3.88,12.0,35.8,No
+328,Fístula arteriovenosa,56.0,Femenino,No,4,3.33,9.2,34.0,No
+329,Fístula arteriovenosa,70.0,Masculino,No,3,3.56,11.0,28.4,Sí
+330,Catéter venoso central,68.0,Femenino,Sí,1,3.33,9.3,49.9,No
+331,Catéter venoso central,66.0,Femenino,Sí,3,3.54,10.8,30.6,Sí
+332,Catéter venoso central,42.0,Masculino,No,5,4.33,10.7,48.0,No
+333,Fístula arteriovenosa,60.0,Masculino,No,1,2.87,11.5,10.8,No
+334,Catéter venoso central,84.0,Masculino,No,1,4.29,12.4,59.6,No
+335,Fístula arteriovenosa,72.0,Femenino,Sí,2,3.63,11.5,45.8,No
+336,Catéter venoso central,88.0,Masculino,Sí,4,3.62,10.4,32.2,No
+337,Catéter venoso central,72.0,Femenino,No,5,,9.6,48.6,Sí
+338,Catéter venoso central,61.0,Masculino,Sí,3,4.18,12.9,50.1,No
+339,Catéter venoso central,57.0,Masculino,No,1,3.71,10.6,28.2,No
+340,Fístula arteriovenosa,68.0,Masculino,No,7,2.88,9.1,4.9,Sí
+341,Catéter venoso central,69.0,Masculino,No,2,,10.4,37.7,No
+342,Fístula arteriovenosa,61.0,Masculino,Sí,2,4.22,9.9,25.1,No
+343,Catéter venoso central,89.0,Masculino,No,2,4.21,10.1,36.9,No
+344,Catéter venoso central,78.0,Masculino,Sí,4,3.68,11.4,21.4,Sí
+345,Fístula arteriovenosa,71.0,Femenino,Sí,2,3.35,10.3,40.0,No
+346,Catéter venoso central,83.0,Masculino,No,1,4.34,12.4,19.9,Sí
+347,Fístula arteriovenosa,59.0,Femenino,Sí,4,3.67,9.6,47.1,No
+348,Catéter venoso central,73.0,Masculino,Sí,4,3.7,9.9,38.6,No
+349,Fístula arteriovenosa,60.0,Femenino,No,3,3.97,11.7,24.6,No
+350,Fístula arteriovenosa,59.0,Masculino,Sí,9,3.75,10.3,23.7,Sí
+351,Fístula arteriovenosa,71.0,Femenino,Sí,3,3.94,10.5,47.0,No
+352,Fístula arteriovenosa,74.0,Femenino,No,8,3.97,11.4,18.8,No
+353,Fístula arteriovenosa,70.0,Masculino,Sí,4,3.03,10.2,5.4,No
+354,Catéter venoso central,80.0,Masculino,No,2,3.43,11.2,36.8,No
+355,Catéter venoso central,72.0,Masculino,No,4,2.97,10.5,48.6,No
+356,Fístula arteriovenosa,68.0,Masculino,No,2,,11.8,24.3,Sí
+357,Catéter venoso central,66.0,Masculino,No,9,2.89,11.1,35.0,Sí
+358,Catéter venoso central,72.0,Masculino,Sí,10,3.16,11.8,12.8,Sí
+359,Fístula arteriovenosa,57.0,Masculino,No,6,3.23,8.2,37.4,No
+360,Fístula arteriovenosa,57.0,Femenino,No,1,3.34,11.0,31.1,No
+361,Fístula arteriovenosa,60.0,Masculino,No,5,3.11,9.4,4.7,No
+362,Catéter venoso central,66.0,Masculino,No,3,4.12,11.4,20.2,Sí
+363,Catéter venoso central,72.0,Femenino,Sí,2,2.79,10.7,47.0,No
+364,Catéter venoso central,84.0,Masculino,Sí,7,3.52,10.3,20.8,Sí
+365,Catéter venoso central,65.0,Femenino,No,4,3.25,9.0,18.1,Sí
+366,Fístula arteriovenosa,73.0,Masculino,No,3,4.1,8.0,18.3,No
+367,Catéter venoso central,56.0,Masculino,No,5,3.74,9.3,57.7,No
+368,Catéter venoso central,87.0,Masculino,No,5,3.56,8.8,7.4,No
+369,Catéter venoso central,53.0,Masculino,No,7,3.71,10.8,31.0,No
+370,Fístula arteriovenosa,55.0,Femenino,No,7,4.26,10.2,39.7,No
+371,Catéter venoso central,76.0,Masculino,No,4,2.72,11.7,20.5,Sí
+372,Catéter venoso central,70.0,Femenino,No,1,3.52,11.0,55.9,No
+373,Catéter venoso central,81.0,Masculino,No,6,4.82,7.6,23.9,No
+374,Catéter venoso central,81.0,Femenino,Sí,5,4.25,10.7,6.3,Sí
+375,Fístula arteriovenosa,69.0,Femenino,Sí,4,3.17,11.9,24.0,Sí
+376,Catéter venoso central,88.0,Masculino,No,4,2.3,9.0,19.6,Sí
+377,Catéter venoso central,70.0,Femenino,No,2,3.92,10.3,21.3,Sí
+378,Catéter venoso central,84.0,Masculino,No,4,3.71,11.2,39.1,No
+379,Fístula arteriovenosa,60.0,Masculino,Sí,1,3.94,11.3,8.0,No
+380,Fístula arteriovenosa,53.0,Masculino,No,3,3.08,11.4,46.3,No
+381,Catéter venoso central,68.0,Femenino,No,7,3.24,8.9,37.7,No
+382,Catéter venoso central,89.0,Femenino,No,5,4.62,11.2,35.7,No
+383,Fístula arteriovenosa,45.0,Masculino,Sí,2,4.24,8.7,5.2,No
+384,Fístula arteriovenosa,47.0,Masculino,No,1,4.2,8.5,40.5,No
+385,Fístula arteriovenosa,68.0,Femenino,Sí,4,3.7,7.8,14.8,Sí
+386,Catéter venoso central,52.0,Femenino,No,6,3.85,9.2,11.9,Sí
+387,Fístula arteriovenosa,61.0,Masculino,No,3,3.86,9.6,52.3,No
+388,Fístula arteriovenosa,82.0,Femenino,No,3,3.86,10.1,18.9,Sí
+389,Catéter venoso central,65.0,Femenino,No,3,4.21,10.3,35.4,No
+390,Catéter venoso central,61.0,Femenino,Sí,1,3.85,8.2,23.4,Sí
+391,Fístula arteriovenosa,63.0,Femenino,No,5,3.75,9.8,2.6,Sí
+392,Fístula arteriovenosa,71.0,Femenino,Sí,3,,11.1,52.6,No
+393,Catéter venoso central,45.0,Masculino,Sí,3,4.07,10.1,11.1,Sí
+394,Fístula arteriovenosa,44.0,Femenino,No,7,,8.1,39.7,No
+395,Catéter venoso central,50.0,Femenino,Sí,3,3.54,8.2,18.6,No
+396,Catéter venoso central,61.0,Masculino,No,6,3.55,11.4,58.2,No
+397,Fístula arteriovenosa,85.0,Masculino,Sí,3,4.35,12.7,6.0,Sí
+398,Fístula arteriovenosa,66.0,Masculino,No,6,2.9,8.4,48.2,No
+399,Fístula arteriovenosa,84.0,Femenino,Sí,5,3.18,8.3,4.8,Sí
+400,Fístula arteriovenosa,75.0,Masculino,Sí,4,4.06,11.0,57.6,No
+401,Catéter venoso central,72.0,Masculino,No,3,4.68,13.3,25.7,No
+402,Fístula arteriovenosa,74.0,Femenino,No,4,3.7,11.4,46.7,No
+403,Fístula arteriovenosa,65.0,Masculino,No,2,2.89,9.1,5.2,No
+404,Catéter venoso central,59.0,Femenino,No,2,3.92,8.2,31.3,No
+405,Fístula arteriovenosa,73.0,Masculino,No,5,3.82,9.6,17.9,No
+406,Catéter venoso central,72.0,Femenino,Sí,4,,9.3,14.6,Sí
+407,Catéter venoso central,59.0,Masculino,No,3,4.17,11.7,7.4,No
+408,Fístula arteriovenosa,70.0,Femenino,Sí,4,4.62,9.0,48.9,No
+409,Fístula arteriovenosa,76.0,Femenino,No,3,3.55,9.8,27.8,No
+410,Catéter venoso central,79.0,Masculino,Sí,4,3.43,11.5,39.9,Sí
+411,Catéter venoso central,68.0,Femenino,Sí,7,3.67,10.5,5.7,Sí
+412,Fístula arteriovenosa,81.0,Masculino,Sí,6,,9.4,30.7,Sí
+413,Catéter venoso central,80.0,Masculino,Sí,2,3.4,9.0,12.9,No
+414,Fístula arteriovenosa,59.0,Masculino,No,1,3.88,9.8,17.2,No
+415,Catéter venoso central,60.0,Masculino,No,4,3.43,8.7,28.7,No
+416,Fístula arteriovenosa,66.0,Femenino,Sí,4,,11.6,17.4,Sí
+417,Fístula arteriovenosa,59.0,Masculino,Sí,2,2.67,7.7,45.8,No
+418,Fístula arteriovenosa,67.0,Masculino,Sí,3,4.51,8.7,59.1,No
+419,Fístula arteriovenosa,79.0,Masculino,Sí,3,2.44,11.3,3.4,Sí
+420,Catéter venoso central,72.0,Masculino,Sí,2,2.68,8.0,9.6,Sí
+421,Fístula arteriovenosa,78.0,Masculino,Sí,1,3.8,9.6,9.2,No
+422,Fístula arteriovenosa,79.0,Femenino,Sí,6,2.92,8.1,43.9,No
+423,Fístula arteriovenosa,65.0,Femenino,No,5,3.07,9.4,3.0,Sí
+424,Catéter venoso central,52.0,Femenino,Sí,6,4.2,11.1,26.9,No
+425,Fístula arteriovenosa,75.0,Femenino,No,4,3.95,8.6,52.0,No
+426,Catéter venoso central,72.0,Femenino,Sí,6,,8.0,0.2,Sí
+427,Fístula arteriovenosa,84.0,Masculino,No,3,3.73,11.4,9.7,No
+428,Fístula arteriovenosa,88.0,Femenino,Sí,3,2.94,9.9,0.4,Sí
+429,Fístula arteriovenosa,80.0,Masculino,No,2,2.34,8.9,28.4,Sí
+430,Fístula arteriovenosa,60.0,Femenino,Sí,12,,11.4,40.0,No
+431,Fístula arteriovenosa,46.0,Femenino,No,2,,13.1,23.7,No
+432,Fístula arteriovenosa,66.0,Masculino,Sí,4,2.89,10.1,35.9,Sí
+433,Catéter venoso central,70.0,Femenino,Sí,4,,13.2,52.8,No
+434,Fístula arteriovenosa,56.0,Femenino,No,6,4.1,11.8,5.7,Sí
+435,Fístula arteriovenosa,78.0,Masculino,No,5,4.04,8.9,15.6,No
+436,Fístula arteriovenosa,80.0,Masculino,Sí,4,,9.0,56.6,No
+437,Fístula arteriovenosa,65.0,Masculino,Sí,2,4.0,10.2,25.1,No
+438,Catéter venoso central,76.0,Femenino,Sí,2,3.28,12.3,21.6,Sí
+439,Catéter venoso central,53.0,Femenino,No,3,3.33,10.9,32.9,No
+440,Fístula arteriovenosa,63.0,Femenino,No,7,,8.8,10.1,No
+441,Fístula arteriovenosa,67.0,Femenino,Sí,1,4.23,10.4,18.9,No
+442,Fístula arteriovenosa,72.0,Masculino,Sí,3,3.82,8.3,36.8,No
+443,Catéter venoso central,67.0,Femenino,No,1,,12.7,40.5,No
+444,Catéter venoso central,66.0,Femenino,No,3,2.87,11.8,4.3,No
+445,Catéter venoso central,80.0,Femenino,Sí,5,3.68,15.2,27.6,Sí
+446,Fístula arteriovenosa,61.0,Masculino,Sí,6,3.85,11.0,8.7,No
+447,Fístula arteriovenosa,54.0,Masculino,No,3,2.93,9.7,23.2,No
+448,Fístula arteriovenosa,55.0,Masculino,No,3,3.26,8.9,41.3,No
+449,Catéter venoso central,33.0,Femenino,Sí,2,3.91,9.9,28.2,No
+450,Fístula arteriovenosa,76.0,Femenino,Sí,4,3.92,10.3,4.0,Sí
+451,Fístula arteriovenosa,45.0,Masculino,Sí,2,4.17,7.5,15.1,No
+452,Fístula arteriovenosa,60.0,Masculino,Sí,6,2.44,8.4,24.8,Sí
+453,Fístula arteriovenosa,72.0,Femenino,Sí,6,3.95,10.5,20.1,Sí
+454,Fístula arteriovenosa,68.0,Masculino,No,3,3.75,9.7,52.5,No
+455,Fístula arteriovenosa,72.0,Femenino,No,2,3.32,10.6,17.0,No
+456,Fístula arteriovenosa,64.0,Masculino,No,5,3.78,9.6,38.4,No
+457,Fístula arteriovenosa,59.0,Femenino,Sí,7,2.9,8.9,33.6,No
+458,Fístula arteriovenosa,73.0,Femenino,No,6,3.95,11.6,5.0,Sí
+459,Fístula arteriovenosa,56.0,Femenino,No,2,3.35,10.0,17.9,No
+460,Catéter venoso central,68.0,Femenino,Sí,4,3.85,9.1,12.0,No
+461,Fístula arteriovenosa,55.0,Femenino,No,3,3.94,11.5,28.8,Sí
+462,Catéter venoso central,60.0,Femenino,Sí,6,,10.4,34.1,Sí
+463,Fístula arteriovenosa,70.0,Masculino,Sí,7,4.03,8.2,16.8,No
+464,Catéter venoso central,50.0,Masculino,No,3,,12.7,30.8,No
+465,Catéter venoso central,59.0,Masculino,No,6,2.97,8.3,35.9,No
+466,Fístula arteriovenosa,60.0,Femenino,Sí,1,3.94,11.8,26.9,No
+467,Fístula arteriovenosa,64.0,Femenino,No,6,4.04,9.6,50.2,No
+468,Catéter venoso central,57.0,Masculino,Sí,6,4.15,7.8,30.4,No
+469,Catéter venoso central,54.0,Masculino,No,7,4.31,10.6,43.4,No
+470,Fístula arteriovenosa,63.0,Femenino,Sí,3,3.04,8.2,14.8,No
+471,Fístula arteriovenosa,61.0,Masculino,Sí,1,,8.6,48.9,No
+472,Fístula arteriovenosa,68.0,Masculino,No,4,,10.4,19.3,No
+473,Fístula arteriovenosa,76.0,Femenino,Sí,3,3.73,11.1,4.7,No
+474,Fístula arteriovenosa,73.0,Masculino,No,4,3.29,8.0,42.8,No
+475,Catéter venoso central,63.0,Femenino,Sí,4,3.29,9.6,12.9,Sí
+476,Catéter venoso central,77.0,Femenino,No,3,3.87,8.8,23.1,Sí
+477,Catéter venoso central,58.0,Masculino,No,8,3.25,8.8,21.0,No
+478,Fístula arteriovenosa,56.0,Femenino,Sí,3,4.23,9.6,50.1,No
+479,Catéter venoso central,80.0,Masculino,No,4,,12.1,32.8,Sí
+480,Fístula arteriovenosa,50.0,Masculino,No,4,4.21,9.3,30.4,No
+481,Catéter venoso central,73.0,Masculino,No,3,,10.1,9.4,No
+482,Catéter venoso central,56.0,Femenino,Sí,3,3.17,7.1,7.7,Sí
+483,Catéter venoso central,66.0,Masculino,No,3,3.89,9.8,20.9,Sí
+484,Fístula arteriovenosa,59.0,Femenino,Sí,4,3.53,9.6,34.0,No
+485,Fístula arteriovenosa,51.0,Masculino,Sí,1,3.94,8.7,22.4,No
+486,Catéter venoso central,56.0,Masculino,Sí,3,4.02,8.8,31.8,No
+487,Catéter venoso central,69.0,Femenino,Sí,7,3.29,10.2,8.5,Sí
+488,Catéter venoso central,50.0,Femenino,No,6,3.92,10.5,20.9,Sí
+489,Catéter venoso central,65.0,Masculino,Sí,2,3.71,9.1,21.5,Sí
+490,Catéter venoso central,72.0,Masculino,No,3,3.35,10.7,41.7,Sí
+491,Catéter venoso central,61.0,Masculino,No,4,3.71,12.9,5.2,No
+492,Catéter venoso central,76.0,Masculino,Sí,6,4.12,7.4,6.7,Sí
+493,Fístula arteriovenosa,68.0,Femenino,Sí,1,3.47,8.5,7.4,No
+494,Catéter venoso central,83.0,Masculino,No,7,3.28,12.3,9.6,Sí
+495,Fístula arteriovenosa,68.0,Femenino,No,5,2.9,10.7,12.4,Sí
+496,Catéter venoso central,67.0,Masculino,No,3,4.0,10.1,12.5,Sí
+497,Fístula arteriovenosa,63.0,Masculino,No,5,3.63,10.1,13.3,No
+498,Fístula arteriovenosa,55.0,Masculino,No,8,,10.0,19.2,No
+499,Catéter venoso central,65.0,Masculino,Sí,5,2.77,9.3,11.2,Sí
+500,Fístula arteriovenosa,74.0,Masculino,No,2,3.63,10.3,8.5,No
