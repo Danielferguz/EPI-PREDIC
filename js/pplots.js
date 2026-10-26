@@ -24,6 +24,19 @@ export function frame({ W = 440, H = 400, xdom, ydom, xlab = '', ylab = '', titl
 }
 const histBins = (v, lo, hi, k) => { const c = new Array(k).fill(0); for (const x of v) { let j = Math.floor((x - lo) / (hi - lo) * k); j = Math.min(k - 1, Math.max(0, j)); c[j]++; } return c; };
 
+// comparación de modelos: rendimiento aparente (círculo hueco) y corregido por optimismo (círculo lleno), un modelo por fila
+export function comparePlot({ rows, xlab = 'C statistic', title = 'Model comparison (optimism-corrected)' }) {
+  const vals = rows.flatMap(r => [r.apparent, r.corrected]).filter(isFinite), lo = Math.min(...vals), hi = Math.max(...vals), pad = (hi - lo) * 0.15 + 0.005, best = Math.max(...rows.map(r => r.corrected));
+  const H = 70 + rows.length * 34, F = frame({ W: 640, H, xdom: [lo - pad, hi + pad], ydom: [0, rows.length], xlab, title, ml: 230, mb: 44, yticks: false }); let s = F.s;
+  rows.forEach((r, i) => {
+    const y = F.sy(i + 0.5);
+    s += `<line x1="${F.m.l}" x2="${F.W - F.m.r}" y1="${y}" y2="${y}" stroke="currentColor" stroke-opacity=".08"/><text x="${F.m.l - 8}" y="${y + 4}" text-anchor="end" class="s">${esc(r.label.length > 38 ? r.label.slice(0, 37) + '…' : r.label)}</text>`;
+    s += `<line x1="${F.sx(r.corrected)}" x2="${F.sx(r.apparent)}" y1="${y}" y2="${y}" stroke="${GREY}" stroke-width="1.4"/><circle cx="${F.sx(r.apparent)}" cy="${y}" r="4.4" fill="#fff" stroke="${GREY}" stroke-width="1.6"/><circle cx="${F.sx(r.corrected)}" cy="${y}" r="5.4" fill="${r.corrected === best ? BLUE : RED}" stroke="#fff"/>`;
+  });
+  [[GREY, 'Apparent', false], [RED, 'Optimism-corrected', true]].forEach(([c, t, f], q) => (s += `<circle cx="${F.W - 300 + q * 100}" cy="14" r="4.4" fill="${f ? c : '#fff'}" stroke="${c}" stroke-width="1.6"/><text x="${F.W - 291 + q * 100}" y="18" class="s">${t}</text>`));
+  return s + '</svg>';
+}
+
 // calibración: curva suavizada (lowess), grupos con IC y distribución de las predicciones (por desenlace en binarios)
 export function calibrationPlot({ groups, curve, pred, y = null, title = 'Calibration', xlab = 'Predicted risk', ylab = 'Observed risk', note = '', max = null }) {
   const mx = max ?? Math.min(1, Math.max(0.05, ...groups.map(g => Math.max(g.pred, g.obs, g.hi || 0)), ...(curve || []).map(p => Math.max(p[0], p[1]))) * 1.08), hb = 54;

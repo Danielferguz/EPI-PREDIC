@@ -1,8 +1,8 @@
 // Actualización de un modelo en datos nuevos (Binuya et al. 2022): recalibración, revisión y extensión, comparadas con validación cruzada
 // dentro de la base de validación (así el rendimiento de cada estrategia no es el aparente de los mismos datos con los que se actualizó).
-import { recalibrate, evaluate, fitPred, perfBinary, perfContinuous } from './predmodel.js?v=2026.10.25-9';
-import { isMiss } from './data.js?v=2026.10.25-9';
-import { rng } from './dist.js?v=2026.10.25-9';
+import { recalibrate, evaluate, fitPred, perfBinary, perfContinuous } from './predmodel.js?v=2026.10.26-1';
+import { isMiss } from './data.js?v=2026.10.26-1';
+import { rng } from './dist.js?v=2026.10.26-1';
 
 export const STRATEGIES = [
   ['orig', 'Modelo original (sin actualizar)', 0], ['citl', 'Recalibración en general (solo intercepto)', 1], ['slope', 'Recalibración logística (intercepto y pendiente)', 2],

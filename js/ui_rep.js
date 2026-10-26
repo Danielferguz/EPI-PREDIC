@@ -1,12 +1,12 @@
 // Pestaña 7: texto de métodos, tablas, ecuación, calculadora de riesgo y lista TRIPOD+AI.
-import { $, $$, esc, f2, fp, pct, ci, table, howto, card, state, download } from './state.js?v=2026.10.25-9';
-import { predictLPs, riskFromLP, materialize, evaluate } from './predmodel.js?v=2026.10.25-9';
-import { coefTable, equationText, exportModel, modelName } from './ui_dev.js?v=2026.10.25-9';
-import { wordDoc, matrixHTML, matrixCSV } from './report.js?v=2026.10.25-9';
-import { levelsOf } from './data.js?v=2026.10.25-9';
-import { pythonScript } from './pycode.js?v=2026.10.25-9';
-import { calcPageHTML } from './calcpage.js?v=2026.10.25-9';
-import { buildManuscript } from './manuscript.js?v=2026.10.25-9';
+import { $, $$, esc, f2, fp, pct, ci, table, howto, card, state, download } from './state.js?v=2026.10.26-1';
+import { predictLPs, riskFromLP, materialize, evaluate, CRIT_LABEL } from './predmodel.js?v=2026.10.26-1';
+import { coefTable, equationText, exportModel, modelName } from './ui_dev.js?v=2026.10.26-1';
+import { wordDoc, matrixHTML, matrixCSV } from './report.js?v=2026.10.26-1';
+import { levelsOf } from './data.js?v=2026.10.26-1';
+import { pythonScript } from './pycode.js?v=2026.10.26-1';
+import { calcPageHTML } from './calcpage.js?v=2026.10.26-1';
+import { buildManuscript } from './manuscript.js?v=2026.10.26-1';
 
 const PEN = { none: 'máxima verosimilitud sin penalización', ridge: 'regresión ridge', lasso: 'regresión lasso' };
 const PEN_EN = { none: 'maximum likelihood without penalisation', ridge: 'ridge regression', lasso: 'lasso regression' };
@@ -24,6 +24,7 @@ export function methodsText(lang = 'es') {
     L.push(`Se desarrolló un modelo de predicción para ${outcome}, siguiendo TRIPOD+AI. La base incluyó ${N} participantes${ev != null ? `; tras excluir ${missing} con datos incompletos (casos completos), el modelo se ajustó a ${m.n} con ${ev} eventos` : `; el modelo se ajustó a ${m.n} con datos completos`}. Los predictores, definidos a priori por criterio clínico, fueron ${preds} (${m.cols.length} parámetros). ${ss ? `El tamaño de muestra mínimo se calculó con los criterios de Riley et al. (${ss.result.n.toLocaleString('es')} participantes${ss.result.events ? `, ${f2(ss.result.events, 0)} eventos` : ''}).` : ''}`);
     L.push(`Las características basales se describieron en el total y según el desenlace con mediana (rango intercuartílico) o n (%), y se compararon con la U de Mann-Whitney (scipy.stats.mannwhitneyu), la χ² de Pearson o la prueba exacta de Fisher (scipy.stats.chi2_contingency, fisher_exact). La asociación de cada predictor se estimó con regresión cruda y ajustada (${E} con IC 95 %).`);
     L.push(`El modelo se estimó mediante ${mod}${m.penalty === 'ridge' ? ' con penalización ridge (L2)' : m.penalty === 'lasso' ? ' con penalización lasso (L1)' : ''}${m.pen?.lambda ? ` (λ = ${f2(m.pen.lambda, 4)} elegido por validación cruzada de 10 pliegues, scikit-learn)` : ''}; las variables cuantitativas con relación no lineal se modelaron con splines cúbicos restringidos de Harrell${state.shrunk ? `, y se aplicó una contracción uniforme (factor ${f2(b.shrinkage, 3)} estimado por bootstrap)` : ''}.`);
+    if (sp.selection && sp.selection !== 'none') L.push(`Los predictores candidatos se redujeron por eliminación hacia atrás según el ${CRIT_LABEL[sp.selection]}${sp.selection === 'qic' ? ' (varianza robusta con correlación de trabajo independiente)' : ''}: en cada paso se retiró el predictor, con todos sus términos, que más reducía el criterio, hasta que ninguna retirada lo mejoraba (${m.spec.vars.length} de ${sp.vars.length} predictores retenidos). La selección se repitió dentro de cada réplica bootstrap para incluir su efecto en el optimismo.`);
     L.push(b ? `La validación interna se hizo con bootstrap (${b.B} réplicas), repitiendo en cada una todos los pasos de modelado, para corregir el optimismo de ${meas}.` : 'No se realizó validación interna; el rendimiento informado es aparente.');
     if (sh) L.push(`Para simplificar el modelo, los predictores se ordenaron por su χ² de Wald parcial y se añadieron de uno en uno; se retuvo el modelo más pequeño cuyo rendimiento corregido por bootstrap no disminuyó más de ${sh.tol} (${sh.names.length} de ${sh.from} predictores).`);
     if (val) L.push(`El modelo se validó externamente en ${val.perf.n} participantes (${esc(state.valLabel)}) sin reajustarlo; se informan ${meas} con intervalos de confianza del 95 %.`);
@@ -33,6 +34,7 @@ export function methodsText(lang = 'es') {
     L.push(`A prediction model for ${outcome} was developed following TRIPOD+AI. The dataset included ${N} participants${ev != null ? `; after excluding ${missing} with incomplete data (complete-case analysis), the model was fitted in ${m.n} participants with ${ev} events` : `; the model was fitted in ${m.n} participants with complete data`}. Predictors, pre-specified on clinical grounds, were ${preds} (${m.cols.length} parameters). ${ss ? `The minimum sample size was calculated with the Riley et al. criteria (${ss.result.n.toLocaleString('en')} participants${ss.result.events ? `, ${f2(ss.result.events, 0)} events` : ''}).` : ''}`);
     L.push(`Baseline characteristics were described overall and by outcome as median (interquartile range) or n (%), and compared with the Mann–Whitney U test (scipy.stats.mannwhitneyu), Pearson's χ² or Fisher's exact test (scipy.stats.chi2_contingency, fisher_exact). The association of each predictor was estimated with crude and adjusted regression (${E} with 95% CI).`);
     L.push(`The model was estimated by ${mod}${m.penalty === 'ridge' ? ' with ridge (L2) penalisation' : m.penalty === 'lasso' ? ' with lasso (L1) penalisation' : ''}${m.pen?.lambda ? ` (λ = ${f2(m.pen.lambda, 4)} chosen by 10-fold cross-validation, scikit-learn)` : ''}; continuous predictors with non-linear relationships were modelled with Harrell's restricted cubic splines${state.shrunk ? `, and uniform shrinkage (factor ${f2(b.shrinkage, 3)} estimated by bootstrap) was applied` : ''}.`);
+    if (sp.selection && sp.selection !== 'none') L.push(`Candidate predictors were reduced by backward elimination using the ${CRIT_LABEL[sp.selection]}${sp.selection === 'qic' ? ' (robust variance with an independence working correlation)' : ''}: at each step the predictor, with all its terms, whose removal most reduced the criterion was dropped until no removal improved it (${m.spec.vars.length} of ${sp.vars.length} predictors retained). The selection was repeated within every bootstrap resample so that its effect is included in the optimism.`);
     L.push(b ? `Internal validation used bootstrapping (${b.B} resamples), repeating every modelling step in each, to correct the optimism of ${meas}.` : 'No internal validation was performed; reported performance is apparent.');
     if (sh) L.push(`To simplify the model, predictors were ranked by their partial Wald χ² and added one at a time; the smallest model whose bootstrap-corrected performance did not decrease by more than ${sh.tol} was retained (${sh.names.length} of ${sh.from} predictors).`);
     if (val) L.push(`The model was externally validated in ${val.perf.n} participants (${esc(state.valLabel)}) without refitting; ${meas} are reported with 95% confidence intervals.`);
@@ -60,7 +62,7 @@ const median = a => { const v = Array.from(a).filter(isFinite).sort((x, y) => x 
 // configuración del script Python (sin datos de pacientes)
 function pyConfig() {
   const m = state.final, sp = state.spec, S = state.simpApplied, all = S?.all || sp.vars.map(v => ({ name: v.name, form: v.form })), spec = v => { const mm = state.meta[v.name]; return mm.type === 'cat' ? { name: v.name, type: 'cat', form: 'lin', levels: levelsOf(mm) } : { name: v.name, type: 'num', form: v.form }; };
-  return { data_file: `${state.fname}.csv`, na_values: ['', 'NA', 'na', 'NaN'], type: m.type, y: sp.y, event: sp.event, time: sp.time, status: sp.status, sevent: sp.event, horizon: sp.horizon, penalty: sp.penalty, B: sp.B, seed: sp.seed,
+  return { data_file: `${state.fname}.csv`, na_values: ['', 'NA', 'na', 'NaN'], type: m.type, y: sp.y, event: sp.event, time: sp.time, status: sp.status, sevent: sp.event, horizon: sp.horizon, penalty: sp.penalty, selection: sp.selection || 'none', B: sp.B, seed: sp.seed,
     predictors: all.map(spec), predictors_raw: all.map(v => { const mm = state.meta[v.name]; return mm.type === 'cat' ? { name: v.name, type: 'cat', levels: levelsOf(mm) } : { name: v.name, type: 'num' }; }),
     simplify: { run: false, B: 100, tol: S?.tol ?? 0.01, selected: S ? S.names : null }, meta: { n: m.n, events: m.events, date: new Date().toISOString().slice(0, 10) } };
 }

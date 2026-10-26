@@ -1,16 +1,16 @@
 // EPI-PREDIC · navegación, carga de datos, especificación del modelo y ejecución.
-import { $, $$, esc, f2, pct, opt, errBox, state, natural, download } from './state.js?v=2026.10.25-9';
-import { readFile } from './io.js?v=2026.10.25-9';
-import { inferMeta, typedData, NA_DEFAULT, missCount, levelsOf } from './data.js?v=2026.10.25-9';
-import { mean, sd } from './tests.js?v=2026.10.25-9';
-import { completeFor, fitPred, evaluate, bootstrapValidate, columnNames, designInfo, tick, materialize } from './predmodel.js?v=2026.10.25-9';
-import { initSampleSize } from './ui_ss.js?v=2026.10.25-9';
-import { renderDev, bindFigure } from './ui_dev.js?v=2026.10.25-9';
-import { initValidation, renderUtilityInit, renderPractice } from './ui_val.js?v=2026.10.25-9';
-import { renderReport } from './ui_rep.js?v=2026.10.25-9';
-import { bindFigs } from './figs.js?v=2026.10.25-9';
-import { initRoadmap, initStageBar } from './roadmap.js?v=2026.10.25-9';
-import { HELP_HTML } from './help.js?v=2026.10.25-9';
+import { $, $$, esc, f2, pct, opt, errBox, state, natural, download } from './state.js?v=2026.10.26-1';
+import { readFile } from './io.js?v=2026.10.26-1';
+import { inferMeta, typedData, NA_DEFAULT, missCount, levelsOf } from './data.js?v=2026.10.26-1';
+import { mean, sd } from './tests.js?v=2026.10.26-1';
+import { completeFor, fitPred, fitSelected, evaluate, bootstrapValidate, columnNames, designInfo, tick, materialize } from './predmodel.js?v=2026.10.26-1';
+import { initSampleSize } from './ui_ss.js?v=2026.10.26-1';
+import { renderDev, bindFigure } from './ui_dev.js?v=2026.10.26-1';
+import { initValidation, renderUtilityInit, renderPractice } from './ui_val.js?v=2026.10.26-1';
+import { renderReport } from './ui_rep.js?v=2026.10.26-1';
+import { bindFigs } from './figs.js?v=2026.10.26-1';
+import { initRoadmap, initStageBar } from './roadmap.js?v=2026.10.26-1';
+import { HELP_HTML } from './help.js?v=2026.10.26-1';
 
 // ---------------- ejemplos (datos simulados de nefrología) ----------------
 const EXAMPLES = [
@@ -113,10 +113,11 @@ $('#m-type').addEventListener('change', () => { state.draft = { type: $('#m-type
 $('#m-all').addEventListener('click', () => { $$('#m-vars input').forEach(i => (i.checked = true)); modelCheck(); });
 $('#m-none').addEventListener('click', () => { $$('#m-vars input').forEach(i => (i.checked = false)); modelCheck(); });
 $('#m-pen').addEventListener('change', modelCheck);
+$('#m-sel').addEventListener('change', () => { $('#m-sel-note').hidden = $('#m-sel').value === 'none'; });
 
 function readSpec() {
   const type = $('#m-type').value, vars = Object.entries(readVars()).map(([name, form]) => ({ name, form }));
-  const spec = { type, vars, penalty: $('#m-pen').value, lambdaRule: $('#m-rule').value, B: +$('#m-B').value, seed: +$('#m-seed').value || 1, retune: $('#m-retune').checked };
+  const spec = { type, vars, penalty: $('#m-pen').value, selection: $('#m-sel').value, lambdaRule: $('#m-rule').value, B: +$('#m-B').value, seed: +$('#m-seed').value || 1, retune: $('#m-retune').checked };
   if (type === 'survival') Object.assign(spec, { time: $('#m-time').value, status: $('#m-status').value, event: $('#m-sevent').value, horizon: +$('#m-horizon').value });
   else Object.assign(spec, { y: $('#m-y').value, event: type === 'binary' ? $('#m-event').value : null });
   return spec;
@@ -143,9 +144,9 @@ $('#m-run').addEventListener('click', async () => {
     if (spec.type !== 'survival' && state.meta[spec.y].type === 'cat' && spec.type === 'continuous') throw new Error('El desenlace continuo debe ser cuantitativo.');
     btn.disabled = true; prog.hidden = false; prog.value = 0; msg.textContent = 'Ajustando el modelo…'; await tick();
     const a = applyForms(spec), rows = completeFor(a.ds, a.spec), seed = spec.seed;
-    const model = fitPred(a.ds, a.meta, a.spec, rows, { seed });
+    const sel = spec.selection !== 'none' ? spec.selection : null, model = sel ? fitSelected(a.ds, a.meta, a.spec, rows, { seed }, sel) : fitPred(a.ds, a.meta, a.spec, rows, { seed });
     state.dsX = a.ds; state.metaX = a.meta; state.specX = a.spec; state.spec = spec;
-    const bootOpt = { B: spec.B, seed, horizon: spec.horizon, retune: spec.retune, onProgress: p => { prog.value = p; msg.textContent = `Bootstrap: ${Math.round(p * spec.B)} de ${spec.B} réplicas…`; } };
+    const bootOpt = { B: spec.B, seed, horizon: spec.horizon, retune: spec.retune, selection: sel, onProgress: p => { prog.value = p; msg.textContent = `Bootstrap: ${Math.round(p * spec.B)} de ${spec.B} réplicas…`; } };
     state.model = model; state.final = model; state.shrunk = null; state.simpApplied = state.pendingSimp || null; state.pendingSimp = null; state.simp = null; state.dev = { app: evaluate(model, a.ds, a.meta, rows, { horizon: spec.horizon }), rows };
     state.boot = spec.B > 0 ? await bootstrapValidate(a.ds, a.meta, a.spec, rows, model, bootOpt) : null;
     msg.textContent = ''; prog.hidden = true; gate(); renderDev(); showTab('desarrollo');

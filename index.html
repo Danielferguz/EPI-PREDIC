@@ -7,7 +7,7 @@
 <meta name="description" content="EPI-PREDIC (EPI-LAB): desarrollo y validación de modelos de predicción clínica en el navegador. Cálculo del tamaño de muestra (Riley et al.), regresión logística y de Cox con splines y penalización, validación interna por bootstrap, calibración, curva de decisión y lista TRIPOD.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Source+Sans+3:wght@400;600&display=swap">
-<link rel="stylesheet" href="css/style.css?v=2026.10.25-9">
+<link rel="stylesheet" href="css/style.css?v=2026.10.26-1">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js" defer></script>
 </head>
 <body>
@@ -119,6 +119,8 @@
     <h3>Estrategia de ajuste</h3>
     <div class="form">
       <label>Penalización <select id="m-pen"><option value="none">Ninguna (máxima verosimilitud)</option><option value="ridge">Ridge (contrae, no selecciona)</option><option value="lasso" id="m-lasso">Lasso (contrae y selecciona)</option></select></label>
+      <label>Selección automática de predictores <select id="m-sel"><option value="none">Ninguna (todos los marcados)</option><option value="aic">Hacia atrás por AIC</option><option value="bic">Hacia atrás por BIC</option><option value="qic">Hacia atrás por QIC (varianza robusta)</option></select></label>
+      <p class="sub wide" id="m-sel-note" hidden>Se parte de todos los predictores marcados y se retira, de uno en uno, el que más reduce el criterio (con todos sus términos de spline o categorías) hasta que ninguna retirada lo mejora. <b>La validación por bootstrap repite la selección en cada réplica</b>, de modo que el optimismo incluye el costo de elegir variables; sin eso, la selección automática infla el rendimiento. QIC = AIC con varianza robusta (≈ AIC si el modelo es correcto); en Cox se usa el AIC. La selección se hace sin penalizar.</p>
       <label>Elección de λ <select id="m-rule"><option value="min">Mínimo error de validación cruzada</option><option value="1se">Regla de 1 error estándar (más contraído)</option></select></label>
       <label>Réplicas bootstrap (validación interna) <input id="m-B" type="number" min="0" max="1000" value="200"></label>
       <label>Semilla <input id="m-seed" type="number" value="2024"></label>
@@ -189,7 +191,7 @@
 <section id="tab-ruta" class="tab"><div id="roadmap"></div></section>
 <section id="tab-ayuda" class="tab"><div class="card prose" id="help"></div></section>
 </main>
-<footer class="foot">EPI-PREDIC · un módulo de EPI-LAB · © Daniel Fernández-Guzmán · CC BY-NC-ND 4.0 · Los cálculos se realizan en su navegador; ningún dato se envía a servidores. · v2026.10.25-9</footer>
-<script type="module" src="js/app.js?v=2026.10.25-9"></script>
+<footer class="foot">EPI-PREDIC · un módulo de EPI-LAB · © Daniel Fernández-Guzmán · CC BY-NC-ND 4.0 · Los cálculos se realizan en su navegador; ningún dato se envía a servidores. · v2026.10.26-1</footer>
+<script type="module" src="js/app.js?v=2026.10.26-1"></script>
 </body>
 </html>

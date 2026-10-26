@@ -1,15 +1,15 @@
 // Pestañas 5 y 6: validación externa (modelo ajustado o ecuación publicada), recalibración y utilidad clínica (curva de decisión).
-import { $, $$, esc, f2, fp, pct, ci, table, howto, card, state, errBox } from './state.js?v=2026.10.25-9';
-import { readFile } from './io.js?v=2026.10.25-9';
-import { inferMeta, typedData, NA_DEFAULT } from './data.js?v=2026.10.25-9';
-import { evaluate, recalibrate, calibGroups, calibSurvival, lowess, dcaBinary, dcaSurvival, evalEquation, completeFor, tick, perfBinary, perfSurvival, perfContinuous, eventVec, cindex, materialize, H0at } from './predmodel.js?v=2026.10.25-9';
-import { valBinary } from './samplesize.js?v=2026.10.25-9';
-import { calibrationPlot, scatterCalib, rocPlot, rocPoints, dcaPlot } from './pplots.js?v=2026.10.25-9';
-import { figWrap, bindFigs } from './figs.js?v=2026.10.25-9';
-import { qnorm } from './dist.js?v=2026.10.25-9';
-import { practiceHTML, practiceHint, practiceFor } from './practice.js?v=2026.10.25-9';
-import { STRATEGIES, applyUpdate, extensionCandidates, cvCompare, recommend } from './updating.js?v=2026.10.25-9';
-import { rng } from './dist.js?v=2026.10.25-9';
+import { $, $$, esc, f2, fp, pct, ci, table, howto, card, state, errBox } from './state.js?v=2026.10.26-1';
+import { readFile } from './io.js?v=2026.10.26-1';
+import { inferMeta, typedData, NA_DEFAULT } from './data.js?v=2026.10.26-1';
+import { evaluate, recalibrate, calibGroups, calibSurvival, lowess, dcaBinary, dcaSurvival, evalEquation, completeFor, tick, perfBinary, perfSurvival, perfContinuous, eventVec, cindex, materialize, H0at } from './predmodel.js?v=2026.10.26-1';
+import { valBinary } from './samplesize.js?v=2026.10.26-1';
+import { calibrationPlot, scatterCalib, rocPlot, rocPoints, dcaPlot } from './pplots.js?v=2026.10.26-1';
+import { figWrap, bindFigs } from './figs.js?v=2026.10.26-1';
+import { qnorm } from './dist.js?v=2026.10.26-1';
+import { practiceHTML, practiceHint, practiceFor } from './practice.js?v=2026.10.26-1';
+import { STRATEGIES, applyUpdate, extensionCandidates, cvCompare, recommend } from './updating.js?v=2026.10.26-1';
+import { rng } from './dist.js?v=2026.10.26-1';
 
 const z = qnorm(0.975);
 const naCodes = () => [...NA_DEFAULT, ...$('#na-codes').value.split(',').map(s => s.trim()).filter(Boolean)];

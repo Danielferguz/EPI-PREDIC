@@ -1,10 +1,11 @@
 // Desarrollo y evaluación de modelos de predicción: diseño con splines cúbicos restringidos, ajuste (logística, Cox, lineal; sin penalizar,
 // ridge o lasso), medidas de discriminación y calibración, validación interna por bootstrap con corrección del optimismo (Harrell),
 // contracción uniforme, recalibración, calibración por grupos y análisis de curva de decisión.
-import { fitGLM, fitCox, fitOLS, coxLogLik, km } from './models.js?v=2026.10.25-9';
-import { enet, cvEnet, standardize } from './glmnet.js?v=2026.10.25-9';
-import { rng, qnorm, pnorm } from './dist.js?v=2026.10.25-9';
-import { isMiss, levelsOf } from './data.js?v=2026.10.25-9';
+import { fitGLM, fitCox, fitOLS, coxLogLik, km } from './models.js?v=2026.10.26-1';
+import { enet, cvEnet, standardize } from './glmnet.js?v=2026.10.26-1';
+import { rng, qnorm, pnorm } from './dist.js?v=2026.10.26-1';
+import { symInv } from './linalg.js?v=2026.10.26-1';
+import { isMiss, levelsOf } from './data.js?v=2026.10.26-1';
 
 const expit = e => 1 / (1 + Math.exp(-e)), logit = p => Math.log(p / (1 - p)), sum = a => { let s = 0; for (const v of a) s += v; return s; };
 const clampP = p => Math.min(Math.max(p, 1e-9), 1 - 1e-9);
@@ -134,6 +135,37 @@ export function cindex(lp, time, status) {
   return { c: (conc + 0.5 * ties) / comp, pairs: comp };
 }
 
+
+// ---------------------------------------------------------------- selección automática hacia atrás (AIC, BIC o QIC)
+// QIC con correlación de trabajo independiente (Pan 2001): −2·logverosimilitud + 2·tr(A⁻¹B), A = información del modelo, B = suma de r²·xxᵀ (≈ AIC si el modelo es correcto). Para Cox se usa el AIC.
+export function qicOf(m, ds, meta) {
+  const { X, used } = makeX(ds, meta, m.info, m.rows), Xi = X.map(x => Float64Array.from([1, ...x])), p = Xi[0].length, bin = m.type === 'binary';
+  const y = bin ? eventVec(ds, m.spec, used) : Float64Array.from(used, i => +ds.cols[m.spec.y][i]), A = Array.from({ length: p }, () => new Float64Array(p)), B = Array.from({ length: p }, () => new Float64Array(p));
+  const mu = Xi.map(x => { let e = m.intercept; for (let j = 0; j < p - 1; j++) e += x[j + 1] * m.beta[j]; return bin ? expit(e) : e; }), n = y.length;
+  const s2 = bin ? 1 : sum(Array.from(y, (v, i) => (v - mu[i]) ** 2)) / n;
+  for (let i = 0; i < n; i++) { const w = (bin ? mu[i] * (1 - mu[i]) : 1) / s2, r2 = (y[i] - mu[i]) ** 2 / (s2 * s2); for (let a = 0; a < p; a++) for (let b = 0; b < p; b++) { A[a][b] += w * Xi[i][a] * Xi[i][b]; B[a][b] += r2 * Xi[i][a] * Xi[i][b]; } }
+  const Ai = symInv(A); let tr = 0; for (let a = 0; a < p; a++) for (let b = 0; b < p; b++) tr += Ai[a][b] * B[b][a];
+  return -2 * m.fit.ll + 2 * tr;
+}
+export const critOf = (m, crit, ds, meta) => (crit === 'bic' ? m.fit.bic : crit === 'qic' && m.type !== 'survival' ? qicOf(m, ds, meta) : m.fit.aic);
+export const CRIT_LABEL = { aic: 'AIC', bic: 'BIC', qic: 'QIC' };
+// eliminación hacia atrás de predictores completos (con todos sus términos de spline o dummies); `rows` debe ser completo para todos los candidatos
+export function selectBackward(ds, meta, spec, rows, { crit = 'aic', keep = [] } = {}) {
+  const fit = vars => fitPred(ds, meta, { ...spec, vars, penalty: 'none' }, rows, { quiet: true });
+  let cur = [...spec.vars], m = fit(cur), c0 = critOf(m, crit, ds, meta); const log = [{ crit: c0, removed: null }];
+  while (cur.length > 1) {
+    let best = null;
+    for (const v of cur) { if (keep.includes(v.name)) continue; try { const c = critOf(fit(cur.filter(w => w !== v)), crit, ds, meta); if (!best || c < best.c) best = { v, c }; } catch { /* modelo no estimable: se ignora */ } }
+    if (!best || best.c >= c0 - 1e-9) break;
+    cur = cur.filter(w => w !== best.v); c0 = best.c; log.push({ crit: c0, removed: best.v.name });
+  }
+  return { vars: cur, log, crit, final: c0, start: log[0].crit };
+}
+export function fitSelected(ds, meta, spec, rows, opts = {}, crit = 'aic', keep = []) {
+  const sel = selectBackward(ds, meta, spec, rows, { crit, keep }), m = fitPred(ds, meta, { ...spec, vars: sel.vars }, rows, opts);
+  m.selection = sel; return m;
+}
+
 // ---------------------------------------------------------------- medidas de rendimiento
 export function aucOf(score, y) {
   const idx = Array.from(score.keys()).sort((a, b) => score[a] - score[b]); let r = 0, n1 = 0;
@@ -169,6 +201,7 @@ export function perfSurvival(lp, time, status, { base = null, lpMean = 0, horizo
 }
 export function perfContinuous(pred, y) {
   const n = y.length, my = sum(y) / n, sst = sum(Array.from(y, v => (v - my) ** 2)), sse = sum(Array.from(y, (v, i) => (v - pred[i]) ** 2)), out = { n, r2: 1 - sse / sst, rmse: Math.sqrt(sse / n), mae: sum(Array.from(y, (v, i) => Math.abs(v - pred[i]))) / n, citl: my - sum(pred) / n };
+  try { out.cindex = cindex(Float64Array.from(pred, v => -v), y, new Float64Array(n).fill(1)).c; } catch { out.cindex = NaN; } // C de Harrell: concordancia entre predicho y observado en todas las parejas comparables
   try { const f = fitOLS(Array.from(pred, v => Float64Array.of(1, v)), y); out.slope = f.beta[1]; out.slopeSE = f.se[1]; out.intercept = f.beta[0]; } catch { out.slope = NaN; }
   return out;
 }
@@ -182,29 +215,31 @@ export function evaluate(m, ds, meta, rows, { horizon = null } = {}) {
 }
 
 // ---------------------------------------------------------------- validación interna por bootstrap (optimismo de Harrell)
-const KEYS = { binary: ['auc', 'slope', 'citl', 'brier', 'r2cs'], survival: ['cindex', 'slope', 'r2cs'], continuous: ['r2', 'slope', 'rmse'] };
+const KEYS = { binary: ['auc', 'slope', 'citl', 'brier', 'r2cs'], survival: ['cindex', 'slope', 'r2cs'], continuous: ['r2', 'cindex', 'slope', 'rmse'] };
 const pick = (perf, ks) => Object.fromEntries(ks.map(k => [k, perf[k]]));
-export async function bootstrapValidate(ds, meta, spec, rows, model, { B = 200, seed = 99, horizon = null, onProgress = null, retune = true, calib = true } = {}) {
+export async function bootstrapValidate(ds, meta, spec, rows, model, { B = 200, seed = 99, horizon = null, onProgress = null, retune = true, calib = true, selection = null } = {}) {
   const R = rng(seed), ev0 = evaluate(model, ds, meta, rows, { horizon }), ks = KEYS[spec.type], app = pick(ev0.perf, ks), idxAll = model.rows, n = idxAll.length;
-  const opt = Object.fromEntries(ks.map(k => [k, []])), slopes = []; let failed = 0;
+  const opt = Object.fromEntries(ks.map(k => [k, []])), slopes = [], freq = Object.fromEntries(spec.vars.map(v => [v.name, 0])), nkept = []; let failed = 0;
   // curva de calibración corregida por optimismo (binario): suavizado lowess en una rejilla común de riesgos
   const doCal = calib && spec.type === 'binary', NG = 40, sortedP = doCal ? Array.from(ev0.p).sort((a, b) => a - b) : null, glo = doCal ? quantile(sortedP, 0.02) : 0, ghi = doCal ? quantile(sortedP, 0.98) : 1;
   const calDiff = doCal ? new Float64Array(NG) : null; let calN = 0;
   for (let b = 0; b < B; b++) {
     const samp = Array.from({ length: n }, () => idxAll[R.int(n)]);
     try {
-      const mb = !retune && model.pen && spec.penalty !== 'none' ? fitFixedLambda(ds, meta, spec, samp, model.pen.lambda) : fitPred(ds, meta, spec, samp, { seed: seed + b, quiet: true });
+      const mb = selection ? fitSelected(ds, meta, spec, samp, { seed: seed + b, quiet: true }, selection) : !retune && model.pen && spec.penalty !== 'none' ? fitFixedLambda(ds, meta, spec, samp, model.pen.lambda) : fitPred(ds, meta, spec, samp, { seed: seed + b, quiet: true });
       const ea = evaluate(mb, ds, meta, samp, { horizon }), et = evaluate(mb, ds, meta, idxAll, { horizon }), ab = pick(ea.perf, ks), te = pick(et.perf, ks);
       if (ks.some(k => !isFinite(ab[k]) || !isFinite(te[k]))) throw new Error('métrica no finita');
       if (doCal) { const ca = lowess(ea.p, ea.y, 2 / 3, NG, glo, ghi), ct = lowess(et.p, et.y, 2 / 3, NG, glo, ghi); if (ca.length === NG && ct.length === NG) { for (let g = 0; g < NG; g++) calDiff[g] += ca[g][1] - ct[g][1]; calN++; } }
       for (const k of ks) opt[k].push(ab[k] - te[k]); slopes.push(te.slope);
+      if (selection) { mb.spec.vars.forEach(v => freq[v.name]++); nkept.push(mb.spec.vars.length); }
     } catch { failed++; }
     if (b % 5 === 4) { onProgress?.((b + 1) / B); await tick(); }
   }
   const mean = a => sum(a) / a.length, res = ks.map(k => { const o = mean(opt[k]); return { key: k, apparent: app[k], optimism: o, corrected: app[k] - o, sdOpt: Math.sqrt(sum(opt[k].map(v => (v - o) ** 2)) / Math.max(opt[k].length - 1, 1)) }; });
   let calibration = null;
   if (doCal && calN > 5) { const c0 = lowess(ev0.p, ev0.y, 2 / 3, NG, glo, ghi); calibration = { apparent: c0, corrected: c0.map(([x, y], g) => [x, Math.min(1, Math.max(0, y - calDiff[g] / calN))]) }; }
-  return { rows: res, B: B - failed, failed, shrinkage: slopes.length ? mean(slopes) : NaN, slopes, calibration };
+  const ok = B - failed, selFreq = selection ? spec.vars.map(v => ({ name: v.name, freq: ok ? freq[v.name] / ok : NaN })) : null;
+  return { rows: res, B: ok, failed, shrinkage: slopes.length ? mean(slopes) : NaN, slopes, calibration, selFreq, nKept: nkept.length ? mean(nkept) : null };
 }
 export function fitFixedLambda(ds, meta, spec, rows, lambda) {
   const info = designInfo(ds, meta, spec, rows), cols = columnNames(info), { X, used } = makeX(ds, meta, info, rows), m = { type: spec.type, info, cols, spec, n: used.length, rows: used, penalty: spec.penalty };

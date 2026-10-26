@@ -1,6 +1,6 @@
 // Tabla 1 descriptiva, tablas exportables (Word/CSV) y texto de métodos.
-import { isMiss, levelsOf } from './data.js?v=2026.10.25-9';
-import { shapiro, chisqTest, fisher2x2, welch, anova, mannWhitney, kruskal, mean, sd, median, quantile } from './tests.js?v=2026.10.25-9';
+import { isMiss, levelsOf } from './data.js?v=2026.10.26-1';
+import { shapiro, chisqTest, fisher2x2, welch, anova, mannWhitney, kruskal, mean, sd, median, quantile } from './tests.js?v=2026.10.26-1';
 
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 export const fp = p => (!isFinite(p) ? '' : p < 0.001 ? '<0.001' : p.toFixed(3));

@@ -20,13 +20,15 @@ export const HELP_HTML = `
 <p class="sub">Cada tabla y figura incluye un recuadro «Qué se ve / Para qué / Cómo interpretar».</p>
 <h3>Qué mide cada indicador</h3>
 <table class="data"><thead><tr><th>Indicador</th><th>Qué responde</th><th>Valor ideal</th></tr></thead><tbody>
-<tr><td>Estadístico C (AUC) / índice C de Harrell</td><td>¿Ordena bien a los pacientes con y sin evento? (discriminación)</td><td>1 (0.5 = azar)</td></tr>
+<tr><td>Índice C de Harrell (= AUC en desenlaces binarios)</td><td>¿Ordena bien a los pacientes? Proporción de parejas comparables en que el de mayor predicción tiene el evento (o el valor) más alto; con censura (Cox) y con desenlaces continuos usa solo las parejas comparables (discriminación)</td><td>1 (0.5 = azar)</td></tr>
 <tr><td>Pendiente de calibración</td><td>¿Son los riesgos demasiado extremos (&lt; 1) o demasiado tímidos (&gt; 1)?</td><td>1</td></tr>
 <tr><td>CITL / O/E</td><td>¿Se acierta el riesgo medio? Intercepto de calibración con pendiente fija / observados entre esperados</td><td>0 / 1</td></tr>
 <tr><td>Curva de calibración</td><td>¿Coincide el riesgo predicho con el observado en todo el rango?</td><td>Diagonal</td></tr>
 <tr><td>Brier</td><td>Error cuadrático medio de las probabilidades (mezcla discriminación y calibración)</td><td>Menor es mejor</td></tr>
 <tr><td>R² de Cox-Snell</td><td>Variación explicada (generalizada); alimenta el cálculo del tamaño de muestra</td><td>Mayor es mejor</td></tr>
 <tr><td>Beneficio neto</td><td>¿Mejora decisiones frente a tratar a todos o a nadie, dado un umbral de riesgo?</td><td>&gt; 0 y &gt; «tratar a todos»</td></tr></tbody></table>
+<h3>Selección automática de predictores y comparación de modelos</h3>
+<p><b>Hacia atrás por AIC, BIC o QIC</b> (paso 3): se retira, de uno en uno, el predictor (con todos sus términos) que más reduce el criterio. QIC (Pan 2001) es el AIC con varianza robusta y correlación de trabajo independiente; con datos independientes se parece al AIC (en Cox se usa el AIC). La selección se hace sin penalizar y <b>se repite dentro de cada réplica bootstrap</b>, de modo que el optimismo corregido incluye el costo de elegir variables; se muestra con qué frecuencia se retiene cada predictor. <b>Comparar modelos</b> (paso 4): todos los predictores, hacia atrás por AIC/BIC/QIC, lasso, ridge y el modelo simplificado se validan con el mismo bootstrap; compare el C corregido, la pendiente de calibración corregida y el número de parámetros, no el rendimiento aparente.</p>
 <h3>Tamaño de muestra: criterios implementados</h3>
 <ul><li><b>Desarrollo, binario y supervivencia.</b> (i) factor de contracción global S ≥ 0.9: <code>n = p / ((S − 1)·ln(1 − R²<sub>CS</sub>/S))</code>; (ii) diferencia ≤ 0.05 entre el R² de Nagelkerke aparente y el ajustado; (iii) margen de error ≤ 0.05 en el riesgo global (binario: <code>(1.96/0.05)²·φ(1−φ)</code>; supervivencia: IC del riesgo acumulado). El R² de Cox-Snell puede obtenerse del R² de Nagelkerke o del estadístico C (integración numérica del modelo binormal).</li>
 <li><b>Desarrollo, continuo.</b> contracción global, diferencia de R², precisión de la varianza residual (n = 234 + p) y precisión del intercepto (MMOE ≤ 1.1).</li>

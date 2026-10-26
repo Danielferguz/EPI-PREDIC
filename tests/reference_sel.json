@@ -1,0 +1,57 @@
+{
+ "vars": [
+  "Edad (años)",
+  "Sexo",
+  "Diabetes",
+  "TFGe (mL/min/1.73 m²)",
+  "UACR (mg/g)",
+  "Hemoglobina (g/dL)",
+  "Bicarbonato (mmol/L)",
+  "Fosfato (mg/dL)"
+ ],
+ "aic": {
+  "kept": [
+   "Edad (años)",
+   "TFGe (mL/min/1.73 m²)",
+   "UACR (mg/g)",
+   "Hemoglobina (g/dL)",
+   "Bicarbonato (mmol/L)",
+   "Fosfato (mg/dL)"
+  ],
+  "removed": [
+   "Diabetes",
+   "Sexo"
+  ],
+  "final": 1011.5836762152611
+ },
+ "bic": {
+  "kept": [
+   "Edad (años)",
+   "TFGe (mL/min/1.73 m²)",
+   "UACR (mg/g)",
+   "Hemoglobina (g/dL)",
+   "Bicarbonato (mmol/L)",
+   "Fosfato (mg/dL)"
+  ],
+  "removed": [
+   "Diabetes",
+   "Sexo"
+  ],
+  "final": 1048.2581810317197
+ },
+ "qic": {
+  "kept": [
+   "Edad (años)",
+   "TFGe (mL/min/1.73 m²)",
+   "UACR (mg/g)",
+   "Hemoglobina (g/dL)",
+   "Bicarbonato (mmol/L)",
+   "Fosfato (mg/dL)"
+  ],
+  "removed": [
+   "Diabetes",
+   "Sexo"
+  ],
+  "final": 1011.4869728559697
+ }
+}

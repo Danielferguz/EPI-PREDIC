@@ -1,17 +1,17 @@
 // Pestaña 4: modelo desarrollado, rendimiento aparente y corregido por bootstrap, calibración y ecuación.
-import { $, $$, esc, f2, fp, pct, ci, table, howto, card, state, errBox, download } from './state.js?v=2026.10.25-9';
-import { evaluate, shrinkModel, calibGroups, calibSurvival, lowess, riskFromLP, H0at } from './predmodel.js?v=2026.10.25-9';
-import { waldTerm, ciOf } from './models.js?v=2026.10.25-9';
-import { calibrationPlot, scatterCalib, rocPlot, rocPoints, cvPlot } from './pplots.js?v=2026.10.25-9';
-import { figWrap, bindFigs } from './figs.js?v=2026.10.25-9';
-import { qnorm } from './dist.js?v=2026.10.25-9';
-import { moreCards, bindMore } from './ui_more.js?v=2026.10.25-9';
+import { $, $$, esc, f2, fp, pct, ci, table, howto, card, state, errBox, download } from './state.js?v=2026.10.26-1';
+import { evaluate, shrinkModel, calibGroups, calibSurvival, lowess, riskFromLP, H0at, CRIT_LABEL } from './predmodel.js?v=2026.10.26-1';
+import { waldTerm, ciOf } from './models.js?v=2026.10.26-1';
+import { calibrationPlot, scatterCalib, rocPlot, rocPoints, cvPlot } from './pplots.js?v=2026.10.26-1';
+import { figWrap, bindFigs } from './figs.js?v=2026.10.26-1';
+import { qnorm } from './dist.js?v=2026.10.26-1';
+import { moreCards, bindMore } from './ui_more.js?v=2026.10.26-1';
 
 export function bindFigure() { document.addEventListener('click', () => 0); }
 const LAB = {
-  binary: { auc: 'Estadístico C (AUC)', slope: 'Pendiente de calibración', citl: 'Calibración en general (CITL)', brier: 'Brier', r2cs: 'R² de Cox-Snell' },
+  binary: { auc: 'Índice C de Harrell (= AUC)', slope: 'Pendiente de calibración', citl: 'Calibración en general (CITL)', brier: 'Brier', r2cs: 'R² de Cox-Snell' },
   survival: { cindex: 'Índice C de Harrell', slope: 'Pendiente de calibración (índice pronóstico)', r2cs: 'R² de Cox-Snell' },
-  continuous: { r2: 'R²', slope: 'Pendiente de calibración', rmse: 'RMSE' },
+  continuous: { r2: 'R²', cindex: 'Índice C de Harrell (concordancia)', slope: 'Pendiente de calibración', rmse: 'RMSE' },
 };
 const IDEAL = { auc: '', slope: '1', citl: '0', brier: '', r2cs: '', cindex: '', r2: '', rmse: '' };
 export const modelName = m => ({ binary: 'logístico', survival: 'de Cox', continuous: 'lineal' }[m.type]);
@@ -40,6 +40,15 @@ export function equationText(m, horizon) {
 }
 const splineNote = m => (m.info.vars.some(v => v.knots) ? `<p class="sub">Nudos de los splines cúbicos restringidos: ${m.info.vars.filter(v => v.knots).map(v => `<b>${esc(v.name)}</b> (${v.knots.map(k => +k.toPrecision(5)).join(', ')})`).join('; ')}.</p>` : '');
 
+// tarjeta de la selección automática: trayectoria del criterio y frecuencia de inclusión en las réplicas bootstrap
+function selectionCard(m0, boot, spec) {
+  const s = m0.selection; if (!s) return '';
+  const nm = CRIT_LABEL[s.crit], crit = spec.type === 'survival' && s.crit === 'qic' ? 'AIC (en Cox QIC = AIC)' : nm, removed = s.log.filter(l => l.removed);
+  const steps = table(['Paso', 'Predictor retirado', crit], [['0', '— (modelo completo)', f2(s.start, 2)], ...removed.map((l, i) => [String(i + 1), esc(l.removed), f2(l.crit, 2)])]);
+  const freq = boot?.selFreq ? table(['Predictor', 'Retenido en las réplicas bootstrap', 'En el modelo final'], boot.selFreq.slice().sort((a, b) => b.freq - a.freq).map(f => [esc(f.name), `${(100 * f.freq).toFixed(0)} %`, s.vars.some(v => v.name === f.name) ? 'sí' : 'no'])) : '<p class="sub">Active el bootstrap para estimar con qué frecuencia se retiene cada predictor.</p>';
+  return card('Selección automática de predictores', `${howto(`Eliminación hacia atrás por ${crit}: se retiró un predictor por paso mientras el criterio bajaba. Quedan ${s.vars.length} de ${s.vars.length + removed.length}.`, 'Parsimonia: un modelo con menos predictores es más fácil de usar, pero la selección automática produce coeficientes optimistas y modelos inestables.', `El rendimiento corregido de abajo ya incluye el costo de seleccionar (la selección se repitió en cada réplica${boot?.nKept != null ? `; en promedio ${f2(boot.nKept, 1)} predictores retenidos` : ''}). Un predictor retenido en menos de ~60–70 % de las réplicas es inestable.`)}${steps}<h4>Estabilidad de la selección</h4>${freq}`);
+}
+
 export function renderDev() {
   const m0 = state.model, spec = state.spec, out = $('#dev-out'); if (!m0) { out.innerHTML = ''; return; }
   const boot = state.boot, type = m0.type, lab = LAB[type], gamma = boot?.shrinkage, canShrink = !!boot && isFinite(gamma) && !(m0.pen && m0.pen.lambda);
@@ -66,6 +75,7 @@ export function renderDev() {
   out.innerHTML = [
     card('Modelo desarrollado', `${howto(`Un modelo ${modelName(m0)} con ${np} parámetros ajustado a ${m0.n} pacientes${events != null ? ` (${events} eventos)` : ''}.`, 'Los coeficientes definen la ecuación de predicción; los splines modelan relaciones no lineales sin categorizar.', 'No interprete los coeficientes como efectos causales (la «falacia de la Tabla 2»): son aportes a la predicción.', ['Qué se ve', 'Para qué', 'Advertencia'])}${kp}${shr ? `<div class="explain">${shr}</div>` : ''}${m0.sep ? '<div class="warn">Posible separación completa: los coeficientes pueden ser inestables; considere penalización.</div>' : ''}`),
     card('Coeficientes', `${table(ct.head, ct.rows)}${splineNote(m)}${m0.pen?.lambda ? '<p class="sub">Con penalización no se muestran errores estándar (los intervalos de Wald no son válidos tras la contracción).</p>' : ''}`),
+    selectionCard(m0, boot, spec),
     card('Rendimiento y validación interna', `${howto('Cada medida en los mismos datos (aparente), el <i>optimismo</i> estimado con bootstrap y el valor <i>corregido</i>.', 'Evaluar el modelo en los datos que lo crearon es optimista: el bootstrap repite todo el proceso de modelado (incluidos nudos y elección de λ) en cada réplica y mide cuánto empeora al aplicarlo a los datos originales.', 'Use la columna «corregida» como estimación del rendimiento esperado en nuevos pacientes de la misma población. Una pendiente corregida &lt; 0.9 sugiere sobreajuste.', ['Qué se ve', 'Para qué', 'Cómo interpretar'])}${table(['Medida', 'Aparente', 'Optimismo', 'Corregida (bootstrap)', 'Ideal'], rows)}${boot ? `<p class="sub">${boot.B} réplicas bootstrap válidas${boot.failed ? ` (${boot.failed} descartadas por no converger)` : ''}; factor de contracción uniforme (media de la pendiente en los datos originales) = <b>${f2(boot.shrinkage, 3)}</b>.</p>` : '<p class="sub">Sin bootstrap: solo se muestra el rendimiento aparente (optimista).</p>'}${extra}${type === 'binary' ? howto('<b>Calibración</b>: riesgo observado frente al predicho (línea = suavizado, puntos = deciles, histograma = distribución de los riesgos). <b>ROC</b>: sensibilidad frente a 1 − especificidad.', 'Comprobar que los riesgos predichos coinciden con los observados y que el modelo ordena bien a los pacientes.', 'La calibración ideal sigue la diagonal; por encima = el modelo subestima, por debajo = sobrestima. En ROC, cuanto más cerca de la esquina superior izquierda, mejor; el C mide el área (0.5 = azar).') : type === 'survival' ? howto('Riesgo observado (Kaplan-Meier) frente al predicho en cinco grupos de riesgo.', 'Comprobar la calibración del riesgo al horizonte elegido.', 'Los puntos deberían seguir la diagonal; el IC amplio indica pocos eventos en el grupo.') : howto('Valor observado frente al predicho (línea = suavizado).', 'Comprobar el ajuste del modelo lineal.', 'Los puntos deberían agruparse en torno a la diagonal sin curvatura sistemática.')}<div class="plots">${plots}</div>`),
     card('Ecuación del modelo', `<p class="sub">Para publicar (TRIPOD exige la ecuación completa) y para validar el modelo en otras bases.</p><pre class="eq">${esc(equationText(m, spec.horizon))}</pre><div class="row gap"><button class="ghost" id="d-copy">Copiar</button><button class="ghost" id="d-json">Descargar modelo (.json)</button></div>`),
     moreCards(),

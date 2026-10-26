@@ -1,11 +1,11 @@
 // Tarjetas adicionales de la pestaña «Desarrollo»: Tabla 1, regresión cruda y ajustada, gráficos de rendimiento y simplificación del modelo.
-import { $, $$, esc, f2, fp, pct, table, howto, card, state, errBox, download } from './state.js?v=2026.10.25-9';
-import { table1, table1HTML, wordDoc, matrixHTML, matrixCSV } from './report.js?v=2026.10.25-9';
-import { groupColumn, crudeAdjusted, uniAdjTable } from './analysis.js?v=2026.10.25-9';
-import { calibGroups, calibSurvival } from './predmodel.js?v=2026.10.25-9';
-import { riskDistPlot, thresholdPlot, decilePlot, importancePlot, pathPlot } from './pplots.js?v=2026.10.25-9';
-import { simplifyPath } from './simplify.js?v=2026.10.25-9';
-import { figWrap, bindFigs } from './figs.js?v=2026.10.25-9';
+import { $, $$, esc, f2, fp, pct, table, howto, card, state, errBox, download } from './state.js?v=2026.10.26-1';
+import { table1, table1HTML, wordDoc, matrixHTML, matrixCSV } from './report.js?v=2026.10.26-1';
+import { groupColumn, crudeAdjusted, uniAdjTable } from './analysis.js?v=2026.10.26-1';
+import { calibGroups, calibSurvival, fitPred, fitSelected, bootstrapValidate, tick } from './predmodel.js?v=2026.10.26-1';
+import { riskDistPlot, thresholdPlot, decilePlot, importancePlot, pathPlot, comparePlot } from './pplots.js?v=2026.10.26-1';
+import { simplifyPath } from './simplify.js?v=2026.10.26-1';
+import { figWrap, bindFigs } from './figs.js?v=2026.10.26-1';
 
 const specOf = () => { const s = state.spec; return { type: s.type, y: s.y, event: s.event, time: s.time, status: s.status, sevent: s.event }; };
 const names = () => (state.simpApplied?.all || state.spec.vars).map(v => v.name); // Tabla 1: todos los candidatos, aunque el modelo final se haya simplificado
@@ -20,6 +20,9 @@ export function moreCards() {
     card('Tabla 1 · Características de los participantes', `${howto('Cada variable en el total y según ' + (type === 'continuous' ? 'terciles del desenlace' : 'el desenlace') + ', con el valor p de la comparación entre grupos (U de Mann-Whitney o t de Welch; χ² o exacta de Fisher; Kruskal-Wallis/ANOVA si hay más de 2 grupos).', 'Describir la muestra de desarrollo y ver en qué se diferencian quienes tienen y no tienen el desenlace; es la «Tabla 1» que exigen las revistas (TRIPOD+AI ítem 20b).', 'Los valores p describen diferencias entre grupos; <b>no</b> son un criterio para elegir predictores ni miden su utilidad predictiva. Con muestras grandes, diferencias triviales dan p pequeño. Las cuantitativas se resumen con mediana (RIC) cuando no son normales.')}<div class="row gap wrap">${t1}<button class="ghost" id="t1-doc">Word (.doc)</button><button class="ghost" id="t1-csv">CSV</button></div><div id="t1-out"></div>`),
     card('Regresión por predictor · cruda y ajustada', `${howto('Para cada predictor, el efecto estimado solo (cruda) y junto con todos los demás (ajustada): ' + (bin ? 'razón de odds (OR)' : type === 'survival' ? 'razón de riesgos (HR)' : 'coeficiente β') + ' con IC 95 % y valor p. Las cuantitativas entran de forma lineal (por unidad) y las categóricas contra su categoría de referencia.', 'Mostrar qué variables se asocian con el desenlace y cuánto cambian al ajustar por las demás (confusión/colinealidad entre predictores), como pide la sección de resultados de un artículo.', 'Es un resumen descriptivo con los mismos pacientes (casos completos). Los efectos ajustados <b>no</b> son efectos causales (falacia de la Tabla 2). Si un efecto cambia mucho al ajustar, los predictores comparten información.')}<div class="row gap"><label class="inline"><input type="checkbox" id="ua-sd"> Cuantitativas por 1 DE</label><label class="inline">Idioma <select id="ua-lang"><option value="es">Español</option><option value="en">English</option></select></label><button class="ghost" id="ua-doc">Word (.doc)</button><button class="ghost" id="ua-csv">CSV</button></div><div id="ua-out"></div>`),
     card('Más gráficos para valorar qué tan bien sirve el modelo', `<div id="pf-out"></div>`),
+    card('Comparar modelos para predecir', `${howto('Se ajustan varias versiones del modelo (todos los predictores, selección hacia atrás por AIC, BIC o QIC, lasso, ridge y, si lo calculó, el modelo simplificado) y cada una se valida con el mismo bootstrap, repitiendo en cada réplica su propia selección o penalización.', 'Elegir con honestidad cuál predice mejor <i>fuera de la muestra</i>: el rendimiento aparente siempre favorece al modelo más complejo.', 'Compare el índice C <b>corregido</b> (círculo lleno) y la pendiente de calibración corregida (ideal 1). Diferencias de C &lt; 0.01 son irrelevantes: prefiera el modelo con menos predictores. Un AIC más bajo solo compara ajuste dentro de la muestra.')}
+      <div class="row gap wrap mt" id="cm-opts"><label class="inline"><input type="checkbox" value="full" checked> Todos, sin penalizar</label><label class="inline"><input type="checkbox" value="aic" checked> Hacia atrás AIC</label><label class="inline"><input type="checkbox" value="bic" checked> Hacia atrás BIC</label><label class="inline"><input type="checkbox" value="qic"> Hacia atrás QIC</label>${type === 'survival' ? '' : '<label class="inline"><input type="checkbox" value="lasso"> Lasso</label>'}<label class="inline"><input type="checkbox" value="ridge"> Ridge</label><label class="inline"><input type="checkbox" value="simp"> Modelo simplificado (si lo calculó abajo)</label></div>
+      <div class="row gap wrap mt"><label class="inline">Réplicas bootstrap <input id="cm-B" type="number" min="20" max="500" value="100" size="5"></label><button id="cm-run" class="primary">Comparar modelos</button><progress id="cm-prog" max="1" value="0" hidden></progress><span id="cm-msg" class="muted small"></span></div><div id="cm-out"></div>`),
     card('Simplificar el modelo sin perder capacidad de predicción', `${howto('Los predictores se ordenan por su aporte (χ² de Wald parcial − gl) y se añaden de uno en uno; para cada tamaño se estima el rendimiento corregido por bootstrap (el orden se repite en cada réplica, sin optimismo por selección).', 'Encontrar el modelo más pequeño cuyo rendimiento corregido no baja más que una tolerancia respecto al modelo completo: menos variables que recoger, menos sobreajuste y una calculadora más práctica.', 'Mire la curva «corregida»: el punto k marcado es el modelo mínimo dentro de la banda. Si la curva sigue subiendo, no simplifique. Con penalización se usa el mismo λ del modelo completo (aproximación). Valide el modelo simplificado en datos externos.')}<div class="form"><label>Tolerancia de pérdida (${bin ? 'AUC' : type === 'survival' ? 'índice C' : 'R²'}) <input id="sm-tol" type="number" step="0.005" min="0" value="0.01"></label><label>Réplicas bootstrap <input id="sm-B" type="number" min="20" max="500" value="100"></label></div><div class="row gap"><button class="primary" id="sm-run">Calcular</button><progress id="sm-prog" max="1" value="0" hidden></progress><span id="sm-msg" class="muted"></span></div><div id="sm-out"></div>`),
   ].join('');
 }
@@ -33,7 +36,7 @@ export function bindMore() {
   $('#ua-lang').addEventListener('change', doUA); $('#ua-sd').addEventListener('change', doUA); doUA();
   $('#ua-doc').addEventListener('click', () => { const { T } = uaTable($('#ua-lang').value); download('regresion_cruda_ajustada.doc', wordDoc('Table 2', matrixHTML({ head: T.head, body: T.rows.map((r, i) => ({ c: r, b: T.bold[i] })) })), 'application/msword'); });
   $('#ua-csv').addEventListener('click', () => { const { T } = uaTable($('#ua-lang').value); download('regresion_cruda_ajustada.csv', matrixCSV({ head: T.head, body: T.rows.map(r => ({ c: r })) }), 'text/csv'); });
-  perfPlots(); bindSimplify();
+  perfPlots(); bindSimplify(); bindCompare();
 }
 
 // ---------------------------------------------------------------- gráficos y tabla de clasificación
@@ -52,6 +55,37 @@ function perfPlots() {
     h += `${howto(`Riesgo observado (Kaplan-Meier, IC 95 %) y predicho a ${sp.horizon} en 5 grupos de riesgo.`, 'Comprobar la calibración y la separación entre grupos de riesgo.', 'Los rombos deben caer sobre las barras; barras crecientes indican buena discriminación.')}${figWrap(decilePlot({ groups: g, title: `Observed vs predicted risk at ${sp.horizon} by risk group` }), 'riesgo_por_grupos_cox')}`;
   } else h = '<p class="muted">Para un desenlace continuo, el gráfico de calibración «observado vs predicho» de arriba resume el ajuste; añada el R² y el RMSE de la tabla de rendimiento.</p>';
   out.innerHTML = h; bindFigs(out);
+}
+
+// ---------------------------------------------------------------- comparación de modelos
+function bindCompare() {
+  $('#cm-run').addEventListener('click', async () => {
+    const btn = $('#cm-run'), prog = $('#cm-prog'), msg = $('#cm-msg'), out = $('#cm-out'), sp = state.spec, spX = state.specX, type = sp.type, B = Math.max(20, +$('#cm-B').value || 100);
+    const want = [...$$('#cm-opts input:checked')].map(i => i.value); btn.disabled = true; prog.hidden = false; out.innerHTML = '';
+    const LABEL = { full: 'Todos los predictores', aic: 'Hacia atrás por AIC', bic: 'Hacia atrás por BIC', qic: 'Hacia atrás por QIC', lasso: 'Lasso', ridge: 'Ridge', simp: 'Modelo simplificado' };
+    const keyC = { binary: 'auc', survival: 'cindex', continuous: 'cindex' }[type], rows = state.dev.rows, res = [];
+    try {
+      if (!want.length) throw new Error('Marque al menos un modelo.');
+      for (const [i, id] of want.entries()) {
+        msg.textContent = `${LABEL[id]} (${i + 1} de ${want.length})…`; await tick();
+        let spec = { ...spX, penalty: 'none' }, sel = null;
+        if (['aic', 'bic', 'qic'].includes(id)) sel = id; else if (id === 'lasso' || id === 'ridge') spec.penalty = id;
+        else if (id === 'simp') { if (!state.simp) throw new Error('Calcule primero el modelo simplificado (tarjeta de abajo).'); const keep = new Set(state.simp.order.slice(0, state.simp.kStar)); spec = { ...spec, vars: spX.vars.filter(v => keep.has(v.name)) }; }
+        const m = sel ? fitSelected(state.dsX, state.metaX, spec, rows, { seed: sp.seed || 1 }, sel) : fitPred(state.dsX, state.metaX, spec, rows, { seed: sp.seed || 1 });
+        const b = await bootstrapValidate(state.dsX, state.metaX, spec, rows, m, { B, seed: sp.seed || 99, horizon: sp.horizon, retune: sp.retune, calib: false, selection: sel, onProgress: p => { prog.value = (i + p) / want.length; } });
+        const g = k => b.rows.find(r => r.key === k), c = g(keyC), sl = g('slope'), third = type === 'binary' ? g('brier') : type === 'survival' ? g('r2cs') : g('rmse');
+        res.push({ id, label: LABEL[id], k: m.cols.length, nv: m.spec.vars.length, apparent: c.apparent, corrected: c.corrected, slope: sl.corrected, third: third?.corrected, aic: m.fit?.aic, vars: m.spec.vars.map(v => v.name) });
+      }
+      const best = Math.max(...res.map(r => r.corrected)), lab3 = { binary: 'Brier corregido', survival: 'R² de Cox-Snell corregido', continuous: 'RMSE corregido' }[type];
+      state.cmp = res;
+      out.innerHTML = `<div class="tablewrap"><table class="data"><thead><tr><th>Modelo</th><th class="num">Predictores</th><th class="num">Parámetros</th><th class="num">C aparente</th><th class="num">C corregido</th><th class="num">Δ vs mejor</th><th class="num">Pendiente de calibración corregida</th><th class="num">${lab3}</th><th class="num">AIC aparente</th></tr></thead><tbody>${res.map(r => `<tr><td${r.corrected === best ? ' class="b"' : ''}>${esc(r.label)}</td><td class="num">${r.nv}</td><td class="num">${r.k}</td><td class="num">${f2(r.apparent, 3)}</td><td class="num"><b>${f2(r.corrected, 3)}</b></td><td class="num">${f2(r.corrected - best, 3).replace(/^-0\.000$/, '0.000')}</td><td class="num">${f2(r.slope, 3)}</td><td class="num">${f2(r.third, 3)}</td><td class="num">${r.aic != null ? f2(r.aic, 1) : '–'}</td></tr>`).join('')}</tbody></table></div>
+        ${figWrap(comparePlot({ rows: res, xlab: type === 'survival' || type === 'continuous' ? "Harrell's C-index" : 'C statistic (= AUC)' }), 'comparacion_modelos')}
+        <p class="sub">Con ${B} réplicas; en los modelos con selección, esta se repitió en cada réplica. Predictores retenidos — ${res.map(r => `<b>${esc(r.label)}</b>: ${esc(r.vars.join(', '))}`).join('; ')}.</p>
+        <p>${(() => { const top = res.filter(r => best - r.corrected < 0.01).sort((a, b) => a.k - b.k)[0]; return `<b>Lectura:</b> ${esc(top.label)} (${top.k} parámetros) rinde dentro de 0.01 del mejor C corregido (${f2(best, 3)}) con el modelo más simple; es una opción razonable si su pendiente de calibración (${f2(top.slope, 2)}) es cercana a 1.`; })()}</p>`;
+      bindFigs(out); msg.textContent = '';
+    } catch (e) { msg.innerHTML = errBox(e); console.error(e); }
+    prog.hidden = true; btn.disabled = false;
+  });
 }
 
 // ---------------------------------------------------------------- simplificación

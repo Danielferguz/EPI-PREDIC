@@ -1,5 +1,5 @@
 // Pruebas de hipótesis bivariadas y de normalidad (Tabla 1 y supuestos).
-import { qnorm, pnorm, pchisqU, pfU, p2t, lgamma, p2z } from './dist.js?v=2026.10.25-9';
+import { qnorm, pnorm, pchisqU, pfU, p2t, lgamma, p2z } from './dist.js?v=2026.10.26-1';
 
 export const mean = a => a.reduce((s, v) => s + v, 0) / a.length;
 export const variance = a => { const m = mean(a); return a.reduce((s, v) => s + (v - m) ** 2, 0) / (a.length - 1); };

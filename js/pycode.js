@@ -75,7 +75,37 @@ class Model:
         return 1 - self.fit.predict_survival_function(pd.DataFrame(design(df, self.info)[0], columns=self.names), times=[horizon]).to_numpy().ravel()
 
 
+def crit_value(df, preds, crit):
+    """AIC, BIC o QIC (varianza robusta, correlación independiente) de un modelo sin penalizar."""
+    info = make_info(df, preds); X, _ = design(df, info); y = outcome(df)
+    if T == "survival":
+        d = pd.DataFrame(X, columns=[str(i) for i in range(X.shape[1])]); d["_t"] = df[CFG["time"]].to_numpy(float); d["_e"] = (df[CFG["status"]].astype(str) == str(CFG["sevent"])).astype(float).to_numpy()
+        ll = CoxPHFitter().fit(d, "_t", "_e").log_likelihood_; return -2 * ll + (np.log(d["_e"].sum()) if crit == "bic" else 2) * X.shape[1]
+    Xc = sm.add_constant(X); r = (sm.Logit(y, Xc) if T == "binary" else sm.OLS(y, Xc)).fit(disp=0)
+    if crit == "aic": return r.aic
+    if crit == "bic": return r.bic
+    mu = r.predict(Xc); res = y - mu
+    if T == "binary": A = (Xc.T * (mu * (1 - mu))) @ Xc; B = (Xc.T * res ** 2) @ Xc
+    else: s2 = np.sum(res ** 2) / len(y); A = Xc.T @ Xc / s2; B = (Xc.T * res ** 2) @ Xc / s2 ** 2
+    return -2 * r.llf + 2 * np.trace(np.linalg.solve(A, B))
+
+
+def select_backward(df, preds, crit):
+    """Eliminación hacia atrás de predictores completos: se retira el que más reduce el criterio hasta que ninguno lo mejora."""
+    cur = list(preds); c0 = crit_value(df, cur, crit)
+    while len(cur) > 1:
+        best = None
+        for v in cur:
+            try: c = crit_value(df, [w for w in cur if w is not v], crit)
+            except Exception: continue
+            if best is None or c < best[0]: best = (c, v)
+        if best is None or best[0] >= c0 - 1e-9: break
+        cur.remove(best[1]); c0 = best[0]
+    return cur
+
+
 def fit_model(df, preds, penalty=None, seed=1, lam=None):
+    if penalty is None and CFG.get("selection") not in (None, "none"): preds = select_backward(df, preds, CFG["selection"])  # se repite en cada réplica bootstrap
     info = make_info(df, preds); X, names = design(df, info); y = outcome(df); pen = penalty or CFG["penalty"]
     if T == "survival":
         d = pd.DataFrame(X, columns=names); d["_t"] = df[CFG["time"]].to_numpy(float); d["_e"] = (df[CFG["status"]].astype(str) == str(CFG["sevent"])).astype(float).to_numpy()
@@ -204,6 +234,7 @@ def main(data_path, ext_path=None):
     if grp: table1(raw.dropna(subset=[grp]), [dict(v) for v in CFG["predictors_raw"]], grp).to_csv("tabla1.csv", index=False)
     crude_adjusted(df, preds).to_csv("regresion_cruda_ajustada.csv", index=False)
     m, res = bootstrap_optimism(df, preds, CFG["B"], CFG["seed"]); print(res.round(3).to_string(index=False)); res.to_csv("rendimiento_bootstrap.csv", index=False)
+    print("Variables del modelo final:", [v["name"] for v in m.info])
     pd.DataFrame({"variable": m.names, "coeficiente": m.beta}).assign(intercepto=m.intercept).to_csv("coeficientes.csv", index=False)
     if T == "binary": p = m.risk(df); calibration_table(p, outcome(df)).to_csv("calibracion_por_grupos.csv", index=False); decision_curve(p, outcome(df)).to_csv("curva_decision.csv", index=False)
     if ext_path:  # validación externa: aplicar el modelo sin reajustarlo
@@ -226,7 +257,7 @@ Desenlace: ${cfg.type === 'survival' ? `${cfg.status} (evento: ${cfg.sevent}; ti
 Requisitos: Python >= 3.9, numpy, pandas, scipy, statsmodels, scikit-learn${cfg.type === 'survival' ? ', lifelines' : ''}.   Uso:  python replicar.py desarrollo.csv [validacion.csv]
 
 El script reproduce, sin código de figuras: Tabla 1 por desenlace, regresión cruda y ajustada por predictor, el modelo final (splines cúbicos
-restringidos de Harrell con los mismos nudos), la corrección del optimismo por bootstrap (repitiendo todo el proceso), la simplificación del modelo
+restringidos de Harrell con los mismos nudos), la selección hacia atrás por AIC/BIC/QIC si se usó (repetida en cada réplica), la corrección del optimismo por bootstrap (repitiendo todo el proceso), la simplificación del modelo
 por importancia de Wald parcial, tablas de calibración por grupos y de beneficio neto, y la validación externa. La aplicación calcula con una implementación
 propia, verificada frente a statsmodels, scikit-learn y lifelines; el bootstrap usa otro generador aleatorio, y la elección de λ en modelos penalizados
 (rejilla y regla del mínimo) puede diferir, por lo que se esperan diferencias pequeñas, no idénticas.
