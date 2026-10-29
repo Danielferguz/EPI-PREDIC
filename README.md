@@ -49,3 +49,8 @@ python3 -m http.server 8000   # luego http://localhost:8000
 ## Licencia y cita
 
 © Daniel Fernández-Guzmán. Licencia **CC BY-NC-ND 4.0**. Usar la aplicación y publicar los resultados está permitido citando EPI-PREDIC (ver `CITATION.cff`).
+
+## Acceso
+La herramienta pide **usuario y contraseña** al abrirla (`auth.js`). Solo se guarda una huella PBKDF2-SHA256 del par usuario + contraseña, no la contraseña. Es una barrera para visitantes casuales: el código sigue siendo visible para quien sepa abrir las herramientas del navegador. Para proteger de verdad se necesita control de acceso en el servidor.
+
+Para cambiar la clave: `python3 tools/generar_huella.py usuario clave` y pegar la línea resultante en `auth.js` (misma clave en todas las herramientas si quieres una sola entrada: la sesión es por navegador y sitio).
