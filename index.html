@@ -1,15 +1,15 @@
 <!doctype html>
 <html lang="es">
 <head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
 <meta charset="utf-8">
 <script src="auth.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>EPI-PREDIC</title>
 <meta name="description" content="EPI-PREDIC (EPI-LAB): desarrollo y validación de modelos de predicción clínica en el navegador. Cálculo del tamaño de muestra (Riley et al.), regresión logística y de Cox con splines y penalización, validación interna por bootstrap, calibración, curva de decisión y lista TRIPOD.">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Source+Sans+3:wght@400;600&display=swap">
 <link rel="stylesheet" href="css/style.css?v=2026.10.26-1">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js" defer></script>
+<script src="js/vendor/xlsx.full.min.js" defer></script>
 </head>
 <body>
 <header class="top">
