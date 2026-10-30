@@ -21,7 +21,7 @@
     '#epi-gate input:focus{outline:3px solid #AFD5DE;border-color:#2F7F92}' +
     '#epi-gate button{border:0;border-radius:10px;background:#2F7F92;color:#fff;padding:12px 16px;font:700 .95rem Montserrat,"Segoe UI",system-ui,Arial,sans-serif;cursor:pointer}#epi-gate button:disabled{opacity:.6;cursor:wait}' +
     '#epi-gate .epi-err{min-height:1.4em;color:#B3261E;font-size:.92rem}#epi-gate small{color:#5E666D}' +
-    '@media (prefers-color-scheme:dark){#epi-gate{background:#15191C;color:#E7EDEF}#epi-gate form{background:#1D2326;border-color:#2E393D}#epi-gate .epi-mk b{color:#6FB8C9}#epi-gate h1{color:#E39AA5}#epi-gate p,#epi-gate label,#epi-gate small{color:#9FADB3}#epi-gate input{background:#15191C;color:#E7EDEF;border-color:#2E393D}#epi-gate button{background:#6FB8C9;color:#0F1416}#epi-gate .epi-err{color:#F2A19B}}';
+    '';
   d.head.appendChild(st);
   function bytes(h) { var a = new Uint8Array(h.length / 2); for (var i = 0; i < a.length; i++) a[i] = parseInt(h.substr(i * 2, 2), 16); return a; }
   function hex(b) { return Array.prototype.map.call(new Uint8Array(b), function (x) { return ('0' + x.toString(16)).slice(-2); }).join(''); }
